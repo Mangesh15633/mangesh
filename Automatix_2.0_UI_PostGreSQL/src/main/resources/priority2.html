@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>One Automation Solution - Test Prioritization</title>
+	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<!-- <link rel='stylesheet' href='vendor/dataTables/dataTables.bootstrap4.min.css'> -->
+<!-- <link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.bootstrap.min.css'> -->
+	<!-- For Selectpicker dropdown class -->
+	<link href="vendor/bootstrap/css/bootstrap-select.min.css" rel="stylesheet">
+	
+    <!-- Custom styles for this template -->
+    <link href="css/project_bootstrap.css" rel="stylesheet">
+
+	
+    <!-- Custom styles for this template -->
+    <link href="css/project_bootstrap.min.css" rel="stylesheet">
+	<!-- <link href="css/Config-datatable.css" rel="stylesheet"> -->
+	<link href="css/switch.css" rel="stylesheet">
+	
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/email.multiple.css">
+	
+<style>
+.margin-bottom-20px{
+margin-bottom: 20px!important;
+}
+.flextbl{
+flex: 0 0 49%!important;
+}
+.card-body {
+padding: 0.6rem;
+}
+.card>.card-header {
+  
+  border-color: #e4e5e7;
+  padding: 0rem 0.2rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+}
+.card>.card-header a:after {
+  content: "";
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-style: normal; 
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  float: left;
+  margin-right:10px;
+   padding: 0rem -4rem;
+  transition: transform .25s linear;  
+  -webkit-transition: -webkit-transform .25s linear;
+}
+
+.card.card-header a[aria-expanded="true"]:after {
+  background-color: "#000000";
+}
+
+.card>.card-header a[aria-expanded="true"]:after {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f146";  
+}
+
+.card>.card-header a[aria-expanded="false"]:after {
+  font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0fe";
+}
+
+.wrap{
+    display: flex;    
+}
+
+.block-a{
+  width:65%;
+  float:left; 
+}
+
+.block-b{
+  width:35%;
+   float:right; 
+}
+
+.bootstrap-select>.dropdown-toggle {
+width: 150px;
+}
+.bootstrap-select .dropdown-toggle .filter-option {
+font-size: 13px;
+text-align: center;
+}
+
+.collapsing {
+    transition: 300ms;
+}
+
+td.details-control {
+        content: url('resources/closed.png');
+		cursor:pointer;		
+}
+tr.shown {
+	background-color:#858796;
+	color:white;
+}
+tr.shown td.details-control {
+		content:url('resources/open.png');		
+		cursor:pointer;			
+}
+.dataTables_wrapper {
+font-size:12px;
+}
+
+
+</style>
+
+</head>
+
+<body id="page-top">
+
+
+
+	
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">One Automation Solution</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+                <a class="nav-link" href="initiate.html">
+                    <i class="fas fa-fw fa-caret-square-right"></i>
+                    <span>Initiate</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="test_master.html">
+                    <i class="fas fa-list-alt"></i>
+                    <span>Test Master</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="results.html">
+                    <i class="fas fa-fw fa-chart-pie"></i>
+                    <span>Results</span></a>
+            </li>
+			<li class="nav-item active">
+                <a class="nav-link" href="priority.html">
+                    <i class="fas fa-check-double"></i>
+                    <span>Test Prioritization</span></a>
+            </li>
+			
+			
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Admin</span>
+                </a>
+
+                <div id="collapseUtilities" class="collapse hide" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Configurations</h6>
+                        <a class="collapse-item" href="user.html">User Management</a>
+                        <a class="collapse-item" href="master-config.html">Master Configs</a>
+                        <a class="collapse-item" href="project-config.html">Project Configs</a>
+                    </div>
+                </div>
+            </li>
+	        <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Others
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+                <a class="nav-link" href="faqs.html">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQs</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="about.html">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span></a>
+            </li>
+
+ 
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar m-1 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    
+
+                <!-- Topbar Navbar -->
+                <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+
+					<div class="container">
+                        <!-- Nav Item - Alerts -->
+						
+                        <form id="testForm">
+							<label class="mt-2 switch">
+								<input type="checkbox" id="ServerSwitch" name="check1" checked="checked" onchange="cTrig(this)">
+								<div class="slider round">
+									<span class="on">ON</span>
+									<span class="off">OFF</span>
+								</div>
+							</label>   
+						</form>	
+                        <div class="topbar-divider"></div>
+						
+						<span class="ml-1 mr-4 text-success font-weight-bold small">&lt;&lt; Full Name &gt;&gt;</span>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item">
+                            <a href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt" style="color:#C0C0C0"></i>
+                            </a>    
+                            
+
+                        </li>
+						</div>
+                    </ul>
+				
+				<!-- End of Topbar -->
+                </nav>
+                
+
+                <!-- Begin Page Content -->
+				<div class="dropdown-header">
+
+					<!-- Page Heading -->
+                    <div class="card shadow">
+					
+                        <div class="card-header py-3 margin-bottom-20px">
+							
+							<div class="mt-1 col-6 text-left">
+								<h6 class="m-0 pl-3 font-weight-bold text-primary">Priority wise Test case breakup</h6>
+							 </div>
+							
+							 
+                        </div>						
+						
+						
+					<d<div class="row">
+								<div class="col-sm-4">
+									<div class="ml-2 mb-1 card-body btn-primary" style="padding-left:1.25rem"><span class="block-a"> Overall Risk Breakup </span>
+								<span class="px-1">
+									<span class="ml-4  bg-gradient-danger">&nbsp;R&nbsp;</span>
+									<span class="mx-2 bg-gradient-warning">&nbsp;A&nbsp;</span>
+									<span class="bg-gradient-success">&nbsp;G&nbsp;</span>
+								</span>
+					<!--			<span class="ml-5 text-right"> 
+									<span class="ml-5">
+										<select>
+											<option>Last Week</option>
+											<option>Last Fortnight</option>
+											<option>Last Month</option>
+										</select>
+									</span>
+								</span> -->
+								</div>
+								
+						  <!-- Accordian Content -->		
+								<div class="ml-2 mb-3 accordion"" id="accordionMenu" style="font-size:13px;">
+								
+									 <!-- Accordian Content End -->
+								
+								</div>
+								<div class="ml-2 mb-1 card-body btn-danger" style="padding-left:1.25rem">Top 3 High Risk Modules 
+					<!--			<span class="text-center">
+										<select class="selectpicker show-tick" data-style="btn-danger btn-sm" id="Browser_Top3" name="Browser_Top3" title="Per Browser"  multiple data-max-options="1" required>
+											
+										</select>
+								</span> -->	
+								</div>
+								<div class="ml-2 mb-3 accordion" id="Top3">
+								
+									 <!-- Top 3 Modules Content End -->
+								
+									
+								</div>
+								
+								<div class="ml-2 mb-1 card-body btn-danger" style="padding-left:1.25rem"> Top 5 High Risk Features
+					<!--			<span class="text-center">
+										<select class="selectpicker show-tick" data-style="btn-danger btn-sm" id="Browser_Top5" name="Browser_Top5" title="Per Browser"  multiple data-max-options="1" required>
+											
+										</select>
+								</span> -->
+								</div>
+								<div class="ml-2 mb-3 accordion" id="Top5">
+								
+									 <!-- Top 5 Features Content End -->
+								
+									
+								</div>
+								</div>
+	<!-- Side DIV Code -->							
+								
+							<div class="col-sm-8" id="SideExecuteDiv" style="display:block;">
+								
+								<form class="needs-validation" validate id="StartE_Form2" onsubmit="return ReviewExecRequest()" autocomplete="off">
+								<div class="mr-2 card-body border bg-light form-group " style="display:block;">
+									<div class="ml-2 mr-1 my-2 text-center" id="ExecDivTitleConf">
+										Initiate a new execution request for the selected test cases?
+									</div>
+									<div class="mt-3 form-row">
+										
+										<div class="col-sm-1">
+										</div>
+										
+										<div class="ml-4 col-sm-3">
+											<div class="form-group">
+												<select class="selectpicker show-tick" data-style="btn btn-md btn-secondary" title="Environment" id="Environment" name="Environment" data-max-options="1" multiple required>
+													
+												</select>
+											</div>
+										</div>
+										
+										
+										<div class="col-sm-3">
+											<div class="form-group">
+												<select class="selectpicker show-tick" data-style="btn btn-md btn-secondary" title="Browser" id="Browser" name="Browser" multiple data-max-options="1" required>
+													
+												</select>
+											</div>
+											
+										</div>
+										
+
+										
+										<div class="m-0 col-sm-2">
+											<div class="form-group custom-control custom-checkbox custom-checkbox-green mt-1" >
+												<input type="checkbox" class="custom-control-input custom-control-input-green" id="Headless" name="Headless" autocomplete="off">
+												<label class="custom-control-label" for="Headless">Headless</label>
+												
+											</div>
+
+										</div>
+										
+										
+										<div class="col-sm-2">
+											<div class="form-group">
+												<div class="text-left">
+													<button type="submit" name="submit2" id="btnSubmitExec" class="mt-1 btn-sm btn-success">
+														<span class="ml-1 fas fa-play"></span>
+														<span class="mr-1 ml-1 text-right">Initiate</span>
+													</button>												
+												</div>
+											</div>
+										</div>
+										
+										
+										
+									</div>						
+							
+								</div>
+								</form>
+								
+								<div class="alert alert-success alert-dismissible text-center mr-2" id="TriggerSuccessDiv" style="display:none;">
+									 <button type="button" class="close" data-dismiss="alert">&times;</button>
+									<span id="TriggerSuccessText"></span>
+								</div> 
+								
+								
+								<div class="mr-2 card-body btn-primary" style="padding:0.4rem">
+								<span class="ml-2 my-1 mr-5 block-a" id="ExecDivTitle">Test case list with respective Failure rates</span>
+									<span class="text-right">
+										<select class="selectpicker show-tick" data-style="btn-light btn-sm" id="Browser_Filter" name="Browser_Filter" title="Per Browser"  multiple data-max-options="1" required>
+											
+										</select>
+									</span>	
+								</div>
+								
+								
+								<div class="p-0 mr-2 card-body" id="ResultsMainDiv">
+									<div class="table-responsive" id="ResultsDiv" style="font-size:12px;display:block;">
+                                
+										<table class="m-0 p-0 table-sm table-bordered display" style="width:100%" id="ResultsdataTable">
+											<thead class="table-info">
+											 
+											<tr>
+												<th></th>
+												<th>Test ID</th>
+												<th width="50%">Test Objective</th>
+												<th>Failure Rate</th>
+												<th width="auto">Script Name</th>
+											</tr>
+										</thead>
+																		
+										</table>							
+										
+									</div>
+								</div>
+						
+
+								
+							
+							
+							
+						</div>
+						  <!-- Accordian Content -->		
+								
+				
+								
+					<!-- /.container-fluid -->
+
+				
+				
+				
+				
+				
+				</div>
+				
+			</div>
+            <!-- End of Main Content -->
+
+			</div>
+			
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright © Mastek Ltd. 2023</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	
+	        <!-- Execution Confirmation Modal -->
+        <div class="modal fade" id="ConfModal" tabindex="-1" aria-labelledby="ConfModalLabel" aria-hidden="true"> 
+              
+            <div class="modal-dialog modal-dialog-top"> 
+                <div class="modal-content"> 
+                    <div class="modal-header bg-success"> 
+                        <h5 class="modal-title" id="ConfModalLabel">Confirmation </h5> 
+                          
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+                            <span aria-hidden="true">x</span> 
+                        </button> 
+                    </div>
+ 
+                    <div class="modal-body"> 
+					<form class="needs-validation" validate action="" id="StartE_RB_Form">
+					
+                        <!-- Data passed is displayed in this part of the modal body -->
+                        <h6 id="modal_body"></h6>
+						<div class="form-row">
+							<div class="col-12" style="font-size:12px">
+							<strong>To share this execution report:</strong><br>
+							1. Click Share Report<br>
+							2. Enter an email address to share the report with <br> 
+							3. Hit the ENTER KEY to insert the email address to the list <br>
+							4. Click Done
+							</div>
+						</div>
+						<p></p>
+						<div class="form-row">
+							<div class="col-12 text-left">
+								<input type="text" class="text-left input-sm" id="share_email" style="width:70%;font-size:12px;" maxlength="100"></input>
+								<span id="s_invalid_email" class="invalid-feedback" role="alert">								
+								</span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="col-8 text-left">
+								<input class="btn-info" id="btnAdd" type="button" value="Share Report" />
+								<input type="button" id="btnRemove" class="remove btn-danger" value="Done" hidden/>
+							</div>	
+							
+							<div class="col-4 text-right">
+								<button type="button" class="btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+								<button type="button" class="btn-sm btn-success"" id="confSubmit" onclick = "StartE_RiskBased();">
+								<span class="fas fa-play"></span>
+								<span class="mr-1 ml-1 text-right">Start</span>
+								</button>
+							</div>
+						</div>
+			<!--		<div class="form-row">
+							<div class="col-8 text-left">
+								<span style="font-size:12px">Click on <strong>Start</strong> once done.</span>
+							</div>
+						</div>	-->
+						
+					</form>
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+	
+
+
+<!-- Result Child details Modal -->
+				<div class="modal fade custom-class-assignedto-modal" id="ResultsChildDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				
+					
+				    <div class="modal-dialog modal-dialog-top modal-xl" role="document" style="margin: 1vh auto 0px auto">
+					    <div class="modal-content" style="height:610px;">
+					       <div class="modal-body" style="max-height: calc(100% - 10px);overflow-y: scroll;">
+								<div class="row">
+									<div class="col-sm-11">
+									</div>
+									<div class="col-sm-1">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+								</div>
+								<p></p>
+						   
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="card shadow px-1 mb-4">
+											<!-- Card Header Dropdown -->
+											<!-- Card Header Dropdown -->
+											<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+												<h6 class="ml-2 mb-0 font-weight-bold text-dark">Screenshot</h6>
+											</div>
+											
+											<!-- Card Body -->
+											
+											<div class="card-body py-1 text-center bg-dark" id="outcomeSSImgDiv" style="display:none">
+																						
+											</div>
+											
+											<div class="card-body py-1 text-center bg-dark" id="outcomeSSVidDiv" style="display:none">
+																					
+											</div>
+										</div>
+									</div>
+								</div>	
+								<div class="row" id="outcomeErrorDivMain">
+									<div class="col-sm-12">
+										<div class="card shadow px-1 mb-4">
+											<!-- Card Header Dropdown -->
+											<!-- Card Header Dropdown -->
+											<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+												<h6 class="ml-2 font-weight-bold text-dark">Test Outcome and Error Message</h6>
+											</div>
+											
+											<!-- Card Body -->
+											<div class="card-body py-1" id="outcomeErrorDiv">
+												
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+											
+								
+								
+								
+								
+								
+								
+						</div>
+				  </div>
+				</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+	<!-- <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+ <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+	<script src="vendor/bootstrap/js/bootstrap-select.min.js"></script>
+
+
+   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.24/datatables.min.js"></script> 
+	<!-- <script src="vendor/datatables/jquery.dataTables.js"></script>  -->
+	
+	<!-- <script src="js/Prioritization.js" type="text/javascript"></script> -->
+	<!-- <script src="js/PriorityExecutionData.js" id="rendered-js" > </script> -->
+ 
+<script>
+
+var RiskData = 
+[
+{
+"mname":"Module1", "mflags": [30, 40, 60], "fname":[["Feature1",10,15,15],["Feature2",5,10,25],["Feature7",15,15,20]]
+},
+{
+"mname":"Module2",  "mflags": [40,50,60], "fname":[["Feature3",10,30,20],["Feature4",30,20,40]]
+},
+{
+"mname":"Module3",  "mflags": [50,30,50], "fname":[["Feature5",20, 10, 20],["Feature6",30, 20, 30]]
+},
+{
+"mname":"Module4",  "mflags": [60,30,50], "fname":[["Feature8",25, 10, 20],["Feature10",35, 20, 30]]
+},
+{
+"mname":"Module5",  "mflags": [40,30,50], "fname":[["Feature9",25, 10, 20],["Feature11",15, 20, 30]]
+}
+];
+var BrowserData = ["Google Chrome", "Firefox", "Internet Edge", "Internet Explorer"];
+var EnvData = ["ST", "SIT", "UAT", "Pre-Prod"];
+
+var risk_master = 
+{
+"red_weight": 0.65, 
+"amber_weight": 0.35,
+"green_weight": 0
+};
+
+
+var Browserselect = document.getElementById("Browser_Filter");
+		$('#Browser_Filter').find('option').remove().end();
+		for(var i = 0; i < BrowserData.length; i++) {
+			var opt_B = BrowserData[i];
+			var el_B = document.createElement("option");
+			el_B.textContent = opt_B;
+			el_B.value = opt_B;
+			if  (i == 0) {
+			var selval = "selected";
+			} else {
+			var selval = "";
+			}
+			$('#Browser_Filter').append('<option value="'+ el_B.value +'"' + selval +'>' + el_B.textContent +'</option>').selectpicker();	
+			$('#Browser_Filter').selectpicker('refresh');		
+	}
+
+	var Envselect = document.getElementById("Environment");
+		$('#Environment').find('option').remove().end();
+		for(var i = 0; i < EnvData.length; i++) {
+			var opt_E = EnvData[i];
+			var el_E = document.createElement("option");
+			el_E.textContent = opt_E;
+			el_E.value = opt_E;				
+			$('#Environment').append('<option value="'+ el_E.value +'">' + el_E.textContent +'</option>').selectpicker();	
+			$('#Environment').selectpicker('refresh');		
+	}
+	
+	var Browserselect = document.getElementById("Browser");
+		$('#Browser').find('option').remove().end();
+		for(var i = 0; i < BrowserData.length; i++) {
+			var opt_B = BrowserData[i];
+			var el_B = document.createElement("option");
+			el_B.textContent = opt_B;
+			el_B.value = opt_B;				
+			$('#Browser').append('<option value="'+ el_B.value +'">' + el_B.textContent +'</option>').selectpicker();	
+			$('#Browser').selectpicker('refresh');		
+	}
+
+var RiskArray = RiskData;
+var mLen = RiskArray.length;
+var stringStart = '';
+var r_weight = risk_master.red_weight;
+var a_weight = risk_master.amber_weight;
+var g_weight = risk_master.green_weight;
+
+var FeatureArray = [];
+
+for (var i = 0; i < mLen; i++) {
+		var mod = RiskArray[i].mname;
+		
+		var collid = "collapse" + mod;
+		var headid = "heading" + mod;
+				
+		var mod_r = (RiskArray[i].mflags[0]).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+		var mod_a  = (RiskArray[i].mflags[1]).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+		var mod_g  = (RiskArray[i].mflags[2]).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+		
+		
+		
+		var weight = (((mod_r * r_weight) + (mod_a * a_weight) + (mod_g * g_weight))/100);
+		
+		
+		RiskArray[i].mflags.push(weight);
+	
+				
+		var stringInitial = '<div class="card"><div class="card-header wrap" id="'+ headid + '"><a class="my-2 btn btn-link" type="button" data-toggle="collapse" data-target="#' + collid + '" aria-expanded="false" aria-controls="' + collid + '"></a><span class="my-2 block-a text-primary"><a type="button" id="All" class="fetch-tests" data-value="' + mod + '">' + mod + '</a></span><div style="font-size:11px" class="ml-4 my-2 block-b text-center"><span id="High" type="button" data-value="' + mod + '" class="border rounded border-danger fetch-tests">&nbsp;' + mod_r + '&nbsp;</span><span id="Medium" type="button" data-value="' + mod + '" class="mx-2 border rounded border-warning fetch-tests">&nbsp;' + mod_a + '&nbsp;</span><span id="Low" type="button" data-value="' + mod + '" class="border rounded border-success fetch-tests">&nbsp;' + mod_g + '&nbsp;</span></div></span></div>';
+		
+		
+		var fLen = RiskArray[i].fname.length;
+		
+		var featInitial = '<div id="' + collid + '" class="collapse" aria-labelledby="'+ headid + '" data-parent="#accordionMenu">';
+		var featMain = '';
+		
+		for (var j = 0; j < fLen; j++) {
+		
+			var feat = RiskArray[i].fname[j][0];
+			
+			var feat_r  = (RiskArray[i].fname[j][1]).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});			
+			var feat_a  = (RiskArray[i].fname[j][2]).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+			var feat_g  = (RiskArray[i].fname[j][3]).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+			
+			
+			
+			var feat_weight = (((feat_r * r_weight) + (feat_a * a_weight) + (feat_g * g_weight))/100);
+					
+			
+			FeatureArray.push({feat, mod, feat_weight, feat_r, feat_a, feat_g});		
+			
+			
+			RiskArray[i].fname[j].push(feat_weight);
+			
+		
+			
+			featMain += '<div class="ml-2 mt-1 card-body" style="padding:0rem 0.2rem;"><span class="block-a"><a type="button" class="fetch-tests ml-4 btn btn-md btn-link" data-target="#" id="All" data-value="' + mod + ' - ' + feat +'">' + feat + '</a></span><div style="font-size:11px;color:#000000" class="my-1 block-b text-center"><span id="High" type="button" class="ml-3 border rounded border-danger fetch-tests" data-value="' + mod + ' - ' + feat +'">&nbsp;' + feat_r + '&nbsp;</span><span id="Medium" type="button" class="mx-2 border rounded border-warning fetch-tests" data-value="' + mod + ' - ' + feat +'">&nbsp;' + feat_a + '&nbsp;</span><span id="Low" type="button" class="border rounded border-success fetch-tests" data-value="' + mod + ' - ' + feat +'">&nbsp;' + feat_g + '&nbsp;</span></div></div>';
+				
+		}
+		var featClose = '</div></div>';
+		
+		document.getElementById('accordionMenu').innerHTML += stringInitial + featInitial + featMain + featClose;
+	}
+		
+	var stringFinal = document.getElementById('accordionMenu').innerHTML; 
+	document.getElementById('accordionMenu').innerHTML = stringFinal;
+
+
+var top3_mods = RiskArray.sort((a, b) => parseFloat(b.mflags[3]) - parseFloat(a.mflags[3])).slice(0,3);
+
+
+var top3Len = top3_mods.length;
+
+for (var i = 0; i < top3Len; i++) {
+		var topmod = top3_mods[i].mname;
+		
+		var top3mod_r = (top3_mods[i].mflags[0]).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+		var top3mod_a = (top3_mods[i].mflags[1]).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+		var top3mod_g = (top3_mods[i].mflags[2]).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+		
+		
+		var stringInitial = '<div class="card"><div class="ml-2 wrap" style="font-size:12px"><span class="my-2 text-primary">' + (i+1) + '.</span><span class="block-a"><a class="my-1 btn btn-link fetch-tests" id="All" type="button" data-value="' + topmod + '">' + topmod + '</a></span><div style="font-size:11px;" class="my-2 block-b text-center"><span id="High" type="button" class="border rounded border-danger fetch-tests" data-value="' + topmod + '">&nbsp;' + top3mod_r + '&nbsp;</span><span id="Medium" type="button" class="mx-2 border rounded border-warning fetch-tests" data-value="' + topmod + '">&nbsp;' + top3mod_a + '&nbsp;</span><span id="Low" type="button" class="border rounded border-success fetch-tests" data-value="' + topmod + '">&nbsp;' + top3mod_g + '&nbsp;</span></div></div></div>';
+		
+		document.getElementById('Top3').innerHTML += stringInitial;
+	
+		}
+	var stringFinal = document.getElementById('Top3').innerHTML; 
+	document.getElementById('Top3').innerHTML = stringFinal;
+	
+	
+var top5_feats = FeatureArray.sort((a, b) => parseFloat(b.feat_weight) - parseFloat(a.feat_weight)).slice(0,5);
+
+
+var top5Len = top5_feats.length;
+
+for (var i = 0; i < top5Len; i++) {
+		var topfeat = top5_feats[i].feat;
+		
+		var top5feat_r = (top5_feats[i].feat_r).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+		var top5feat_a = (top5_feats[i].feat_a).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+		var top5feat_g = (top5_feats[i].feat_g).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+		
+		
+		var stringInitial = '<div class="card"><div class="ml-2 wrap" style="font-size:12px"><span class="my-2 text-primary">' + (i+1) + '.</span><span class="block-a"><a class="my-1 btn btn-link fetch-tests" id="All" type="button" data-value="' + topfeat +'">' + topfeat + '</a></span><div class="my-2 block-b text-center" style="font-size:11px"><span id="High" type="button" class="border rounded border-danger fetch-tests" data-value="' + topfeat +'">&nbsp;' + top5feat_r + '&nbsp;</span><span id="Medium" type="button" class="mx-2 border rounded border-warning fetch-tests" data-value="' + topfeat +'">&nbsp;' + top5feat_a + '&nbsp;</span><span id="Low" type="button" class="border rounded border-success fetch-tests" data-value="' + topfeat +'">&nbsp;' + top5feat_g + '&nbsp;</span></div></div></div>';
+		
+		document.getElementById('Top5').innerHTML += stringInitial;
+		 	
+		}
+		
+	var stringFinal = document.getElementById('Top5').innerHTML; 
+	document.getElementById('Top5').innerHTML = stringFinal;
+
+	
+$('.fetch-tests').each(function () {
+		$(this).on('click', function(evt){
+			$this = $(this);
+			var dtRow = $this.parents('tr');			
+			var tests_mod = $this.attr("data-value");
+			var test_risk = $this.attr("id");
+			
+			document.getElementById('SideExecuteDiv').style.display = "block";
+			
+			var risk_text = '';
+			var risk_className = '';
+			
+			if (test_risk == "All"){
+				risk_text = test_risk;
+				risk_className = "px-2 py-1 badge badge-info";				
+				
+			} else
+			{
+				if (test_risk == "High"){
+				risk_className = "p-1 badge badge-danger";
+				} else if (test_risk == "Medium"){
+				risk_className = "p-1 badge badge-warning";
+				} else if (test_risk == "Low"){
+				risk_className = "p-1 badge badge-success";
+				}				
+				risk_text = test_risk + " risk";
+			}
+			
+			document.getElementById('ExecDivTitleConf').innerHTML = 'Initiate a new execution request for <span class="text-center ' + risk_className + '">' + risk_text + '</span> test cases under <span class="p-1 badge badge-secondary">' + tests_mod + '</span> ?';
+		});
+	});	
+	
+	
+
+</script>
+
+<script>
+
+
+var dataStore =
+{
+	ResultsList: 
+	[
+   {
+      "mid":"TC123",
+      "tobj":"Test whether user is able to login.",
+      "failrate":"75%",
+      "scriptname":"scriptLogin",
+      "execdetails":[
+         {
+            "etime":"22-Mar 13:19:02 IST",
+			"env":"ST",
+			"status":"Passed",
+            "outcome":"Error message displayed here",
+            "spath":"test.jpg"
+         },
+		 {
+            "etime":"24-Mar 13:19:02 IST",
+			"env":"SIT",
+			"status":"Failed",
+            "outcome":"Error message displayed here",
+            "spath":"video_sample.mp4"
+         },
+		 {
+            "etime":"25-Mar 13:19:02 IST",
+			"env":"UAT",
+			"status":"Failed",
+            "outcome":"Error message displayed here",
+            "spath":"test.jpg"
+         }
+      ]
+   },
+	{
+      "mid":"TC456",
+      "tobj":"Test whether user is able to login.",
+      "failrate":"85%",
+      "scriptname":"scriptLogin",
+      "execdetails":[
+         {
+            "etime":"22-Mar 13:19:02 IST",
+			"env":"ST",
+			"browser":"Google Chrome",
+			"status":"Passed",
+            "outcome":"Error message displayed here kjhsadgs jghsda gkjshg dsakjghsd jghadsgj sdhgdsghsdal",
+            "spath":"http://10.20.x.x/screenshots/file456.jpg"
+         },
+		 {
+            "etime":"23-Mar 13:19:02 IST",
+			"env":"SIT",
+			"browser":"Firefox",
+			"status":"Failed",
+            "outcome":"Error message displayed here",
+            "spath":"http://10.20.x.x/screenshots/file123.jpg"
+         },
+		 {
+            "etime":"23-Mar 13:19:02 IST",
+			"env":"UAT",
+			"browser":"Internet Edge",
+			"status":"Failed",
+            "outcome":"Error message displayed here",
+            "spath":"http://10.20.x.x/screenshots/file789.jpg"
+         }
+      ]
+   } 
+]
+};
+
+// 1st value can be Failed or All and 2nd value can be Image or Video based on project configurations
+var project_configs = 
+{
+"E_For": "All", 
+"video_format": "mp4",
+"image_format": "jpg",
+};
+
+
+/* Formatting function for row details - modify as you need */
+function format ( d ) {
+    // 'd' is the original data object for the row
+	var head = '<div class="container"><table id="ResultDetailsChild" class="mb-1 mx-auto table table-sm w-auto table-bordered" style="width:100%;">'+
+			'<thead class="table-secondary">' +			
+			'<th class="text-center">#</th>'+
+			'<th class="text-center" width="40%">Triggered On</th>'+
+			'<th class="text-center" width="28%">Environment</th>'+		
+			'<th style="display:none;">Outcome</th>'+
+			'<th style="display:none;">Screenshot</th>'+
+			'<th class="text-center">Status</th>'+
+			'<th class="text-center">Details</th>'+				
+			'</thead><tbody>';
+	var tbody = '';
+	
+    for(var i = 0; i < d.execdetails.length; i++) {
+	
+	if (d.execdetails[i].status == "Passed") {
+		var status_class = "alert-success";
+	} else if (d.execdetails[i].status == "Failed") {
+		var status_class = "alert-danger";
+	} else if (d.execdetails[i].status == "Not Run") {
+		var status_class = "alert-secondary";
+	} else  {
+		var status_class = "alert-dark";
+	};
+	
+	var evidence_for = project_configs.E_For;
+	var curr_status = d.execdetails[i].status;
+	
+	if ((curr_status == "Failed") || evidence_for == "All") {
+		var detailsbutton = '<td valign="middle" align="center"><button type="button" data-func="ShowChildDetails" id="childdetails" onClick="return ShowChildDetails(this)" class="btn btn-sm btn-info ShowChildDetails" style="font-size:0.7rem"><span class="fas fa-external-link-alt m-0 p-0" aria-hidden="true"></span></button></td>';
+	} 
+	else {
+		var detailsbutton = '<td></td>';
+	}
+	
+	tbody += '<tr id="'+ i +'">'+
+			'<td class="mx-2 text-center">'+(i+1)+'</td>'+
+            '<td class="nowrap text-center">'+d.execdetails[i].etime+'</td>'+
+            '<td class="nowrap text-center">'+d.execdetails[i].env+'</td>'+
+			'<td style = "display:none">'+d.execdetails[i].outcome+'</td>'+
+			'<td style = "display:none">'+d.execdetails[i].spath+'</td>'+
+            '<td class="px-2 text-center"><span class="py-0 px-2 btn-block rounded ' + status_class + '">'+d.execdetails[i].status+'</span></td>'+ 
+			detailsbutton +		
+			'</tr>';	
+		};
+		
+	
+    var footer = '</tbody></table></div>';
+    return head + tbody + footer;
+};
+
+
+	function ShowChildDetails(element){
+	
+			$this = $(this);
+			var dtRow = element.closest('tr').rowIndex;
+			
+			var outcome_string = document.getElementById("ResultDetailsChild").rows[dtRow].cells[3].innerHTML;
+			document.getElementById('outcomeErrorDiv').innerHTML = outcome_string;
+			
+			var spath_string = document.getElementById("ResultDetailsChild").rows[dtRow].cells[4].innerHTML;
+			var curr_status = document.getElementById("ResultDetailsChild").rows[dtRow].cells[5].innerText;
+			
+						
+			var evidence_for = project_configs.E_For;
+			var fileExt = spath_string.split('.').pop();
+			
+			var allowed_V_format = project_configs.video_format;
+			var allowed_I_format = project_configs.image_format;
+			
+			
+			if (fileExt == allowed_I_format) {
+				document.getElementById('outcomeSSVidDiv').style.display = "none";
+				document.getElementById('outcomeSSImgDiv').style.display = "block";
+				document.getElementById('outcomeSSImgDiv').innerHTML = '<img style="height:540px;" src="Evidence/' + spath_string + '" />';
+			} else if (fileExt == allowed_V_format){
+				document.getElementById('outcomeSSImgDiv').style.display = "none";
+				document.getElementById('outcomeSSVidDiv').style.display = "block";
+				document.getElementById('outcomeSSVidDiv').innerHTML = '<video width="95%" controls muted><source src="Evidence/' + spath_string + '" type="video/mp4" style="max-width: 100%;">Your browser does not support HTML5 video. Please upgrade to latest version of Google Chrome.</video>';
+			};
+						
+			if (curr_status == "Failed") {
+				document.getElementById('outcomeErrorDivMain').style.display = "block";
+			} else {
+				document.getElementById('outcomeErrorDivMain').style.display = "none";
+			};
+			$('#ResultsChildDetailModal').modal('show');
+
+	};
+	
+
+ 
+$(document).ready(function() {
+	 
+	 
+
+    var table = $('#ResultsdataTable').DataTable( {
+	
+		"data": dataStore.ResultsList,
+		
+		"dom": 
+			"<'row'<'col-sm-4'><'col-sm-8' tr>>" + 
+			"<'row'<'col-sm-12' tr>>" +
+			"<'row'<'col-sm-4'l><'col-sm-8'p>>",
+			
+			"bPaginate": true,
+			"bFilter": false,
+			"bInfo": true,			
+			"autoWidth": true,		
+			"columns": [
+				{
+					"className":      'details-control',
+					"orderable":      false,
+					"data":           null,
+					"defaultContent": ''
+				},
+				{ "data": "mid" },
+				{ "data": "tobj" },
+				{ "data": null },
+				{ "data": "scriptname" }
+			],
+		"columnDefs": 
+		[
+			{targets: [1], width: "13%", class: "nowrap"},
+			{targets: [3], width: "auto", render: function (data) 
+				{ if (data.failrate > "70%") {
+					var barclass = "bg-danger";
+				} else if (data.failrate > "30%" && data.failrate <= "70%") {
+					var barclass = "bg-warning";
+				} else if (data.failrate <= "30%") {
+					var barclass = "bg-success";
+				};		
+				return '<div class="progress"><div class="progress-bar ' + barclass + ' progress-bar-striped" style="width:' + data.failrate + '"><SPAN class="small">' + data.failrate + '</SPAN></div></div>';
+				}
+			}
+		
+		],
+        "order": [[1, 'asc']]
+    } );
+     
+    // Add event listener for opening and closing details
+	$('#ResultsdataTable tbody').on('click', 'td.details-control', function () {
+			var tr = $(this).closest('tr');
+			var row = table.row( tr );
+	 
+		if ( row.child.isShown() ) {
+			 row.child.hide();
+			 tr.removeClass('shown');     
+			}
+		else
+			{
+			 if ( table.row( '.shown' ).length ) {
+					  $('.details-control', table.row( '.shown' ).node()).click();
+			  }
+			  row.child( format(row.data()) ).show();
+			  tr.addClass('shown');
+		 }
+	});
+	
+
+		
+
+	
+
+} );
+
+
+</script>
+
+<script>
+
+function cTrig(box) {
+  if (!box.checked) {
+    if (!confirm("Are you sure you want to switch the Automation Server OFF?")) {
+        box.checked = true;
+	
+    }
+  }
+}
+
+
+$('form').on('reset', function() {
+  var _this = this;
+  setTimeout(function() {
+    $('.selectpicker',_this).selectpicker('refresh');
+  });
+});
+	
+
+
+function ReviewExecRequest(){
+
+	var browser = document.getElementById('Browser').value;
+	var env = document.getElementById('Environment').value;
+	var headless = document.getElementById("Headless").checked;
+	var server = document.getElementById("ServerSwitch").checked;
+	var tc_count = document.querySelectorAll('input[name="selectrow"]:checked').length;
+	
+	$('#ConfModal').modal('show');
+	
+	if (server == true){
+	
+	var str = "<font size='2'>Are you sure you want to initiate execution of the selected tests? <p></p>"; 
+            $("#modal_body").html(str); 
+	
+	return false;
+	} 
+	else {
+	var str = "<font size='2' color='red'><strong>Note:</strong> The Automation Server is currently switched OFF.</font><br><br><font size='2'>Your execution request will be queued and picked up when the server is up and running again. </font> <p></p>Do you want to continue?<p></p><p></p>"; 
+    $("#modal_body").html(str); 
+
+	return false;
+	}
+	
+}
+
+
+
+function StartE_RiskBased()
+{
+	
+	var browser = document.getElementById('Browser').value;
+	var env = document.getElementById('Environment').value;
+	var headless = document.getElementById("Headless").checked;
+	
+	
+		
+	document.getElementById("confSubmit").addEventListener("click", function(event){
+		document.getElementById("StartE_RB_Form").submit();
+		alert("Form Submitted123");
+		event.preventDefault();
+	});
+	
+	$('#ConfModal').modal('hide');
+	
+	document.getElementById('TriggerSuccessDiv').style.display = "block";
+	document.getElementById('TriggerSuccessText').innerHTML = "New Execution request on the <strong>" + env + "</strong> environment using <strong>" + browser + "</strong> has been queued. <br>Execution ID: <a href='results.html'><strong>" + "<<123>>" + "</a></strong>";
+	
+	$("#btnSubmitExec"). attr("disabled", true);
+	
+		return false;
+}
+
+
+</script>
+
+<script>
+$(document).ready(function($){
+           
+			let data = ["viraj.nhivekar@mastek.com"]; 
+			$("#share_email").email_multiple({
+                data: data
+            });
+        });
+		
+		(function($){
+
+    $.fn.email_multiple = function(options) {
+
+        let defaults = {
+            reset: false,
+            fill: false,
+            data: null
+        };
+
+        let settings = $.extend(defaults, options);
+        let email = "";
+		let n = 1;
+		let domain1 = "mastek.com";
+		let domain2 = ["homeoffice.co.uk"];  
+
+        return this.each(function()
+        {
+		
+            $(this).after("<div class=\"all-mail\"></div>\n" +
+                "<div style=\"display:none\"></div><input type=\"text\" name=\"email\" style=\"width:70%;font-size:13px;\" maxlength=\"40\" class=\"enter-mail-id form-control input-sm\" id=\"EnterEmail\" placeholder=\"Enter e-mail...\" autocomplete=\"on\" hidden disabled></input></div>");
+            let $orig = $(this);
+            let $element = $('.enter-mail-id');
+            $element.keydown(function (e) {
+                $element.css('border', '');
+				
+                if (e.keyCode === 13 || e.keyCode === 32) {
+                    let getValue = $element.val();
+                    if (RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@?(" + domain1 + "|" + domain2 + ")$").test(getValue)){
+		                if(n<5){
+							
+							$('.all-mail').append('<span class="email-ids" style="width:70%">' + getValue + '<span class="cancel-email">-</span></span>');
+							
+							$element.val('');
+							email += getValue + ';';
+							n=n+1;
+							document.getElementById('s_invalid_email').style.display = "none";
+							document.getElementById('s_invalid_email').innerHTML = "";
+							}
+							else
+							{
+							var inputText_Email = document.getElementById('s_invalid_email');
+							document.getElementById('s_invalid_email').style.display = "block";
+							document.getElementById('s_invalid_email').innerHTML = "Sharing with max. 5 email addresses allowed.";
+							$element.css('border', '1px solid red');
+							inputText_Email.focus();
+							}
+                    } else {
+                        var inputText_Email = document.getElementById('s_invalid_email');
+							document.getElementById('s_invalid_email').style.display = "block";
+							document.getElementById('s_invalid_email').innerHTML = "Execution Report can be shared only with @" + domain1 + " & @" + domain2 + " emails.";
+							$element.css('border', '1px solid black');
+							inputText_Email.focus();
+                    }
+					
+                }
+			
+                $orig.val(email.slice(0, -1));
+            });
+
+            $(document).on('click','.cancel-email',function(){
+                $(this).parent().remove();
+				n=n-1;
+				
+            });
+
+            if(settings.data){
+                $.each(settings.data, function (x, y) {
+                    if (/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/.test(y)){
+                        $('.all-mail').append('<span class="email-ids" style="width:70%">' + y + '</span>');
+                        $element.val('');
+
+                        email += y + ';';
+						
+                    } else {
+                        $element.css('border', '1px solid red');
+						
+						}
+                });
+
+                $orig.val(email.slice(0, -1));
+            }
+
+            if(settings.reset){
+                $('.email-ids').remove();
+            }
+
+            return $orig.hide();
+        });
+    };
+	
+	$(function() {
+		$("#btnAdd").bind("click", function() {
+			var div = $("<div />");
+			$("#TextBoxContainer").append(div);
+			document.getElementById("EnterEmail").hidden = false;
+			document.getElementById("EnterEmail").disabled = false;
+			document.getElementById("btnAdd").disabled = true;
+			document.getElementById("btnRemove").hidden = false;
+		});
+		$("#btnGet").bind("click", function() {
+			var values = $("input[name=DynamicTextBox]")
+			.map(function() {
+			  return $(this).val();
+			}).get().join(",\n");
+			$("#anotherTextbox").val(values);
+		});
+		$("body").on("click", ".remove", function() {
+			document.getElementById("EnterEmail").hidden = true;
+			document.getElementById("EnterEmail").disabled = true;
+			document.getElementById("btnAdd").disabled = false;
+			document.getElementById("btnRemove").hidden = true;
+			document.getElementById('s_invalid_email').innerHTML = '';
+		});
+	});
+
+})(jQuery);
+
+</script>
+
+</body>
+</html>

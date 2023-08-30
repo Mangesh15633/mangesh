@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>One Automation Solution - Test Master</title>
+	
+	<!-- Custom styles for this template -->
+    	
+	<link href="css/switch.css" rel="stylesheet">
+
+
+<!--IMPORTANT FOR DATATABLE -->	
+
+
+<link rel='stylesheet' href='css/project_bootstrap.css' rel="stylesheet" type="text/css">
+<link rel='stylesheet' href='css/project_bootstrap.min.css' rel="stylesheet" type="text/css">
+<link href="vendor/bootstrap/css/bootstrap-select.min.css" rel="stylesheet">
+<link rel='stylesheet' href='vendor/dataTables/dataTables.bootstrap4.min.css'>
+
+<link rel='stylesheet' href='/resources/vendor/extras/buttons.bootstrap.min.css'>
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+ 
+  
+<style>
+
+td:last-child {text-align:center;}
+
+.container {
+margin:auto;
+}
+
+
+.bootstrap-select.btn-group .dropdown-menu {
+    z-index: 2000;
+}
+.bootstrap-select.btn-group .dropdown-menu.inner {
+    position: static;
+}
+.modal { overflow: visible; }
+.modal-body { overflow-y: visible !important; }
+
+tfoot input { width: 100%; padding: 1px; box-sizing: border-box; }
+
+</style>
+
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">One Automation Solution</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+			
+			
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+                <a class="nav-link" href="initiate.html">
+                    <i class="fas fa-fw fa-caret-square-right"></i>
+                    <span>Initiate</span></a>
+            </li>
+			<li class="nav-item active" id="TM_Menu" style="display:block;">
+                <a class="nav-link" href="test_master.html">
+                    <i class="fas fa-list-alt"></i>
+                    <span>Test Master</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="results.html">
+                    <i class="fas fa-fw fa-chart-pie"></i>
+                    <span>Results</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="priority.html">
+                    <i class="fas fa-check-double"></i>
+                    <span>Test Prioritization</span></a>
+            </li>
+			
+			
+
+            <!-- Divider -->
+		<div id="AdminMenu" style="display: block;">
+			<hr class="sidebar-divider">
+			
+		<!-- Heading -->
+			
+			<div class="sidebar-heading">Configs</div>
+			
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item m-0" ><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+				aria-controls="collapseUtilities"> <i class="fas fa-fw fa-wrench"></i> <span>Admin</span>
+			</a>
+
+				<div id="collapseUtilities" class="collapse hide" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						
+						<a class="collapse-item" href="/resources/user.html">User Management</a> <a class="collapse-item" href="/resources/master-config.html">Master Configs</a> <a class="collapse-item"
+							href="/resources/project-config.html">Project Configs</a>
+					</div>
+				</div></li>
+				</div>
+	        <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Others
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+                <a class="nav-link" href="faqs.html">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQs</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="about.html">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span></a>
+            </li>
+
+ 
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle" onclick="rem_sidebar()"></button>
+            </div>
+
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+		
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-1 static-top shadow">
+				
+								
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+
+					<div class="container">
+                        <!-- Nav Item - Alerts -->
+						
+ 					<form id="testForm" name="serverSwitch" action="serverSwitch" method="post">
+							<label class="mt-2 switch">
+								<input type="checkbox" id="serverSwitch" name="check1" checked='checked' onchange="cTrig(this)">
+								<div  id="box" class="slider round">
+									<span class="on">ON</span>
+									<span class="off">OFF</span>
+								</div>
+							</label>   
+						</form>	
+                        <div class="topbar-divider"></div>
+						
+						<span id="loginUser" class="ml-1 mr-4 text-success font-weight-bold small"><< Full Name >></span>
+						<span id="loginEmail"  hidden>loginEmailValue</span>
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item">
+                            <a href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt" style="color:#C0C0C0" ></i>
+                            </a>    
+                            
+
+                        </li>
+						</div>
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+				
+				<h6 class="dropdown-header">
+
+
+
+                    <!-- Page Heading -->
+                    <div class="card shadow mb-2">
+                        <div class="card-header py-3">
+							<div class="row">    
+								<div class="mt-1 col-8 font-weight-bold text-primary" style="font-size:15px">Test Master
+								</div>
+								
+								<div class="col-4" align="right">
+									
+								</div>
+							</div>
+						</div>
+						
+						<div class="m-2 alert alert-info text-center" id="ZeroDataDiv" style="display: none"></div>
+                        <div class="card-body p-1" id="TestMasterMainDiv">
+							<div class="table-responsive" id="TestMasterDiv" style="font-size:12px;display:block;">
+                                
+								<table class="table-sm table-bordered table-striped" id="TestMasterdataTable" style="width:100%">
+								<thead class="table-primary">
+								</thead>
+								<tbody>                                    
+									
+                                </tbody>
+								<tfoot>
+										<tr>
+											<th class="text-center">#</th>
+											<th class="text-center">ID</th>
+											<th width="auto">Manual ID</th>
+											<th width="auto">Test Objective</th>
+											<th width="auto">Test Description</th>
+											<th width="auto">Priority</th>
+											<th width="auto">Module</th>
+											<th width="auto">Feature</th>
+											<th width="auto">Test Type</th>
+											<th width="auto">Req. ID</th>
+											<th width="auto">Applicable?</th>
+											<th>Script Name</th>
+											<th width="auto">Automation Type</th>
+											<th width="auto">Status</th>  
+											<th class="text-left no-wrap" style="width:100px;"><button type="button" data-func="dt-add" class="btn btn-block btn-success btn-sm dt-add">
+											<span class="fas fa-plus-square" aria-hidden="true"></span></button></th>
+										</tr>
+									</tfoot>
+							</table>
+							<div id="LoadingImage" class="mt-3 text-center" style="display:block">
+									<progress></progress>
+							</div>
+								
+                            </div>
+                        </div>
+                    
+                </div>
+                <!-- /.container-fluid -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Mastek Ltd. 2023</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+	
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+	</div>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger" href="/automation">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Add Modal -->
+<div id="addTCModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+	<div class="modal-header bg-info">
+		<h5 class="modal-title">Add a Test Case</h5>
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true">x</button>
+	</div>
+  <div class="modal-body">
+		<form class="was-validated" id="addTC" class="form-row">
+		<div class="container-fluid">
+			<div  class="row mb-1 px-1">
+				<div class="col-lg-2 text-center">
+					<label class="label-editor" for="manualTestId">Manual Test ID:</label>
+					<input type="text" class="form-control input-sm" maxlength="7" id="A_manualTestId" name="manualTestId" required>
+				</div>
+				<div class="col-lg-2 text-center">
+					<label class="label-editor" for="requirementNo">Req Ref ID:</label>
+					<input type="text" class="form-control input-sm" maxlength="10" id="A_requirementNo" name="requirementNo" >
+				</div>
+				<div class="col-lg-2">
+					<label class="label-editor" for="applicableForAutomation">Applicable?:</label><br>
+					<input class="mt-2" type="checkbox" style="margin-left: 25px;" name="applicableForAutomation" id="A_applicableForAutomation" value="false">
+					<input id='A_applicableForAutomation_hidden' type='hidden' value='true' name='applicableForAutomation'>
+				</div>
+				<div class="col-lg-3 text-center">
+					<label class="label-editor" for="scriptName">Script Name:</label>
+					<input type="text" class="form-control input-sm" maxlength="25" id="A_scriptName" name="scriptName" >
+				</div>
+				<div class="col-lg-3 text-center">
+					<label class="label-editor" for="automationType">Automation Type:</label>
+					<select class="selectpicker show-tick" data-style="btn-info btn-md"  title="Automation Type" id="A_Type_Add" name="A_Type_Add" multiple data-live-search="true" data-selected-text-format="count > 2" required>
+									
+					</select>
+				</div>
+
+			</div>
+
+			<div class="row mb-1 ml-1">
+				<label class="label-editor" for="testObjective">Test Objective:</label>
+				<input class="form-control" id="A_testObjective" name="testObjective" required></input>
+			</div>
+			
+			<div class="row mb-1 px-1">
+				<div class="col-lg">
+					<label class="label-editor" for="priorityId">Priority</label>
+					<select id="PriorityID" name="priorityId" class="form-control" style="width:250px;" required>
+						<option></option>
+<!--					<option selected="selected" id="getPriority" value="" disabled>--Select Priority --</option>
+						<option ng-repeat="x in priorityList" value="{{x.priorityId}}">{{x.priorityName}}</option> -->
+					</select>
+				</div>
+				<div class="col-lg">
+					<label class="label-editor" for="getTypeTest">Test Type</label>
+					<select id="TestTypeID" class="form-control" style="width:250px;" name="testTypeId" required>
+						<option></option>
+<!--					<option selected="selected" id="getTypeTest" value="" disabled>--Select Test Type --</option>
+						<option ng-repeat="x in testTypeList" value="{{x.testTypeId}}">{{x.testTypeName}}</option> -->
+					</select>
+				</div>
+
+			</div>
+			
+			<div class="row mb-1 px-1">
+				<div class="col-lg">
+					<label class="label-editor" for="moduleId">Module</label>
+					<select id="ModuleID" name="moduleId" class="form-control" style="width:250px;" required>
+						<option></option>
+<!--					<option selected="selected" id="getModule" value="" disabled>--Select Module --</option>
+						<option ng-repeat="x in moduleList" value="{{x.moduleId}}">{{x.moduleName}}</option> -->
+					</select>
+				</div>
+				<div class="col-lg">
+					<label class="label-editor" for="featureId">Feature</label>
+					<select id="FeatureID" name="featureId" class="form-control" style="width:250px;" required>
+						<option></option>
+<!--					<option selected="selected" value="" disabled>--Select Feature --</option>
+						<option ng-repeat="x in featureList" value="{{x.featureId}}">{{x.featureName}}</option> -->
+					</select>
+				</div>
+			</div>
+			<div class="row mb-1 ml-1">
+				<label class="label-editor" for="testDescription">Test Description:</label>
+				<textarea class="form-control" rows="4" id="A_testDescription" name="testDescription" required></textarea>
+			</div>
+		
+		</div>
+		
+		
+
+    </div>
+	
+      <div class="modal-footer">
+      
+      
+		<span class="errorMsg" id="savingfailedMsg" style="display: none"></span>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<button type="submit" id="S_AddTC" name="S_AddTC" class="btn btn-success" value=1><i class="fas fa-plus-square"></i> Add</button>
+      </div>
+    </div>
+ </form>
+  </div>
+</div>
+
+				
+
+ 
+<!-- Edit Modal -->
+<div id="editTCModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+	<div class="modal-header bg-primary">
+		
+		<h5 class="modal-title">Edit Selected Test details</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	</div>
+  <div class="modal-body">
+		<form class="was-validated" id="editTC" class="form-row">
+		
+		<div class="container-fluid">
+				<div class="row mb-1 px-1">
+				<div class="col-lg-2">
+					<label class="label-editor" for="manualTestId">Manual Test ID:</label>
+					<input type="text" class="form-control input-sm" maxlength="7" id="manualTestId" name="manualTestId" readonly>
+				</div>
+				<div class="col-lg-2">
+					<label class="label-editor" for="requirementNo">Req Ref ID:</label>
+					<input type="text" class="form-control input-sm" maxlength="10" id="requirementNo" name="requirementNo" >
+				</div>
+				<div class="col-lg-2">
+					<label class="label-editor" for="applicableForAutomation">Applicable?:</label>
+					<input class="mt-2" type="checkbox" style="margin-left: 25px;" name="applicableForAutomation" id="applicableForAutomation">
+				</div>
+				<div class="col-lg-3">
+					<label class="label-editor" for="scriptName">Script Name:</label>
+					<input type="text" class="form-control input-sm" maxlength="25" id="scriptName" name="scriptName" >
+				</div>
+				<div class="col-lg-3">
+					<label class="label-editor" for="automationType">Automation Type:</label>
+					<select class="selectpicker show-tick" data-style="btn-info btn-md"  title="Automation Type" id="A_Type_Edit" name="A_Type_Edit" multiple data-live-search="true" data-selected-text-format="count > 2" required>
+									
+					</select>
+				</div>
+				
+			</div>
+
+			<div class="row mb-1  ml-1">
+				<label class="label-editor" for="testObjective">Test Objective:</label>
+				<input class="form-control" id="testObjective" name="testObjective" required></input>
+			</div>
+			
+			<div class="row mb-1 px-1">
+				<div class="col-lg">
+					<label class="label-editor" for="PriorityID">Priority</label>
+					<select id="EPriorityID" name="priorityId" class="form-control" style="width:250px;" required>
+						<option></option>
+					</select>
+				</div>
+				<div class="col-lg">
+					<label class="label-editor" for="etesttype">Test Type</label>
+					<select id="ETestTypeID" name="eTestTypeId" class="form-control" style="width:250px;" required>
+						<option></option>
+<!--					<option selected="selected" id="getTypeTest" value="" disabled>--Select Test Type --</option>
+						<option ng-repeat="x in testTypeList" value="{{x.testTypeId}}">{{x.testTypeName}}</option> -->
+					</select>
+				</div>
+
+			</div>
+			
+			<div class="row mb-1 px-1">
+				<div class="col-lg">
+					<label class="label-editor" for="emoduleId">Module</label>
+					<select id="EModuleID" name="emoduleId" class="form-control" style="width:250px;" required>
+						<option></option>
+<!--					<option selected="selected" id="getModule" value="" disabled>--Select Module --</option>
+						<option ng-repeat="x in moduleList" value="{{x.moduleId}}">{{x.moduleName}}</option> -->
+					</select>
+				</div>
+				<div class="col-lg">
+					<label class="label-editor" for="efeatureId">Feature</label>
+					<select id="EFeatureID" name="efeatureId" class="form-control" style="width:250px;" required>
+						<option></option>
+<!--						<option selected="selected" value="" disabled>--Select Feature --</option>
+						<option ng-repeat="x in featureList" value="{{x.featureId}}">{{x.featureName}}</option> -->
+					</select>
+				</div>
+			</div>
+			<div class="row mb-1 ml-1">
+				<label class="label-editor" for="testDescription">Test Description:</label>
+				<textarea class="form-control" rows="5" id="testDescription" name="testDescription" required></textarea>
+			</div>
+		
+		
+		                    <div>	
+                        <input type="hidden" class="form-control" id="id"  name="id">
+                        </div>
+		</div>
+
+    </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<button type="submit" id="S_EditTC" name="S_EditTC" class="btn btn-success" value=1><i class="far fa-save"></i> Update</button>
+      </div>
+    </div>
+	</form>
+  </div>
+</div>
+ 
+ 
+ <!-- Delete Test case -->
+
+<div class="modal fade" id="deleteTCModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title">Delete Test case record?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="font-size:25px;color:#e74a3b">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<form id="deleteTC" class="form-row">
+        <div id="MID">
+		
+		</div>
+		
+		 				 <div>	
+                        <input type="hidden" class="form-control" id="uniqueId"  name="uniqueId">
+                        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		<button  id="S_DeleteTC" type="button" name="S_DeleteTC" class="btn btn-danger btn-danger" value=1>Delete</button>					
+									
+		</div>
+		</form>
+    </div>
+  </div>
+</div>
+
+<!-- Upload Test Cases Modal -->
+<div id="fileUploadModal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog"  style="width:70%;">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header bg-primary">
+				
+				<h5 class="modal-title">Upload using Excel</h5>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<form method="post" name="fileUploadForm" id="fileUploadForm" enctype="multipart/form-data">
+				<div class="modal-body">
+					
+					<div class="form-group row">
+						
+						<div class="col-7 mt-2">
+						<label class="btn btn-default btn-file"><input type="file" name="file" id="testcaseFile">
+						</label>
+						</div>
+						
+						
+						
+					</div>	
+				</div>
+				<div class="p-0 modal-footer">
+					<span id="fileUploadSuccessMsg" class="successMsg text-success text-center" style="font-size:13px;display: none;"></span>
+					<span id="fileUploadErrorMsg" class="errorMsg text-danger text-center" style="font-size:13px;display: none;"></span>
+					<button class="btn btn-success" id="fileUploadBtn" type="button">
+						<i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Upload</button>
+					<button class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">
+					<i class="fa fa-window-close" aria-hidden="true"></i>&nbsp;
+					Close</button>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+    <!-- Page level custom scripts -->
+
+
+<script src="/resources/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/CS_RBA.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap-select.min.js"></script>
+
+
+<script src='/resources/vendor/extras/jquery.dataTablesTM.min.js'></script>
+<script src='/resources/vendor/extras/dataTables.buttons.min.js'></script>
+<script src='/resources/vendor/extras/buttons.colVis.min.js'></script>
+<script src='/resources/vendor/extras/buttons.html5.min.js'></script>
+
+<script src='/resources/vendor/datatables/dataTables.bootstrap4.min.js'></script>
+<script src='/resources/vendor/extras/buttons.bootstrap.min.js'></script>
+<script src='/resources/vendor/extras/jszip.min.js'></script>
+
+
+<script src="js/project_bootstrap.min.js"></script>
+	
+	
+
+<script src="js/TestMasterDT.js" id="rendered-js" > </script>
+<script src="js/Dropdowns.js"></script>
+<script src="js/myFunctions.js"></script> 
+
+<style>
+div.dt-buttons {
+    position: relative;
+    float: left;
+}
+
+
+.container {
+margin:auto;
+}
+
+.form-control {
+	height: calc(1rem + .7rem + 1.2px);
+	line-height: 1.2;
+    padding: .175rem .35rem;
+    font-size: 0.8rem;
+	}
+.btn-dd {
+	font-size:0.8rem;
+	line-height: 1.3;
+}
+
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn-group:not(:last-child) > .btn {
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+  border-color:#000fff;
+}
+
+.form-inline label{
+    justify-content: left;
+}
+
+</style>		
+
+
+<script>
+ function cTrig(box) {
+		
+		var serverStatus=document.getElementById("serverSwitch").checked;
+		
+		if (serverStatus==true)
+		{
+			console.log("Automation Server ON");
+			var retValOn = confirm("Are you sure you want to switch the Automation Server ON ?");
+			
+		 if (retValOn==true) {
+        $.ajax({        
+            url: 'serverSwitch',
+            type: 'post',             
+             data: {
+               "serverStatus": 'on'
+            },
+            success: function(response) {
+           
+            alert("Automation Server is ON");
+              
+            }           
+        });
+    
+  		}
+  		
+  		 else {
+    		
+    		console.log("Confirmation is cancel");
+    		document.getElementById("serverSwitch").checked = false;
+   		 }
+  		
+			
+			
+	}
+		else
+		{
+			console.log("Automation Server OFF");
+			var retValOff = confirm("Are you sure you want to switch the Automation Server OFF ?");
+			
+		 if (retValOff==true) {
+        $.ajax({        
+            url: 'serverSwitch',
+            type: 'post',             
+             data: {
+               "serverStatus": 'off'
+            },
+            success: function(response) {
+           
+            alert("Automation Server is OFF");
+              
+            }           
+        });
+    
+  		}
+  		
+  		 else {
+    		
+    		console.log("Confirmation is cancel");
+    		document.getElementById("serverSwitch").checked = true;
+   		 }
+  
+  }
+	
+	
+     
+}
+
+
+
+		
+	 </Script>	
+
+
+</body>
+
+</html>

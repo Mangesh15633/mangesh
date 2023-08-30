@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>One Automation Solution - Project Level Configurations</title>
+	<!-- Custom Css for Vertical Navigation for Config pages -->
+	<link href="/resources/css/V-Nav.css" rel="stylesheet" type="text/css">
+	
+    <!-- Custom fonts for this template -->
+    <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/project_bootstrap.css" rel="stylesheet">
+<link href="/resources/vendor/bootstrap/css/bootstrap-select.min.css" rel="stylesheet">
+	
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/project_bootstrap.min.css" rel="stylesheet">
+	<link href="/resources/css/Config-datatable.css" rel="stylesheet">
+	<link href="/resources/css/switch.css" rel="stylesheet">
+	
+    <!-- Custom styles for this page -->
+    <link href="/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+	
+
+
+	 	
+	<script src="/resources/js/formcheck2.js"></script>
+
+<!--IMPORTANT FOR DATATABLE -->	
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">One Automation Solution</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+                <a class="nav-link" href="initiate.html">
+                    <i class="fas fa-fw fa-caret-square-right"></i>
+                    <span>Initiate</span></a>
+            </li>
+			<li class="nav-item" id="TM_Menu" style="display:block;">
+                <a class="nav-link" href="test_master.html">
+                    <i class="fas fa-list-alt"></i>
+                    <span>Test Master</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="results.html">
+                    <i class="fas fa-fw fa-chart-pie"></i>
+                    <span>Results</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="priority.html">
+                    <i class="fas fa-check-double"></i>
+                    <span>Test Prioritization</span></a>
+            </li>
+			
+			
+
+             <!-- Divider -->
+		<div id="AdminMenu" style="display: block;">
+			<hr class="sidebar-divider"></hr>
+			
+		<!-- Heading -->
+			
+			<div class="sidebar-heading" >Configs</div>
+			
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item m-0 active" ><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+				aria-controls="collapseUtilities"> <i class="fas fa-fw fa-wrench"></i> <span>Admin</span>
+			</a>
+
+				<div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						
+						<a class="collapse-item" href="/resources/user.html">User Management</a>
+						<a class="collapse-item" href="/resources/master-config.html">Master Configs</a>
+						<a class="collapse-item active" href="/resources/project-config.html">Project Configs</a>
+					</div>
+				</div></li>
+				</div>
+	        <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Others
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+                <a class="nav-link" href="faqs.html">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQs</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="about.html">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span></a>
+            </li>
+
+ 
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle" onclick="rem_sidebar()"></button>
+            </div>
+
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow">
+				
+								
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+
+					<div class="container">
+                        <!-- Nav Item - Alerts -->
+						
+                        <form id="testForm" name="serverSwitch" action="serverSwitch" method="post">
+							<label class="mt-2 switch">
+								<input type="checkbox" id="serverSwitch" name="check1" checked='checked' onchange="cTrig(this)">
+								<div  id="box" class="slider round">
+									<span class="on">ON</span>
+									<span class="off">OFF</span>
+								</div>
+							</label>   
+						</form>	
+						
+                        <div class="topbar-divider"></div>
+						
+						<span id="loginUser" class="ml-1 mr-4 text-success font-weight-bold small"><< Full Name >></span>
+						<span id="loginEmail"  hidden>loginEmailValue</span>
+						
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item">
+                            <a href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt" style="color:#C0C0C0" ></i>
+                            </a>    
+                            
+
+                        </li>
+						</div>
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            
+						<h6 class="mb-0 font-weight-bold text-primary" style="font-size:14px">Project Level Configurations</h6>
+                        </div>
+                        
+                        
+						
+						<form id="project_config" class="needs-validation" novalidate method="POST">
+						<div class="container" style="font-size:14px">
+							<div class="mt-3 container">							
+								<div class="form-group row">
+									<div class="col-sm-4">
+										<div class="m-1 font-weight-bold">Capture Evidence for:</div>
+									</div>
+									<div class="col-sm-2 form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" id="optevidence0" class="form-check-input" name="optevidence" value="0" checked>Failed Scripts Only
+									  </label>
+									</div>
+									<div class="col-sm-3 form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" id="optevidence1" class="form-check-input" name="optevidence" value="1">Both Passed and Failed Scripts
+									  </label>
+									</div>
+								</div>
+								
+								<div class="m-2 row">
+
+								</div>
+								
+														
+								<div class="form-group row">
+									<div class="col-sm-4">
+									<div class="m-1 font-weight-bold">Evidence Type:</div>
+									</div>
+									<div class="col-sm-2 form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" id="optvideo0" class="form-check-input" name="optvideo" value="0" checked>Image
+									  </label>
+									</div>
+									<div class="col-sm-3 form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" id="optvideo1" class="form-check-input" name="optvideo" value="1">Video
+									  </label>
+									</div>
+								</div>
+								
+								<div class="m-2 row">
+
+								</div>
+								
+								<!--  
+								<div class="form-group row">
+									<div class="col-4">
+										<div class="font-weight-bold">Evidence Storage Path:</div>
+									</div>
+									<div class="form-group">
+										<input id="epath" type="text" class="form-control" name="evipath" placeholder= "e.g.: C:/Users/virajn/Desktop/Evidences/" style="width:215%" required>
+									</div>
+									<div class="invalid-feedback"  style="display:none" id="a_invalid_evipath" >
+									</div>
+								</div>								
+							-->
+								
+								<!-- 
+								<div class="form-group row">
+									<div class="col-4">
+									<div class="m-1 font-weight-bold">Feature Breakup in test cases required?</div>
+									</div>
+									<div class="form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" id="opt_feature1" class="form-check-input" name="opt_feature" value="1" checked>Required
+									  </label>
+									</div>
+									<div class="col-1">
+									</div>
+									<div class="form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" id="opt_feature0" class="form-check-input" name="opt_feature" value="0">Not Required
+									  </label>
+									</div>
+								</div>
+								
+							-->
+								<div class="m-2 row">
+
+								</div>
+								<div class="form-group row">
+								
+									<div class="col-sm-4">
+										<div class="m-1 font-weight-bold">Report format shared on email</div>
+									</div>
+									<div class="col-sm-2 form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" id="opt_report0" class="form-check-input" name="opt_report" value="0" checked>Extent
+									  </label>
+									</div>
+								<div class="col-sm-2 form-check-inline invisible">
+									  <label class="form-check-label">
+										<input type="radio" id="opt_report1" class="form-check-input" name="opt_report" value="1">PDF
+									  </label>
+									</div>
+									
+								 <div class="col-sm-2 form-check-inline invisible">
+									  <label class="form-check-label">
+										<input type="radio" id="opt_report1" class="form-check-input" name="opt_report" value="2">NEXX
+									  </label>
+									</div> 
+								</div> 
+								
+								<div class="m-2 row">
+
+								</div>
+								
+								<div class="form-group row" style="display:none">
+									<div class="col-sm-4">
+									<div class="m-1 font-weight-bold">Device Farm used:</div>
+									</div>
+									<div class="col-sm-2 form-check-inline">
+										
+									  <select class="selectpicker show-tick" data-style="btn-info btn-md" title="Select Device Farm" multiple data-max-options="1" tabindex="-98">
+										  <option value="P-Cloudy">P-Cloudy</option>
+										  <option value="SauceLabs">SauceLabs</option>
+										  <option value="AWS Farm">AWS Farm</option>
+										</select>
+
+									</div>
+									
+								</div>
+								
+								<div class="m-2 row">
+
+								</div>
+								
+								
+								
+								<!--  
+								<div class="form-group row">
+									<div class="col-4">
+									<div class="m-1 font-weight-bold">Test Prioritization:</div>
+									</div>
+									<div class="form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" id="opt_TP0" class="form-check-input" name="opt_TP" value="0" checked>Basic
+									  </label>
+									</div>
+									<div class="col-1">
+									</div>
+									<div class="form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" id="opt_TP1" class="form-check-input" name="opt_TP" value="1">Advanced
+									  </label>
+									</div>
+								</div>
+								-->
+								<div class="m-2 row">
+
+								</div>
+								
+								<div class="form-group row">
+									<div class="col-4">
+										<div class="m-1 font-weight-bold">Customer Email Suffix:</div>
+									</div>
+									
+									<div class="form-group" >
+										<div class="input-group mb-2" style="width:170%">
+											<div class="input-group-prepend">
+												<div class="input-group-text">@</div>
+											</div>
+											<input type="text" class="form-control" id="emailsuffix" name="cust_domain" placeholder="e.g.: xyz.co.uk OR xyz.com" required>
+											
+										
+										</div>
+										<div class="text-danger font-weight-bold text-xs" id="a_invalid_suffix" style="display:none"></div>
+											
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-4 text-right">
+									
+									</div>
+									<div class="p-0 col-sm-4 text-right">
+										<div id="SuccessDiv">
+							
+										</div>
+									</div>
+									<div class="p-0 col-sm-1 text-right">
+										
+										<button type="submit"  id="projectConfigSubmit"  class="btn btn-md btn-success" data-toggle="modal"><i class="fa fa-save"></i>&nbsp;&nbsp;&nbsp;Save</button>
+									</div>
+								</div>
+								
+								</form>
+								
+							</div>
+								
+								
+
+						</div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+	
+	<!-- Footer -->
+	<footer class="sticky-footer bg-white">
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<span>Copyright &copy; Mastek Ltd. 2023</span>
+			</div>
+		</div>
+	</footer>
+    <!-- End of Footer -->	
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">�</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/automation">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Bootstrap core JavaScript-->
+   
+    <script src="/resources/vendor/jquery/jquery.min.js"></script>
+     <script type="text/javascript" src="/resources/js/CS_RBA.js"></script>
+    <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/resources/js/project_bootstrap.min.js"></script>
+    <script src="/resources/vendor/bootstrap/js/bootstrap-select.min.js"></script>
+
+    <!-- Page level plugins 
+   <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/resources/vendor/extras/datatablesUM.min.js"></script> -->
+  
+  
+
+    <!-- Page level custom scripts -->
+   <script type="text/javascript"  src="/resources/js/Charts/datatables.js"></script>
+   <script src="js/myFunctions.js"></script>
+  
+ 
+   <script>
+   
+   $(document).ready(function() {
+	   
+		/* session management */
+		  var now = new Date().getTime();	  
+		  var setupTime = localStorage.getItem('setupTime');
+		  var logoutcheck=localStorage.getItem('logout');
+		  
+		  
+		 
+		  
+		  var diff=now-setupTime;
+		  
+		
+		  
+		  if((diff) > 3600000)
+			  {
+			 	  localStorage.clear();
+		      	 
+		          window.location.href = "/automation";
+		          localStorage.setItem('logout','logout');
+			  
+			  }
+		  
+		  /* session management */
+		  
+	 
+	  var name=localStorage.getItem("name");
+	  var loginEmail=localStorage.getItem("loginEmail");
+
+	  document.getElementById('loginUser').innerHTML=name;
+	  document.getElementById('loginEmail').innerHTML=loginEmail;
+	
+	if(localStorage.getItem("Status"))
+    {
+		
+		 var SuccessMsg = '<div class="alert alert-sm alert-success text-center"><i class="px-2 fas fa-check"></i> Changes saved successfully.</div>';
+		 document.getElementById("SuccessDiv").innerHTML = SuccessMsg;
+		 localStorage.removeItem("Status");
+    }
+	
+	if(localStorage.getItem("sidebar"))
+    {
+	  var sidebar_class = localStorage.getItem("sidebar");
+	  if (sidebar_class == "collapsed") {
+	  	$(".sidebar").toggleClass("toggled");
+	  	
+	  }	else{
+		  $(".sidebar").removeClass("toggled");  			 
+	  }
+		 
+    }
+	
+	 $.ajax({        
+         url: 'getServerStatus',
+         type: 'GET',             
+         
+         success: function(response) {
+        
+         if(response=="on")
+        	 {
+        	 document.getElementById("serverSwitch").checked = true;
+        	 }
+         else
+        	 {
+        	 document.getElementById("serverSwitch").checked = false;
+        	 }
+           
+         }           
+     });
+	
+	    
+	   
+	   $.ajax({
+		    url: "projectConfig",
+		    type: "GET",
+		  
+	           success: function(response) {
+	          
+	       	 var data = JSON.parse(response);
+	         
+	           test(data);
+   
+	           }  
+		});
+	   
+	   
+	   
+	   function test(data)
+	   {
+		  	 if(data.opt_report == 1)
+	           
+    	   {
+    	   $('#opt_report1').attr('checked', true);
+    	   }
+      		 else
+    	   {
+    	   $('#opt_report0').attr('checked', true);
+    	   }
+		   
+		  	 if(data.optevidence == 1)
+		           
+	    	   {
+	    	   $('#optevidence1').attr('checked', true);
+	    	   }
+	      		 else
+	    	   {
+	    	   $('#optevidence0').attr('checked', true);
+	    	   }
+			   
+		  	 
+		  	
+			
+		  	 if(data.optvideo == 1)
+		           
+	    	   {
+	    	   $('#optvideo1').attr('checked', true);
+	    	   }
+	      		 else
+	    	   {
+	    	   $('#optvideo0').attr('checked', true);
+	    	   }
+			   
+		  	 
+		  
+		  	
+
+		  	$("#emailsuffix").attr("value", data.cust_domain);
+
+
+       
+  
+       
+
+	   }
+	   
+   });
+   </script>
+ 
+   <script>
+   
+   document.getElementById("projectConfigSubmit").onclick = function () {
+
+	   
+		var isValid=validateConfig();
+		if(isValid==true)
+	  	{
+			$.ajax({
+		            url: 'updateProjectConfig',
+		            type: 'POST',
+		            data: $('#project_config').serialize()
+		        }).done(function(data) {
+					
+		        	 if (data == "Success")
+		        	 {
+		        		 localStorage.setItem("Status", "Success");
+		        		 location.reload();	
+		        		 
+		        		 
+		        	 }
+		        	 
+		           
+		        }
+		        
+		        );
+			
+	  	}
+		
+  };
+  
+ 
+  function validateConfig()
+  {
+	   var inputText_Suffix = document.getElementById('emailsuffix');
+
+	   var suffixformat = RegExp("^[a-zA-Z0-9]+[.]+[a-zA-Z0-9.]+$");
+	   
+	   if(!inputText_Suffix.value.match(suffixformat))
+	   	{		   		
+	   		
+	   		document.getElementById("emailsuffix").value = inputText_Suffix.value;
+	   		
+	   		document.getElementById("SuccessDiv").style.display = "none";
+	   		document.getElementById("a_invalid_suffix").style.display = "block";
+	   		document.getElementById("a_invalid_suffix").innerHTML = "Please enter valid email address suffix";
+   		
+	   		event.preventDefault();
+	   		return false;
+	   		
+	   	} else if(inputText_Suffix.value.match(suffixformat)){
+	   		
+	   		return true;
+	   	};
+	   	
+	   return( true );	
+	   
+  };
+   </script>
+   <script>
+ function cTrig(box) {
+		
+		var serverStatus=document.getElementById("serverSwitch").checked;
+		
+		if (serverStatus==true)
+		{
+			
+			var retValOn = confirm("Are you sure you want to switch the Automation Server ON ?");
+			
+		 if (retValOn==true) {
+        $.ajax({        
+            url: 'serverSwitch',
+            type: 'post',             
+             data: {
+               "serverStatus": 'on'
+            },
+            success: function(response) {
+           
+            alert("Automation Server is ON");
+              
+            }           
+        });
+    
+  		}
+  		
+  		 else {
+    		
+    	
+    		document.getElementById("serverSwitch").checked = false;
+   		 }
+  		
+			
+			
+	}
+		else
+		{
+			
+			var retValOff = confirm("Are you sure you want to switch the Automation Server OFF ?");
+			
+		 if (retValOff==true) {
+        $.ajax({        
+            url: 'serverSwitch',
+            type: 'post',             
+             data: {
+               "serverStatus": 'off'
+            },
+            success: function(response) {
+           
+            alert("Automation Server is OFF");
+              
+            }           
+        });
+    
+  		}
+  		
+  		 else {
+    		
+    		document.getElementById("serverSwitch").checked = true;
+   		 }
+  
+  }
+	
+	
+     
+}
+
+
+
+		
+	 </Script>
+
+</body>
+
+</html>

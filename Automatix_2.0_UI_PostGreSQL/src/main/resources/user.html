@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>One Automation Solution - User Management</title>
+	<!-- Custom Css for Vertical Navigation for Config pages -->
+
+	
+	
+	<link href="/resources/css/V-Nav.css" rel="stylesheet" type="text/css">
+	
+    <!-- Custom fonts for this template -->
+    <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	
+
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/project_bootstrap.css" rel="stylesheet">
+
+	
+    <!-- Custom styles for this template -->
+    <link href="/resources/css/project_bootstrap.min.css" rel="stylesheet">
+	<link href="/resources/css/Config-datatable.css" rel="stylesheet">
+	<link href="/resources/css/switch.css" rel="stylesheet">
+	
+    <!-- Custom styles for this page -->
+    <link href="/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+ 	
+
+
+
+	
+
+<!--IMPORTANT FOR DATATABLE -->	
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">One Automation Solution</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+                <a class="nav-link" href="initiate.html">
+                    <i class="fas fa-fw fa-caret-square-right"></i>
+                    <span>Initiate</span></a>
+            </li>
+			<li class="nav-item"  id="TM_Menu" style="display:block;">
+                <a class="nav-link" href="test_master.html">
+                    <i class="fas fa-list-alt"></i>
+                    <span>Test Master</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="results.html">
+                    <i class="fas fa-fw fa-chart-pie"></i>
+                    <span>Results</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="priority.html">
+                    <i class="fas fa-check-double"></i>
+                    <span>Test Prioritization</span></a>
+            </li>
+			
+			
+
+           <!-- Divider -->
+		<div id="AdminMenu" style="display: block;">
+			<hr class="sidebar-divider"></hr>
+			
+		<!-- Heading -->
+			
+			<div class="sidebar-heading" >Configs</div>
+			
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item m-0 active" ><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+				aria-controls="collapseUtilities"> <i class="fas fa-fw fa-wrench"></i> <span>Admin</span>
+			</a>
+
+				<div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						
+						<a class="collapse-item active" href="/resources/user.html">User Management</a>
+						<a class="collapse-item" href="/resources/master-config.html">Master Configs</a>
+						<a class="collapse-item" href="/resources/project-config.html">Project Configs</a>
+					</div>
+				</div></li>
+				</div>
+	        <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Others
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+                <a class="nav-link" href="faqs.html">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQs</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="about.html">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span></a>
+            </li>
+
+ 
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle" onclick="rem_sidebar()"></button>
+            </div>
+
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+				
+								
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+
+					<div class="container">
+                        <!-- Nav Item - Alerts -->
+						
+ 					<form id="testForm" name="serverSwitch" action="serverSwitch" method="post">
+							<label class="mt-2 switch">
+								<input type="checkbox" id="serverSwitch" name="check1" checked='checked' onchange="cTrig(this)">
+								<div  id="box" class="slider round">
+									<span class="on">ON</span>
+									<span class="off">OFF</span>
+								</div>
+							</label>   
+						</form>	                        
+						<div class="topbar-divider"></div>
+						
+						<span id="loginUser" class="ml-1 mr-4 text-success font-weight-bold small"><< Full Name >></span>
+						<span id="loginEmail" hidden>loginEmailValue</span>
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item">
+                            <a href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt" style="color:#C0C0C0" ></i>
+                            </a>    
+                            
+
+                        </li>
+						</div>
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+							<div class="row">    
+								<div class="mt-1 col-8 font-weight-bold text-primary" style="font-size:15px">User Management
+								</div>								
+							</div>						
+                        </div>
+						
+						
+					<div id="UserSuccessDiv">
+							
+					</div>
+					
+					
+					
+                    <!-- DataTables -->
+                        <div class="card-body" style="font-size:15px">
+							<div class="table-responsive" >
+                                <table class="table-sm table-bordered table-striped display" style="width:100%" id="example" cellspacing="0" >
+								</table>
+							<div id="LoadingImage" class="mt-3 text-center" style="display:block">
+									<progress></progress>
+							</div>		
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+			
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Mastek Ltd. 2023</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger" href="/automation">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+	<!-- Add User Modal  -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h5 class="modal-title">Add New User</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true" style="font-size:25px;color:#e74a3b">&times;</span>
+					</button>
+                </div>
+                <div class="modal-body">
+				<form class="needs-validation" novalidate method="POST" ID="a_userForm" name="a_userForm">
+					<div class="form-row">
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label for="a_fullname">Full Name:</label>
+                                <input id="a_fullname" name="a_fullname" type="text" class="form-control" autocomplete = "off" placeholder="Enter User's Full Name" onblur="ValidateFullName_A()" required>
+								<div class="valid-feedback">Valid.</div>
+    							<div class="invalid-feedback" id="a_invalid_fname">Please enter name in First Name and Last Name format.</div>
+    							
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label id="a_inputRole">Role:</label>
+                                <div>								
+									<div class="form-group">
+										<select id="a_inputRole" class="custom-select mr-sm-2 py-0" name="role" autocomplete = "off" required>
+											<option></option>
+											<option>User</option>
+											<option>Tester</option>
+											<option>Manager</option>
+											<option>Admin</option>
+										</select>
+										<div class="valid-feedback">Valid.</div>
+    									<div class="invalid-feedback">Please fill out this field.</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    
+				  <div class="form-group">
+					<label for="a_InputEmail">Email address:</label>
+
+					<input type="text" class="form-control" id="a_InputEmail" name="a_InputEmail"  aria-describedby="emailHelp" autocomplete = "off" placeholder="Enter user's email address" onblur="ValidateEmail_A()" required>
+					<div class="valid-feedback">Valid.</div>   
+					<div class="invalid-feedback" id="a_invalid_email">
+					Please enter user's email address (Mastek Or Customer domain).
+					</div>
+					
+				</div>
+
+				  
+			    <div class="form-row">
+                       <div class="col-5">
+						<div class="form-group">
+							<label for="a_Password">Password:</label>
+							<div class="input-group" id="show_hide_password">
+								<input class="form-control" id="p" type="text" name="pwd" autocomplete="off" required >	
+								<div class="valid-feedback">Valid.</div>
+								<div class="invalid-feedback" id="a_invalid_pwd">
+								Please generate a new password.
+								</div>
+							</div>
+							
+						</div>
+                       </div>
+                       <div class="col-5">
+                           <div class="mt-1 form-group">
+                               <label style="color:#ffffff">Generate</label>
+								<input id="genratePassword" type='button' class="btn btn-warning" value ='Generate Password'>						
+                           </div>							
+                       </div>						
+                   </div>
+	
+					
+					
+				    <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button type="submit" id="test" class="btn btn-success">Submit</button>
+					</div>
+				</form>
+				
+				
+            </div>
+        </div>
+    </div>
+</div>		
+
+	
+	<!-- Edit Modal  -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" >
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title">Edit User Details</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true" style="font-size:25px;color:#e74a3b">&times;</span>
+					</button>
+                </div>
+                <div class="modal-body">
+				<form class="needs-validation" novalidate method="POST" ID="e_userForm" name="e_userForm">
+					<div class="form-row">
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label for="e_fullname">Full Name</label>
+                                <input id="e_fullname" type="text" class="form-control" name="e_fullname" placeholder="Show User's Full Name" autocomplete = "off" required>
+								<div class="valid-feedback">Valid.</div>
+    							<div class="invalid-feedback" id="e_invalid_fname">Please enter name in First Name and Last Name format.</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label id="e_inputRole">Role:</label>
+                                <div>								
+									<div class="form-group">
+										<select id="e_inputRole" name="e_inputRole" class="custom-select mr-sm-2 py-0" autocomplete = "off" required>
+											<option></option>
+											<option>User</option>
+											<option>Tester</option>
+											<option>Manager</option>
+											<option>Admin</option>
+										</select>
+										<div class="invalid-feedback" id="e_invalid_role">
+										Please select user role.
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    
+					  <div class="form-group">
+						<label for="e_InputEmail">Email address</label>
+						<input type="text" class="form-control" id="e_InputEmail" name="e_InputEmail" aria-describedby="emailHelp" autocomplete = "off" required>
+						<div class="valid-feedback">Valid.</div>   
+						<div class="invalid-feedback" id="e_invalid_email">
+						Please enter user's email address (Mastek Or Customer domain).
+						</div>
+					</div>
+
+				  
+				    <div class="form-row">
+                        
+                        
+                        <div class="col-sm-6" >
+							<div  id="pwd_input" style="display:block" class="form-group">
+								<label for="p1">Password:</label>
+								<div class="input-group" id="show_hide_password">
+									<input class="form-control" id='p1' type="password" name="pwd" autocomplete = "off" required>
+									<div class="input-group-append">
+										<span class="input-group-text" >
+											<a href="">
+												<i class="fa fa-eye-slash" aria-hidden="true"></i>
+											</a>
+										</span>
+									</div>
+									<div class="invalid-feedback" id="e_invalid_pwd">
+									Please generate a new password.
+									</div>
+								</div>
+							</div>							
+                        </div>
+                                             
+                        <div class="mt-1 col-sm-4 text-right">
+                            <div class="form-group">                            	
+                                <label for="genrateEditPassword"></label>
+                                <div class="mt-2 input-group" id="genrateEditPassword_btn">
+									<input id="genrateEditPassword" type='button' class="btn btn-warning" value ='Generate Password' >
+								</div>						
+                            </div>							
+                        </div>
+                        <div>	
+                        	<input type="hidden" class="form-control" id="userId"  name="userId">
+                        </div>					
+                    </div>
+		
+					
+					
+				    <div class="modal-footer">
+				    	<div class="form-row">
+				    		<div class="col">
+								
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+								<button type="submit" id="editSubmit"  class="btn btn-success" >Submit</button>							
+							</div>
+						</div>
+					</div>	
+				</form>
+            </div>
+        </div>
+    </div>
+</div>		
+
+
+<!-- Delete Modal for Active User -->
+<div class="modal fade" id="deleteModal_A" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title">Delete user?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="font-size:25px;color:#e74a3b">&times;</span>
+        </button>
+      </div>
+      <form>
+	  <div class="modal-body">
+		<form id="User_Delete" name="User_Delete">
+        <p id="d-user-A"></p>
+		<p style="font-size:17px;color:#e74a3b">You can lock the user instead.</p>
+		 
+		 
+		 <div> 
+		    <input type="hidden" class="form-control" id="delUserId"  name="delUserId"> 
+     	 </div>
+     	 <div> 
+		    <input type="hidden" class="form-control" id="delUserEmail"  name="delUserEmail"> 
+     	 </div>
+		</div>
+		
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			<button  id="ilockUser" type="button" name="Lock" class="btn btn-warning btn-warning" value="1">Lock</button>		
+			<button id="deleteUser" type="button" name="Delete" class="btn btn-danger btn-danger" value="1">Delete</button>				
+		</div>
+		</form>
+    </div>
+	</form>
+  </div>
+</div>
+
+
+<!-- Delete Modal for Locked User -->
+
+<div class="modal fade" id="deleteModal_L" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title">Delete user?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="font-size:25px;color:#e74a3b">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <form id="User_Delete" name="User_Delete">
+         <p id="d-user-L"></p>
+         <div> 
+		    <input type="hidden" class="form-control" id="delLockUserId"  name="delLockUserId"> 
+     	 </div>
+     	 <div> 
+		    <input type="hidden" class="form-control" id="delLockUserEmail"  name="delLockUserEmail"> 
+     	 </div>
+      </div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			<button id="delLockUsr" type="button" name="Delete" class="btn btn-danger btn-danger" value="1">Delete</button>					
+		</div>
+		</form>
+    </div>
+  </div>
+</div>
+
+
+	<!-- Lock Modal-->
+<div class="modal fade" id="lockUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title text-dark">Lock User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="font-size:25px;color:#e74a3b">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <form id="User_Lock" name="User_Lock">
+        
+		 <p id="L-user"></p>
+		  <div> 
+		    <input type="hidden" class="form-control" id="lockUserId"  name="lockUserId"> </div>
+     	 </div>
+	  
+	
+      <div class="modal-footer">
+      
+      	
+     
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          
+      	<button id="lockUsr" type="button" name="Lock" class="btn btn-warning btn-warning" value="1">Lock</button>
+		
+		</div>
+		</form>
+    </div>
+  </div>
+</div>
+
+
+	<!-- Unlock Modal-->
+<div class="modal fade" id="unlockUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title text-dark">Unlock User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true" style="font-size:25px;color:#e74a3b">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <form id="User_Unlock" name="User_Unlock">
+	   <p id="UL-user"></p>
+	   <div><input type="hidden" class="form-control" id="unLockUserId"  name="unLockUserId"> </div>
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		<button id="unLockUser" type="button" name="Lock" class="btn btn-success btn-success" value="0">Unlock</button>	
+		</div>
+		</form>
+    </div>
+  </div>
+</div>
+
+
+
+
+    
+
+    <script src="/resources/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/resources/js/CS_RBA.js"></script>
+    <script type="text/javascript" src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="/resources/vendor/extras/datatablesUM.min.js"></script>
+	
+	<script type="text/javascript"  src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+	 <script type="text/javascript"  src="/resources/js/project_bootstrap.min.js"></script>
+ 
+ 
+ 	<script type="text/javascript"  src="/resources/js/formcheck2.js"></script>
+	<script type="text/javascript"  src="/resources/js/UserConfig.js"></script>  
+	<script type="text/javascript"  src="js/myFunctions.js"></script>
+ 
+ 
+  <script>
+
+  $(document).ready(function() {
+	  
+	  
+		/* session management */
+	  var now = new Date().getTime();	  
+	  var setupTime = localStorage.getItem('setupTime');
+	  var logoutcheck=localStorage.getItem('logout');
+	  var loggedinEmail = localStorage.getItem('loginEmail');
+	  
+  
+	  
+	  console.log("logout check :"+logoutcheck);
+	  console.log("current setup time :"+setupTime);
+	  console.log("current time :"+now);
+
+	  
+	  var diff=now-setupTime;
+	  
+	  
+	  console.log("timestamp difference :"+diff);
+	  
+	  if((diff) > 3600000)
+		  {
+		 	  localStorage.clear();
+	      	 
+	          window.location.href = "/automation";
+	          localStorage.setItem('logout','logout');
+		  
+		  }
+	  
+	  /* session management */
+	  
+	  
+	var name=localStorage.getItem("name");
+	
+	document.getElementById('loginUser').innerHTML=name;
+	document.getElementById('loginEmail').innerHTML=loggedinEmail;
+	
+	
+	 if(localStorage.getItem("sidebar"))
+	    {
+		  var sidebar_class = localStorage.getItem("sidebar");
+		  if (sidebar_class == "collapsed") {
+		  	$(".sidebar").toggleClass("toggled");
+		  	
+		  }	else{
+			  $(".sidebar").removeClass("toggled");  			 
+		  }
+			 
+	    }
+	
+	
+	 $.ajax({        
+         url: 'getServerStatus',
+         type: 'GET',             
+         
+         success: function(response) {
+        
+         if(response=="on")
+        	 {
+        	 document.getElementById("serverSwitch").checked = true;
+        	 }
+         else
+        	 {
+        	 document.getElementById("serverSwitch").checked = false;
+        	 }
+           
+         }           
+     });
+	
+	  
+      $.ajax({
+          type: "GET",
+			url: 'usermanagement',
+          success: function (response) {
+        	  var table_data = JSON.parse(response);
+              $('#example').DataTable({
+                  data: table_data,
+                  "dom": 
+          			"<'row'<'col-sm-3'l><'col-sm-6'<'toolbar'>t><'col-sm-3'f tr>>" + 
+          			"<'row'<'col-sm-12' tr>>" +
+          			"<'row'<'col-sm-4'i><'col-sm-8'p>>",
+          			
+          			"paging": true,
+          			"autoWidth": true,	
+          			
+                  "columns": [
+                	 
+      			{ "title": "#", "data": null },
+      			
+                  { "title": "Full Name",  "data": "name" },
+                  { "title": "Email Address",  "data": "email" },
+                  { "title": "User Id",  "data": "userId" },
+      			{ "title": "Password",  "data": "pwd" },
+      			{ "title": "Role", "data": "role" },
+                  { "title": "Status", "data": null },
+                  { "title": 'Actions <button id="usr-add" class="btn-sm btn-success usr-add" title="Add" style="align=center;" data-toggle="modal"><span class="fas fa-plus" aria-hidden="true"></span></button>', "data": null },
+                
+                  ],
+      			
+                  "order": [[ 0, "desc" ]],
+      			
+                  columnDefs: [
+                 		
+          			{targets: [0], width: "5%", className: "text-center", render: function (data, type, row, meta) 
+          				{
+          				return meta.row + meta.settings._iDisplayStart + 1;
+          							}
+          			},    
+          			{targets: [1], width: "auto" },
+          			{targets: [2], width: "auto" },
+          			{targets: [3],visible: false, searchable: false },
+          			{targets: [4], visible: false, searchable: false },
+          			{targets: [5], className: "text-center" },
+          			{targets: [6], width: "auto", className: "text-center", render: function (data) 
+          				{
+          					if (data.islocked == 1) {
+          						
+          						return '<h6><span class="badge badge-warning">Locked</span></h6>';
+          					}
+          					
+          					return '<h6><span class="badge badge-success">Active</span></h6>';
+          					}
+          			},
+          			
+          			{targets: [-1], width: "12%", className: "text-center", render: function (data) 
+          				{
+          	                if (data.islocked == 1) {
+          						var lstatus = "Locked";
+          						var badgeColor = "badge-warning";
+          						var buttonName = "Unlock";
+          						var dtName = "unlockModal";
+          						var iconName = "fas fa-lock-open";
+          						var iconColor = "#228B22";
+          						var dfunction = "usr-delete-L";
+          					/*	var ebhtml = "<button class='btn-sm btn-info usr-edit' title='Edit' data-toggle='modal'><span class='fas fa-pen-square' aria-hidden='true'></span></button>";
+          						var lbhtml = "<button class='btn-sm btn-success usr-unlock' title='" + buttonName + "' data-toggle='modal'><span class='" + iconName + "' aria-hidden='true'></span></button>";
+          						var dbhtml = "<button class='btn-sm btn-danger " + dfunction + "' title='Delete' data-toggle='modal' ><span class='fas fa-trash' aria-hidden='true'></span></button>"
+          						return  ebhtml + lbhtml + dbhtml;	*/
+          						
+          						return "<button id='usr-edit' class='mr-1 btn-sm btn-info usr-edit' title='Edit' data-toggle='modal'><span class='fas fa-pen-square' aria-hidden='true'></span></button>"+"<button id='usrUnlock' class='mr-1 btn-sm btn-success usr-unlock' title='" + buttonName + "' data-toggle='modal'><span class='" + iconName + "' aria-hidden='true'></span></button>"+"<button id='delLockUsr' class='btn-sm btn-danger " + dfunction + "' title='Delete' data-toggle='modal' ><span class='fas fa-trash' aria-hidden='true'></span></button>"
+          	                } 
+          					var lstatus = "Active";
+          					var badgeColor = "badge-success";
+          					var buttonName = "Lock";
+          					var dtName = "lockModal";
+          					var iconName = "fas fa-lock";
+          					var iconColor = "#f6c23e";
+          					var dfunction = "usr-delete-A";
+          					return "<button id='usr-edit' class='mr-1 btn-sm btn-info usr-edit' title='Edit' data-toggle='modal'><span class='fas fa-pen-square' aria-hidden='true'></span></button>" +
+          					 "<button id='usr-lock' class='mr-1 btn-sm btn-warning usr-lock' title='" + buttonName + "' data-toggle='modal'><span class='" + iconName + "' aria-hidden='true'></span></button>"+
+          					 "<button id='usr-del' class='btn-sm btn-danger " + dfunction + "' title='Delete' data-toggle='modal' ><i class='fas fa-trash'></i></a>";
+          	              
+          	            }
+          	        }
+          			
+          		
+          			
+          		]
+      		
+                 
+              });
+              var alertmsg = '<div id="SuccessDiv"></div>';
+        		$("div.toolbar").html(alertmsg);
+        		
+        		if(localStorage.getItem("Status"))
+        	    {
+        			var SuccessMsg = localStorage.getItem("Status");
+        			 document.getElementById("SuccessDiv").innerHTML = SuccessMsg;
+        			 localStorage.removeItem("Status");
+        	    }
+        		
+          }
+      });
+      
+    
+      document.getElementById('LoadingImage').style.display = "none";
+      		
+      $("#show_hide_password a").on('click', function(event) {
+          event.preventDefault();
+          if($('#show_hide_password input').attr("type") == "text"){
+              $('#show_hide_password input').attr('type', 'password');
+              $('#show_hide_password i').addClass( "fa-eye-slash" );
+              $('#show_hide_password i').removeClass( "fa-eye" );
+          }else if($('#show_hide_password input').attr("type") == "password"){
+              $('#show_hide_password input').attr('type', 'text');
+              $('#show_hide_password i').removeClass( "fa-eye-slash" );
+              $('#show_hide_password i').addClass( "fa-eye" );
+          }
+      });
+      
+      
+
+    
+      $(this).on('click','#usr-add',function(evt){
+    	  
+    	  $this = $(this);
+  		var dtRow = $this.parents('tr');			
+  		var Flen = dtRow[0].cells.length;
+    	   
+    		$('div.modal-body').innerHTML='';
+    		
+    		$('#addUserModal').modal('show');
+    	    
+    	});
+ 
+     
+				 $(this).on('click','#usr-edit',function(evt){
+					 
+					 
+					 var table = $('#example').DataTable();
+					 	$this = $(this);
+						
+						var dtRow = $this.parents('tr');			
+						var Flen = dtRow[0].cells.length;
+						
+						$('div.modal-body').innerHTML='';			
+						var fname = dtRow[0].cells[1].innerHTML;
+						var email = dtRow[0].cells[2].innerHTML;
+						var role = dtRow[0].cells[3].innerHTML;
+						
+						var userId = table.row( $(this).parents('tr') ).data()["userId"];
+						var pwd = table.row( $(this).parents('tr') ).data()["pwd"];
+								
+						$(".modal-body #e_fullname").val(fname);
+						$(".modal-body #e_inputRole").val(role);
+						$(".modal-body #e_InputEmail").val(email);
+						
+						$(".modal-body #userId").val(userId);
+						$(".modal-body #p1").val('');
+						
+						$('#editUserModal').modal('show');
+				    	    
+				    	});
+				 
+				 
+				
+				 $(this).on('click','#usr-del',function(evt){
+					 
+						$this = $(this);
+						var table = $('#example').DataTable();
+						
+						var dtRow = $this.parents('tr');			
+						var Flen = dtRow[0].cells.length;
+						
+						$('div.modal-body').innerHTML='';
+						var fname = dtRow[0].cells[1].innerHTML;
+						var delUserEmail = dtRow[0].cells[2].innerText;
+						
+						var delUserId = table.row( $(this).parents('tr') ).data()["userId"];
+						var delUserEmail = table.row( $(this).parents('tr') ).data()["email"];
+						
+						
+						var str = "Are you sure you want to permanently delete user <strong>"  + fname + "</strong>?"; 
+				        $(".modal-body #d-user-A").html(str);
+				        $(".modal-body #delUserId").val(delUserId);
+				        $(".modal-body #delUserEmail").val(delUserEmail);
+
+						$('#deleteModal_A').modal('show');
+						
+				 });
+				 
+				 
+				 
+				 $(this).on('click','#usrUnlock',function(evt){
+						$this = $(this);
+						var table = $('#example').DataTable();
+						
+						var dtRow = $this.parents('tr');			
+						var Flen = dtRow[0].cells.length;
+						
+						$('div.modal-body').innerHTML='';
+						var fname = dtRow[0].cells[1].innerHTML;
+						var unLockUserId = table.row( $(this).parents('tr') ).data()["userId"];	
+						
+							
+						var str = "Are you sure you want to UNLOCK the user <strong>"  + fname + "</strong>?"; 
+				        $(".modal-body #UL-user").html(str);
+				        $(".modal-body #unLockUserId").val(unLockUserId);
+						
+						$('#unlockUserModal').modal('show');
+						
+					});
+				 
+				 
+				 $(this).on('click','#usr-lock',function(evt){
+						$this = $(this);
+						var table = $('#example').DataTable();
+						
+						var dtRow = $this.parents('tr');			
+						var Flen = dtRow[0].cells.length;
+						
+						$('div.modal-body').innerHTML='';
+						var fname = dtRow[0].cells[1].innerHTML;
+						
+						var lockUserId = table.row( $(this).parents('tr') ).data()["userId"];	
+						
+
+						var str = "Are you sure you want to LOCK user <strong>"  + fname + " </strong>temporarily?"; 
+				        $(".modal-body #L-user").html(str);
+				        $(".modal-body #lockUserId").val(lockUserId);
+						
+						$('#lockUserModal').modal('show');
+						
+					});
+				
+				 
+				 
+				 $(this).on('click','#delLockUsr',function(evt){
+					 
+						$this = $(this);
+						var table = $('#example').DataTable();
+						
+						var dtRow = $this.parents('tr');			
+						var Flen = dtRow[0].cells.length;
+						
+						$('div.modal-body').innerHTML='';
+						var fname = dtRow[0].cells[1].innerHTML;
+						var delLockUserEmail = dtRow[0].cells[2].innerText;
+						
+						var delLockUserId = table.row( $(this).parents('tr') ).data()["userId"];
+						var delLockUserEmail = table.row( $(this).parents('tr') ).data()["email"];
+						
+							
+						var str = "Are you sure you want to permanently delete user <strong>"  + fname + "</strong>?"; 
+				        $(".modal-body #d-user-L").html(str);
+				        $(".modal-body #delLockUserId").val(delLockUserId);
+				        $(".modal-body #delLockUserEmail").val(delLockUserEmail);
+
+						$('#deleteModal_L').modal('show');
+						
+				 });
+      
+  });
+
+
+
+    
+
+
+</script>
+
+   <script>
+   
+   document.getElementById("genratePassword").onclick = function (){ 
+       var pass = '';
+       document.getElementById("p").value = pass;
+       var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +  
+               'abcdefghijklmnopqrstuvwxyz0123456789@#$'; 
+         
+       for (i = 1; i <= 8; i++) { 
+           var char = Math.floor(Math.random() 
+                       * str.length + 1); 
+             
+           pass += str.charAt(char) 
+       } 
+       
+      
+         
+       document.getElementById("p").value = pass;
+   };
+
+   
+   
+   
+    document.getElementById("genrateEditPassword").onclick = function (){ 
+       var pass = ''; 
+       
+       document.getElementById("p1").value = pass;
+       
+       var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +  
+               'abcdefghijklmnopqrstuvwxyz0123456789@#$'; 
+         
+       for (i = 1; i <= 8; i++) { 
+           var char = Math.floor(Math.random() 
+                       * str.length + 1); 
+             
+           pass += str.charAt(char) 
+       } 
+       
+       document.getElementById('pwd_input').style.display = "block";
+         
+       document.getElementById("p1").value = pass;
+   };
+   
+   
+   document.getElementById("test").onclick = function () {
+	   
+	  var A_checkFullName = ValidateFullName_A();
+	  var A_checkEmail = ValidateEmail_A(); 
+	  
+	  var addPassword=$('#p').val();
+	  
+	  if(A_checkFullName == true && A_checkEmail == true)
+	  {	
+		  
+	   $.ajax({
+		            url: 'addUser',
+		            type: 'POST',
+		            data: $('#a_userForm').serialize()+"&password="+addPassword
+		        }).done(function(data) {
+					
+		            if (data == "Success") 
+		            {
+		          	  
+		            	var SuccessMsg = 'New user added successfully. User Password: <strong>' + addPassword + '<strong>';
+		        		 var Success = '<div class="alert alert-sm alert-success text-center"><i class="px-2 fas fa-check"></i> ' + SuccessMsg + '</div>';
+		        		 localStorage.setItem("Status", Success);
+		        		 location.reload();	
+		            } 
+		            else if (data == "Duplicate") 
+		            {
+		          	  
+		            	var ErrorMsg = 'Email address already used. Please enter a unique email address.';
+		        		 var Validation = '<div class="alert alert-sm alert-danger text-center"><i class="px-2 fas fa-exclamation-triangle"></i> ' + ErrorMsg + '</div>';
+		        		 localStorage.setItem("Status", Validation);
+		        		 return false;
+		            } 
+		            
+		        });
+	  }
+	  
+	  
+   };
+   
+   
+   document.getElementById("editSubmit").onclick = function () {
+	   
+	var E_checkFullName = ValidateFullName_E();
+	var E_checkEmail = ValidateEmail_E(); 
+	
+	var editPassword = $('#p1').val();
+
+		  
+	 if(E_checkFullName == true && E_checkEmail == true)
+	  {	
+			  $.ajax({
+			            url: 'editUser',
+			            type: 'POST',
+			            data: $('#e_userForm').serialize()+ "&password="+editPassword
+			        }).done(function(data) {
+						if (data == "Success")
+			        	 {
+			        		 var SuccessMsg = 'User Details updated successfully. New Password: <strong>' + editPassword + '<strong>';
+			        		 var Success = '<div class="alert alert-sm alert-success text-center"><i class="px-2 fas fa-check"></i> ' + SuccessMsg + '</div>';
+			        		 localStorage.setItem("Status", Success);
+			        		 location.reload();	
+			        	 
+			        	 }
+			        	else if (data == "Duplicate") 
+			            {
+			          	  
+			            	var ErrorMsg = 'Email address already used. Please enter a unique email address.';
+			        		 var Validation = '<div class="alert alert-sm alert-danger text-center"><i class="px-2 fas fa-exclamation-triangle"></i> ' + ErrorMsg + '</div>';
+			        		 localStorage.setItem("Status", Validation);
+			        		 return false;
+			            } 
+			        	
+			            
+			        });
+			
+		  }
+		  
+		 
+	   };
+
+	   
+	   
+	   document.getElementById("ilockUser").onclick = function (){
+			  
+		var iLockUserId=$('#delUserId').val();
+		   
+		   $.ajax({
+	            url: 'lockUser',
+	            type: 'POST',
+	            data:{ 
+	            		"lockUserId": iLockUserId,
+	            		"lockStatus":1
+	            		
+	            		}
+	      		  }).done(function(data) {
+	
+	            if (data == "Success") 
+	            {
+			          	
+			         	
+	            	var SuccessMsg = "User Temporarily Locked.";
+	        		 var Success = '<div class="alert alert-sm alert-success text-center"><i class="px-2 fas fa-check"></i> ' + SuccessMsg + '</div>';
+	        		 localStorage.setItem("Status", Success);
+	        		 location.reload();	
+		        
+	          	
+	          
+	            } 
+	            
+	        });
+		   
+	   };
+	   
+	   document.getElementById("lockUsr").onclick = function (){
+	  
+		   var lockUserId=$('#lockUserId').val();
+		   
+		   $.ajax({
+	            url: 'lockUser',
+	            type: 'POST',
+	            data:{ 
+	            		"lockUserId": lockUserId,
+	            		"lockStatus":1
+	            		
+	            		
+	            		}
+	      		  }).done(function(data) {
+	
+	            if (data == "Success") 
+	            {
+	          
+	            	var SuccessMsg = "User Locked successfully.";
+	        		 var Success = '<div class="alert alert-sm alert-success text-center"><i class="px-2 fas fa-check"></i> ' + SuccessMsg + '</div>';
+	        		 localStorage.setItem("Status", Success);
+	        		 location.reload();	
+		        
+	          
+	            } 
+	            
+	            
+	        });
+		   
+	   };
+	   
+	   
+	   document.getElementById("unLockUser").onclick = function (){
+	  
+		   var lockUserId=$('#unLockUserId').val();
+		   
+		   $.ajax({
+	            url: 'lockUser',
+	            type: 'POST',
+	            data:{ 
+	            		"lockUserId": lockUserId,
+	            		"lockStatus":0
+	            		
+	            		}
+	      		  }).done(function(data) {
+	
+	            if (data == "Success") 
+	            {
+	          	
+	            	var SuccessMsg = "User Unlocked successfully.";
+	        		 var Success = '<div class="alert alert-sm alert-success text-center"><i class="px-2 fas fa-check"></i> ' + SuccessMsg + '</div>';
+	        		 localStorage.setItem("Status", Success);
+	        		 location.reload();	
+		        
+	          	
+	          
+	            } 
+	            
+	        });
+		   
+	   };
+	   
+	   document.getElementById("deleteUser").onclick = function (){
+				  
+	       
+	       
+		   var delUserId=$('#delUserId').val();
+		   var delEmail=$('#delUserEmail').val();
+			
+			var loginEmail = document.getElementById('loginEmail').innerText;
+			
+			
+	
+			if(delEmail != loginEmail)
+			{		
+				   $.ajax({
+			            url: 'deleteUsr',
+			            type: 'POST',
+			            data:{ 
+			            		"delUserId": delUserId
+			            		
+			            		}
+			      		  }).done(function(data) {
+				
+			            if (data == "Success") 
+			            {
+				          	 
+			            	var SuccessMsg = "User record deleted permanently.";
+			        		 var Success = '<div class="alert alert-sm alert-success text-center text-danger"><i class="px-2 fas fa-check"></i> ' + SuccessMsg + '</div>';
+			        		 localStorage.setItem("Status", Success);
+			        		 location.reload();	
+				        
+		
+			            }
+	        			});
+				   
+			}  
+			else {
+				 var ErrorMsg = "Error. Cannot Delete Logged in user. ";
+	       		 var Error = '<div class="alert alert-sm alert-danger text-center text-danger"><i class="px-1 fas fa-exclamation-triangle"></i> ' + ErrorMsg + '</div>';
+	       		 localStorage.setItem("Status", Error);
+	       		 location.reload();	
+				}     
+		   
+	   };
+	   
+	   
+	   document.getElementById("delLockUsr").onclick = function (){
+			  
+		   var delLockUserId=$('#delLockUserId').val();
+		   var delEmail = $('#delLockUserEmail').val();
+			var loginEmail = document.getElementById('loginEmail').innerText;
+			
+			
+	
+			if(delEmail != loginEmail)
+			{		
+			   $.ajax({
+		            url: 'deleteUsr',
+		            type: 'POST',
+		            data:{ 
+		            		"delUserId": delLockUserId
+		            		
+		            		}
+		      		  }).done(function(data) {
+		
+		            if (data == "Success") 
+		            {
+			          	 
+		            	var SuccessMsg = "Locked user deleted permanently.";
+		        		 var Success = '<div class="alert alert-sm alert-success text-center text-danger"><i class="px-2 fas fa-check"></i> ' + SuccessMsg + '</div>';
+		        		 localStorage.setItem("Status", Success);
+		        		 location.reload();	
+			        
+	
+		            } 
+		            
+		        });
+	   		}  
+			else {
+				 var ErrorMsg = "Error. Cannot Delete Logged in user. ";
+	      		 var Error = '<div class="alert alert-sm alert-danger text-center text-danger"><i class="px-1 fas fa-exclamation-triangle"></i> ' + ErrorMsg + '</div>';
+	      		 localStorage.setItem("Status", Error);
+	      		 location.reload();	
+			} 
+	   };
+	   
+
+	   function ValidateFullName_A()
+	   {
+		   var inputText_Name = document.getElementById('a_fullname');
+	 
+		   var fnameformat = RegExp("^[a-zA-Z]+ [a-zA-Z]+$");
+		   
+		   if(!inputText_Name.value.match(fnameformat))
+		   	{		   		
+		   		console.log("Invalid Full Name");
+		   		document.getElementById("a_fullname").value = inputText_Name.value;
+		   		document.getElementById("a_invalid_fname").innerText = "Please enter name in First Name and Last Name format.";
+		   		
+		   		$('form').addClass('was-validated');
+		   		inputText_Name.setCustomValidity("Invalid field.");
+		   		
+		   		
+		   		event.preventDefault();
+		   		return false;
+		   		
+		   	} else if(inputText_Name.value.match(fnameformat)){
+		   		
+		   		inputText_Name.setCustomValidity("");
+		   		return true;
+		   	};
+		   	
+		   return( true );	
+		   
+	   };
+
+	   
+	   function ValidateEmail_A()
+	   {
+	       var emailSuffix="gmail.com";
+	       
+	       function callback(response) {
+	           var data = JSON.parse(response);
+	           emailSuffix = data.cust_domain;
+	       }
+	      
+		       $.ajax({
+			   url: "projectConfig",
+			   type: "GET",
+			   async: false,
+			   success : callback 
+			
+			});
+		       
+		   var domain1 = ["mastek.com"];
+		   var domain2 = [emailSuffix];
+		   
+		   var inputText_Email = document.getElementById('a_InputEmail');
+		   
+		   var isDefaultDomain = inputText_Email.value.indexOf("@" + domain1);
+		   var IsCustomerDomain = inputText_Email.value.indexOf("@" + domain2);
+		   	
+		   	
+		   	if(isDefaultDomain < 1 && IsCustomerDomain < 1)
+		   	{
+		   		console.log("Invalid Email");
+		   		document.getElementById("a_InputEmail").value = inputText_Email.value;
+		   		document.getElementById('a_invalid_email').innerHTML = "Only <strong>@" + domain1 + "</strong> and <strong>@" + domain2 + "</strong> emails are allowed.";
+
+		   		$('form').addClass('was-validated');
+		   		inputText_Email.setCustomValidity("Invalid field.");
+		   			   		
+		   		event.preventDefault();
+		   		return false;
+		   	
+		   	} else if (isDefaultDomain > 1 || IsCustomerDomain > 1) {
+		   		console.log("isDefaultDomain: " + isDefaultDomain + " IsCustomerDomain: " + IsCustomerDomain);
+		   		console.log("Valid Email");
+		   		$('form').addClass('was-validated'); 
+		   		inputText_Email.setCustomValidity("");		   	
+		   		return true ;	
+		   	};
+		   	
+		   	isDefaultDomain = '';
+		   	IsCustomerDomain = '';
+		   	
+		   	return( true );	
+		   
+	   };
+	   
+
+	   
+	   
+	   
+	   function ValidateFullName_E()
+			  
+	   {
+		   var inputText_Name = document.getElementById('e_fullname');
+	 
+		   var fnameformat = RegExp("^[a-zA-Z]+ [a-zA-Z]+$");
+		   
+		   if(!inputText_Name.value.match(fnameformat))
+		   	{		   		
+		   		console.log("Invalid Full Name");
+		   		document.getElementById("e_fullname").value = inputText_Name.value;
+		   		document.getElementById("e_invalid_fname").innerText = "Please enter name in First Name and Last Name format.";
+		   		
+		   		$('form').addClass('was-validated');
+		   		inputText_Name.setCustomValidity("Invalid field.");
+		   		
+		   		
+		   		event.preventDefault();
+		   		return false;
+		   		
+		   	} else if(inputText_Name.value.match(fnameformat)){
+		   		$('form').addClass('was-validated');
+		   		inputText_Name.setCustomValidity("");
+		   		return true;
+		   	};
+		   	
+		   return( true );	
+		   
+	   };
+	   
+	   
+	   
+	   function ValidateEmail_E()
+	   {
+	       var emailSuffix="gmail.com";
+	       
+	       function callback(response) {
+	           var data = JSON.parse(response);
+	           emailSuffix = data.cust_domain;
+	       }
+	      
+		       $.ajax({
+			   url: "projectConfig",
+			   type: "GET",
+			   async: false,
+			   success : callback 
+			
+			});
+		       
+		   var edomain1 = ["mastek.com"];
+		   var edomain2 = [emailSuffix];
+		   
+		   var inputText_Email = document.getElementById('e_InputEmail');
+		   
+		   var isDefaultDomain = inputText_Email.value.indexOf("@" + edomain1);
+		   var IsCustomerDomain = inputText_Email.value.indexOf("@" + edomain2);
+		   	
+		   	console.log("isDefaultDomain: " + isDefaultDomain + " IsCustomerDomain: " + IsCustomerDomain);
+		   
+		   
+		   	if(isDefaultDomain < 1 && IsCustomerDomain < 1)
+		   	{
+		   		console.log("Invalid Email");
+		   		document.getElementById("e_InputEmail").value = inputText_Email.value;
+		   		document.getElementById('e_invalid_email').innerHTML = "Only <strong>@" + edomain1 + "</strong> and <strong>@" + edomain2 + "</strong> emails are allowed.";
+
+		   		$('form').addClass('was-validated');
+		   		inputText_Email.setCustomValidity("Invalid field.");
+		   			   		
+		   		event.preventDefault();
+		   		return false;
+		   	} else if (isDefaultDomain > 1 && IsCustomerDomain > 1){
+		   		console.log("Validate Edit Valid Email");
+		   		$('form').addClass('was-validated');
+		   		inputText_Email.setCustomValidity("");
+		   		return true;
+		   	};
+		   	
+		   	return( true );	
+		   
+	   };
+
+	   
+   function cTrig(box) {
+		
+		var serverStatus=document.getElementById("serverSwitch").checked;
+		
+		if (serverStatus==true)
+		{
+			console.log("Automation Server ON");
+			var retValOn = confirm("Are you sure you want to switch the Automation Server ON ?");
+			
+		 if (retValOn==true) {
+       $.ajax({        
+           url: 'serverSwitch',
+           type: 'post',             
+            data: {
+              "serverStatus": 'on'
+           },
+           success: function(response) {
+          
+           alert("Automation Server is ON");
+             
+           }           
+       });
+   
+ 		}
+ 		
+ 		 else {
+   		
+   		console.log("Confirmation is cancel");
+   		document.getElementById("serverSwitch").checked = false;
+  		 }
+ 		
+			
+			
+	}
+		else
+		{
+			console.log("Automation Server OFF");
+			var retValOff = confirm("Are you sure you want to switch the Automation Server OFF ?");
+			
+		 if (retValOff==true) {
+       $.ajax({        
+           url: 'serverSwitch',
+           type: 'post',             
+            data: {
+              "serverStatus": 'off'
+           },
+           success: function(response) {
+          
+           alert("Automation Server is OFF");
+             
+           }           
+       });
+   
+ 		}
+ 		
+ 		 else {
+   		
+   		console.log("Confirmation is cancel");
+   		document.getElementById("serverSwitch").checked = true;
+  		 }
+ 
+ }
+	
+	
+    
+}
+
+   </script>
+	
+	
+
+</body>
+
+
+</html>

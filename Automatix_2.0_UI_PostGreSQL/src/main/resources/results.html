@@ -1,0 +1,2458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>One Automation Solution - Execution Results</title>
+	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+	<!-- Custom styles for this template -->
+    	
+	<link href="/resources/css/switch.css" rel="stylesheet">
+
+<!-- <script src="js/myFunctions.js"></script> -->
+
+<!--IMPORTANT FOR DATATABLE -->	
+
+<link rel='stylesheet' href='/resources/css/project_bootstrap.css' rel="stylesheet" type="text/css">
+<link rel='stylesheet' href='/resources/css/project_bootstrap.min.css' rel="stylesheet" type="text/css">
+
+<link rel='stylesheet' href='/resources/vendor/dataTables/dataTables.bootstrap4.min.css'>
+
+<link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  
+<style>
+
+td:last-child {text-align:center;}
+
+.container {
+margin:auto;
+}
+
+.custom-class-assignedto-modal .modal-dialog {
+  width: 80%;
+  
+}
+.custom-class-assignedto-modal .modal-body {
+  height: 580px;
+  overflow : auto;
+}
+
+tfoot input { width: 100%; padding: 0px; box-sizing: border-box; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: minmax(150px, auto);
+  grid-template-areas: 
+            "g2 g1"
+            "g2 g3"
+}
+
+.grid-vertical {
+  grid-template-columns: 30%;
+  grid-template-areas: 
+            "g1"
+            "g2"
+            "g2"
+            "g3"
+}
+
+.grid-item {
+  border: 1px solid #000;
+}
+
+.g1 {
+  grid-area: g1;
+}
+
+.g2 {
+  grid-area: g2
+}
+
+.g3 {
+  grid-area: g3
+}
+</style>
+
+	
+	<link href="vendor/bootstrap/css/bootstrap-select.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/resources/index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">One Automation Solution</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+			
+			
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="/resources/index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+                <a class="nav-link" href="/resources/initiate.html">
+                    <i class="fas fa-fw fa-caret-square-right"></i>
+                    <span>Initiate</span></a>
+            </li>
+			<li class="nav-item" id="TM_Menu" style="display:block;">
+                <a class="nav-link" href="/resources/test_master.html">
+                    <i class="fas fa-list-alt"></i>
+                    <span>Test Master</span></a>
+            </li>
+			<li class="nav-item active">
+                <a class="nav-link" href="/resources/results.html">
+                    <i class="fas fa-fw fa-chart-pie"></i>
+                    <span>Results</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="/resources/priority.html">
+                    <i class="fas fa-check-double"></i>
+                    <span>Test Prioritization</span></a>
+            </li>
+			
+			
+
+            <!-- Divider -->
+		<div id="AdminMenu" style="display: block;">
+			<hr class="sidebar-divider">
+			
+		<!-- Heading -->
+			
+			<div class="sidebar-heading" >Configs</div>
+			
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item m-0" ><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+				aria-controls="collapseUtilities"> <i class="fas fa-fw fa-wrench"></i> <span>Admin</span>
+			</a>
+
+				<div id="collapseUtilities" class="collapse hide" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						
+						<a class="collapse-item" href="/resources/user.html">User Management</a> <a class="collapse-item" href="/resources/master-config.html">Master Configs</a> <a class="collapse-item"
+							href="/resources/project-config.html">Project Configs</a>
+					</div>
+				</div></li>
+				</div>
+	        <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Others
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+                <a class="nav-link" href="/resources/faqs.html">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQs</span></a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="/resources/about.html">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span></a>
+            </li>
+
+ 
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"  onclick="rem_sidebar()"></button>
+            </div>
+
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-1 static-top shadow">
+				
+								
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+
+					<div class="container">
+                        <!-- Nav Item - Alerts -->
+						
+                      <form id="testForm" name="serverSwitch" action="serverSwitch" method="post">
+							<label class="mt-2 switch">
+								<input type="checkbox" id="serverSwitch" name="check1" checked='checked' onchange="cTrig(this)">
+								<div  id="box" class="slider round">
+									<span class="on">ON</span>
+									<span class="off">OFF</span>
+								</div>
+							</label>   
+						</form>	
+                        <div class="topbar-divider"></div>
+						
+						<span id="loginUser" class="ml-1 mr-4 text-success font-weight-bold small"><< Full Name >></span>
+						<span id="loginEmail"  hidden>loginEmailValue</span>
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item">
+                            <a href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt" style="color:#C0C0C0" ></i>
+                            </a>    
+                            
+
+                        </li>
+						</div>
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+				
+				<h6 class="dropdown-header">
+
+
+
+                    <!-- Page Heading -->
+                    <div class="card shadow mb-2">
+                        <div class="card-header py-2">
+							<div class="row">    
+								<div class="mt-2 col-6 font-weight-bold text-primary" style="font-size:15px">Execution Results
+								</div>
+								<div class="col-4 mt-1" align="right">
+								<span class="text-left"> 
+									<select class="selectpicker show-tick" data-style="btn btn-md btn-secondary" id="DaysCount" name="DaysCount" multiple data-max-options="1" required>
+										<option value="7">This Week</option>
+										<option value="15">This Fortnight</option>
+										<option value="30" selected>This Month</option>
+										<option value="60">Last 2 Months</option>
+										<option value="90">Last 3 Months</option>
+									</select>
+								</span>
+								</div>
+								<div class="col-2" align="right">
+								
+									<div class="custom-control custom-switch">	
+																	
+									 <label class="mt-2 mb-0 switch2"><input type="checkbox" id="autoRefresh" name="autoRefresh">
+									 	<div id="refreshbox" class="slider2 round">
+										<span class="on2">Auto-Refresh <strong>ON</strong></span>
+										<span class="off2">Auto-Refresh <strong>OFF</strong></span>
+										</div> 
+									</label>
+									  
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="m-2 alert alert-info text-center" id="ResultsZeroDataDiv" style="display: none"></div>
+                        <div class="py-1 px-2 card-body" id="ResultsMainDiv">
+							<div class="table-responsive" id="ResultsDiv" style="font-size:12px;display:block;">
+                                
+								<table class="table-md table-bordered display" style="width:100%;" id="ResultsdataTable" cellspacing="0" >
+								<thead class="table-info">
+								</thead>
+								
+								<tfoot>
+									
+										<tr>
+										
+										<th>ID</th>
+										<th>Triggered by</th>
+										<th>Triggered at</th>
+										<th>Selection</th>
+										<th>Automation Type</th>
+										<th>Environment</th>
+										<th>Test Type</th>
+										<th>Browser</th>
+										<th>Device</th>
+										<th>Pass %</th>
+										<th>Status</th>										
+									</tr>
+									
+									</tfoot>
+									
+							</table>
+							<div id="LoadingImage" class="mt-3 text-center" style="display:block">
+									<progress></progress>
+							</div>
+								
+                            </div>
+                        </div>			
+
+
+                 
+				 
+                </div>
+                <!-- /.container-fluid -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Mastek Ltd. 2023</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger" href="/automation">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Cancel an execution (The abort button modal) -->
+
+<div class="modal fade" id="cancelExecModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title">Cancel Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="font-size:25px;color:#e74a3b">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<form id="Cancel_Exec_Form">
+		<div> 
+		   <input type="hidden" class="form-control" id="delExe"  name="delExe"> 
+     	 </div>
+		
+		<div id="cancel_String">
+		
+		
+		</div>
+		
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="button" id="cancelExecId" class="btn btn-danger btn-danger" value="1">Yes</button>					
+										
+		</div>
+		</form>
+	
+		
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+				<div class="modal fade custom-class-assignedto-modal" id="ResultsDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				
+					
+				    <div class="modal-dialog modal-dialog-top modal-xl" role="document">
+					    <div class="modal-content" style="height:80%;">
+					       <div class="modal-body">
+						   
+						   <button type="button" class="close" data-dismiss="modal">&times;</button>
+						 								
+							<ul class="pb-1 nav nav-pills" id="pills-tab" role="tablist">
+								<li class="nav-item">
+								<a class="nav-link active" id="pills-dashboard-tab" data-toggle="pill" href="#pills-dashboard" role="tab" aria-controls="pills-dashboard" aria-selected="true"><i class="pr-2 fas fa-chart-area"></i>Dashboard</a>
+								</li>
+								<li class="nav-item">
+								<a class="nav-link" id="pills-scripts-tab" data-toggle="pill" href="#pills-scripts" role="tab" aria-controls="pills-scripts" aria-selected="false"><i class="pr-2 fas fa-code"></i>Scripts</a>
+								</li>
+								<li class="nav-item">
+								<a class="nav-link" id="pills-testcases-tab" data-toggle="pill" href="#pills-testcases" role="tab" aria-controls="pills-testcases" aria-selected="false"><i class="pr-2 fas fa-server"></i>Test Cases</a>
+								</li>
+							</ul>
+							
+							<div class="p-2 tab-content" id="pills-tabContent">
+								<div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel" aria-labelledby="pills-dashboard-tab">
+									<div class="row">
+
+										<!--  Total Scripts Developed -->
+										<div class="col-sm-2 px-1 mb-4">
+											<div class="card border-left-primary border-right-primary shadow h-80 ml-1">
+												<div class="p-2 card-body">
+													<div class="row no-gutters align-items-center">
+														<div class="col">
+															<div class="text-xs font-weight-bold text-primary">
+																Scripts Run
+															</div>
+															<div class="mb-0 text-gray-800" id="script_count" name="script_count"></div>
+														</div>
+														<div class="col-auto">
+															<i style="font-size:24px" class="fas text-gray-300">&#xf121;</i>
+														</div>										
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Total Tests Automated -->
+										<div class="col-sm-2 px-1 mb-4">
+											<div class="card border-left-primary border-right-primary shadow h-80 ml-1">
+												<div class="p-2 card-body">
+													<div class="row no-gutters align-items-center">
+														<div class="col">
+															<div class="text-xs font-weight-bold text-primary">
+																Test Cases Executed
+															</div>
+															<div class="mb-0 text-gray-800" id="tc_count" name="tc_count"></div>
+														</div>
+														<div class="col-auto">
+															<i style="font-size:24px" class="fas text-gray-300">&#xf0ae;</i>
+														</div>										
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Modules covered Card -->
+										<div class="col-sm-2 px-1 mb-4">
+											<div class="card border-left-primary border-right-primary shadow h-80 ml-1">
+												<div class="p-2 card-body">
+													<div class="row no-gutters align-items-center">
+														<div class="col">
+															<div class="text-xs font-weight-bold text-primary">
+																Modules covered
+															</div>
+															<div class="mb-0 text-sm text-gray-800" id="moduleCountDiv" name="avgtime"></div>
+														</div>
+														<div class="col-auto">
+															<i style="font-size:24px" class="fab text-gray-300">&#xf36c;</i>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<!-- Features covered Card -->
+										<div class="col-sm-2 px-1 mb-4">
+											<div class="card border-left-primary border-right-primary shadow h-80 ml-1">
+												<div class="p-2 card-body">
+													<div class="row no-gutters align-items-center">
+														<div class="col">
+															<div class="text-xs font-weight-bold text-primary">
+																Features covered
+															</div>
+															<div class="mb-0 text-sm text-gray-800" id="featureCountDiv" name="avgtime"></div>
+														</div>
+														<div class="col-auto">
+															<i style="font-size:24px" class="fab text-gray-300">&#xf36c;</i>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<!-- Executions Completed Card -->
+										<div class="col-sm-2 px-1 mb-4">
+											<div class="card border-left-primary border-right-primary shadow h-80 ml-1">
+												<div class="p-2 card-body">
+													<div class="row no-gutters align-items-center">
+														<div class="col">
+															<div class="text-xs font-weight-bold text-primary">
+																Total Time Taken
+															</div>
+															<div class="mb-0 text-gray-800" id="totaltime" name="totaltime"></div>
+														</div>
+														<div class="col-auto">
+															<i style="font-size:24px" class="fa text-gray-300">&#xf017;</i>
+														</div>										
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<!-- Total Test Cases Executed Card -->
+										<div class="col-sm-2 px-1 mb-4">
+											<div class="card border-left-primary border-right-primary shadow h-80 ml-1">
+												<div class="p-2 card-body">
+													<div class="row no-gutters align-items-center">
+														<div class="col">
+															<div class="text-xs font-weight-bold text-primary">
+																Avg. Time per TC
+															</div>
+															<div class="mb-0 text-sm text-gray-800" id="perTestcaseTimeDiv" name="avgtime"></div>
+														</div>
+														<div class="col-auto">
+															<i style="font-size:24px" class="fab text-gray-300">&#xf36c;</i>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+													
+									</div>
+									
+									
+									
+									<div class="row">
+										<div class="col-sm-2">
+										</div>
+										<div class="col-sm-8">
+											<div class="card shadow px-1 mb-4">
+												<!-- Card Header Dropdown -->
+												<!-- Card Header Dropdown -->
+												<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+													<h6 class="m-0 font-weight-bold text-dark">Test Execution Status</h6>
+													
+												</div>
+												
+												<!-- Card Body -->
+												<div class="card-body">
+													<div class="chart-pie" id="pie_status_container">
+														<canvas width="599" height="277" id="pie_status"></canvas>														
+													</div>
+													
+												</div>
+												
+											</div>
+										</div>											
+									</div>
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="card shadow px-1 mb-4">
+												<!-- Card Header Dropdown -->
+												<!-- Card Header Dropdown -->
+												<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+													<h6 class="m-0 font-weight-bold text-dark">Module and Feature wise Test case count</h6>
+												</div>
+												
+												<!-- Card Body -->
+												<div class="card-body py-1" style="padding:0.3rem">
+													<div id="Table_ChartData">
+														<table id="test-table" border="1" class="my-1 table table-sm table-striped table-dark">
+															<thead>
+																<tr>
+																	<th>Module</th>
+																	<th width="50%">Feature</th>
+																	<th class="text-center bg-success">Passed</th>
+																	<th class="text-center bg-danger">Failed</th>
+																	<th class="text-center bg-info">Not Run</th>
+																</tr>
+															</thead>
+															
+														</table>
+													</div>
+													
+												</div>
+											</div>
+										</div>		
+									</div>
+								
+									<div class="row">
+									
+										<div id="ModuleChartDiv" class="col-sm-6">
+											<div class="card shadow px-1 mb-4">
+												<!-- Card Header Dropdown -->
+												<!-- Card Header Dropdown -->
+												<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+													<h6 class="m-0 font-weight-bold text-dark">Module-wise Execution breakup</h6>
+													
+												</div>
+												
+												<!-- Card Body -->
+												<div class="card-body py-1">
+													<div class="chart-bar" id="Modulewise_container">
+														<canvas id="Modulewise"></canvas>
+													</div>
+													
+												</div>
+											</div>
+										</div>
+										
+										<div id="AreaChartDiv" class="col-sm-6">
+											<div class="card shadow px-1 mb-4">
+												<!-- Card Header Dropdown -->
+												<!-- Card Header Dropdown -->
+												<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+													<h6 class="m-0 font-weight-bold text-dark">Pass rate trend for same test selection</h6>
+													
+												</div>
+												
+												<!-- Card Body -->
+												<div class="card-body py-1" style="padding:0.2rem;">
+													<div class="chart-area" id="myAreaChart_container" style="height:19.8rem">
+														<canvas id="myAreaChart"></canvas>
+														<div type="hidden"  class="alert text-center alert-warning" id="NoHistoricData" style="display:none;">
+															 
+														</div> 
+													</div>
+													
+												</div>
+											</div>
+										</div>	
+			
+											
+											
+									</div>
+
+
+									<div class="row">
+									
+										<div class="col-sm-12">
+											<div class="card shadow px-1 mb-4">
+												<!-- Card Header Dropdown -->
+												<!-- Card Header Dropdown -->
+												<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+													<h6 class="m-0 font-weight-bold text-dark">Feature-wise Execution breakup</h6>
+													
+												</div>
+												
+												<!-- Card Body -->
+												<div class="card-body py-1">
+													<div class="chart-bar" id="Featurewise_container">
+														<canvas id="Featurewise"></canvas>
+													</div>
+													
+												</div>
+											</div>
+										</div>					
+											
+											
+									</div>									
+								</div>
+								<!--- End of Dashboard Tab CONTENT -->
+								<!--- Start of Scripts Tab CONTENT -->
+								<div class="tab-pane fade" id="pills-scripts" role="tabpanel" aria-labelledby="pills-scripts-tab">
+									<div>
+									<table class="table-sm table-bordered display w-100 dataTable" id="Results_Scripts" cellspacing="0">
+										<thead class="table-secondary">
+										</thead>
+										<tfoot class="table-secondary">
+											<tr>
+												<th class="text-center">#</th>
+												<th>Script Name</th>
+												<th>Start Time</th>
+												<th>End Time</th>
+												<th>Time Taken</th>
+												<th width="5%">Status</th>
+												<th width="20%">Test Outcome</th>											
+												<th width="15%">Screenshot</th>
+												
+											</tr>
+										</tfoot>
+									</table>
+									</div>
+									<div class="card-body py-1 text-center bg-dark" id="RoutcomeSSImgDiv" style="display:none">
+																						
+									</div>
+									
+									<div class="card-body py-1 text-center bg-dark" id="RoutcomeSSVidDiv" style="display:none">
+																			
+									</div>
+								
+								</div>
+								
+								<!--- End of Scripts Tab CONTENT -->
+								<!--- Start of Test Cases Tab CONTENT -->
+								<div class="tab-pane fade" id="pills-testcases" role="tabpanel" aria-labelledby="pills-testcases-tab">
+								
+								<table class="table-sm table-bordered table-striped display w-100 dataTable" id="Results_Tests" cellspacing="0">
+									<thead class="table-primary">
+									</thead>
+									<tfoot class="table-primary">
+										<tr>
+											<th class="text-center">#</th>
+											<th width=10%>Manual ID</th>
+											<th width=30%>Test Objective</th>
+											<th >Module</th>
+											<th >Feature</th>
+											<th>Priority</th>
+											<th>Risk</th>											
+											<th>Script Name</th>
+											<th width=10%>Status</th>
+											
+										</tr>
+									</tfoot>
+								</table>								
+								
+								</div>
+								<!--- End of Test Cases Tab CONTENT -->
+							</div>
+		  </div>
+		</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Page level custom scripts -->
+    
+    
+<script src='vendor/jquery/jquery.min.js'></script>
+<script src='/resources/vendor/extras/jquery.dataTables.min.js'></script>
+    
+    
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src='/resources/vendor/extras/dataTables.buttons.min.js'></script>
+<script src='/resources/vendor/extras/buttons.html5.min.js'></script>
+
+<script src='/resources/vendor/extras/buttons.colVis.min.js'></script>
+
+
+<script type="text/javascript" src="/resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap-select.min.js"></script>
+<script src="js/project_bootstrap.min.js"></script>
+
+<script src="vendor/chart.js/Chart.min.js"></script> 
+<script src="vendor/chart.js/Chart.bundle.min.js"></script>
+<script src="vendor/chart.js/chartjs-plugin-datalabels.min.js"></script>
+<script src='/resources/vendor/extras/buttons.bootstrap.min.js'></script>
+<script src="js/myFunctions.js"></script> 
+
+
+
+
+<script>
+
+
+
+function sortByProperty(property){  
+	   return function(a,b){  
+	      if(a[property] > b[property])  
+	         return 1;  
+	      else if(a[property] < b[property])  
+	         return -1;  
+	  
+	      return 0;  
+	   }  
+	};
+	
+	
+	
+function ShowChildDetails(element, data){
+	
+	$this = $(this);
+	var table = $('#Results_Scripts').DataTable();
+	var dtRow = element.closest('tr').rowIndex;		
+	
+	var spath_string = document.getElementById("Results_Scripts").rows[dtRow].cells[7].innerText;
+	var triggertime = 	document.getElementById("Results_Scripts").rows[dtRow].cells[2].innerText;
+	var tstamp = triggertime.substr(0,triggertime.indexOf(' '));
+	const d = new Date(tstamp);
+	var date = d.getDate();
+	var month = d.getMonth()+1;
+	
+	if (date.toString().length < 2) {
+        date = '0' + date;
+	} else  
+	{
+		date = date;
+	}
+	if (month.toString().length < 2) {
+        month = '0' + month;
+	} else  
+	{
+		month = month;
+	};
+	
+	
+	
+	var year = d.getFullYear();		
+	var D_foldername = date + "" + month + "" + year;
+	
+	var fileExt = spath_string.split('.').pop();
+	
+	
+	var allowed_V_format = "mp4";
+	var allowed_I_format = "png";
+	
+	
+	if (fileExt == allowed_I_format) {
+		document.getElementById('RoutcomeSSVidDiv').style.display = "none";
+		document.getElementById('RoutcomeSSImgDiv').style.display = "block";
+		document.getElementById('RoutcomeSSImgDiv').innerHTML = '<img style="height:540px;" src="resources/evidences/' + D_foldername + "/" + spath_string + '" />';
+	} else if (fileExt == allowed_V_format){
+		document.getElementById('RoutcomeSSImgDiv').style.display = "none";
+		document.getElementById('RoutcomeSSVidDiv').style.display = "block";
+		document.getElementById('RoutcomeSSVidDiv').innerHTML = '<video width="95%" controls muted><source src="resources/evidences/' + D_foldername + "/" + spath_string + '" type="video/mp4" style="max-width: 100%;">Your browser does not support HTML5 video. Please upgrade to latest version of Google Chrome.</video>';
+	};
+				
+	
+	
+
+};
+
+function filterexecs() {
+	 	
+		var oTable = $('#ResultsdataTable').dataTable();
+		
+		if (document.getElementById('myExecsBtn').innerText == "Show My List"){
+			var username = document.getElementById('loginUser').innerHTML;			
+			oTable.fnFilter(username, 1, true, false, false, false); 
+			document.getElementById('myExecsBtn').innerHTML = "Show All";
+		}
+		else{
+			var username = "";			
+			oTable.fnFilter(username, 1, true, false, false, false); 
+			document.getElementById('myExecsBtn').innerHTML = "Show My List";
+		}
+	};
+	
+
+$(document).ready(function (){
+
+	
+	
+	
+	/* session management */
+	  var now = new Date().getTime();	  
+	  var setupTime = localStorage.getItem('setupTime');
+	  var logoutcheck=localStorage.getItem('logout');
+	  
+	  
+
+	  
+	  var diff=now-setupTime;
+	  
+
+	  
+	  if((diff) > 3600000)
+		  {
+		 	  localStorage.clear();
+	      	  
+	          window.location.href = "/automation";
+	          localStorage.setItem('logout','logout');
+		  
+		  }
+	  
+	  /* session management */
+	  
+	
+	var name=localStorage.getItem("name");
+	var loginEmail=localStorage.getItem("loginEmail");
+	
+	document.getElementById('loginUser').innerHTML=name;
+	document.getElementById('loginEmail').innerHTML=loginEmail;
+	
+	if(localStorage.getItem("sidebar"))
+    {
+	  var sidebar_class = localStorage.getItem("sidebar");
+	  if (sidebar_class == "collapsed") {
+	  	$(".sidebar").toggleClass("toggled");
+	  	
+	  }	else{
+		  $(".sidebar").removeClass("toggled");  			 
+	  }
+		 
+    }
+	
+	if(localStorage.getItem("AutoRefresh"))
+    {
+		var refreshval = localStorage.getItem("AutoRefresh");
+		if (refreshval == "true") {
+		 $('#autoRefresh').prop('checked', true);
+		 } else {
+		 $('#autoRefresh').prop('checked', false);
+		 } 
+		
+	}
+	
+	 $.ajax({        
+         url: 'getServerStatus',
+         type: 'GET',             
+         success: function(response) {
+        
+         if(response=="on")
+        	 {
+        	 document.getElementById("serverSwitch").checked = true;
+        	 }
+         else
+        	 {
+        	 document.getElementById("serverSwitch").checked = false;
+        	 }
+           
+         }           
+     });
+	
+	 
+		$.ajax({
+			type: "GET",
+			url: "usermanagement",   
+		  
+		       success: function(response) {
+		      
+		   	 var data = JSON.parse(response);
+		     
+		   	var curruser =  data.filter(function(user) {
+		    	return user.email == loginEmail;
+		    });
+		   	
+		       var udata = {
+		    		   "email":   curruser[0].email,
+		    		   "role":   curruser[0].role,
+		    		   "name": curruser[0].name,
+		    		   "islocked": curruser[0].islocked
+		       };
+
+	/* Only Allowed for ADMIN . Present Roles: Admin, Automation Tester, Tester, User*/
+
+	var C_URL = window.location.href;
+	var denied = 'denied.html';
+	var page = '';
+	page = C_URL.replace(/^.*[\\\/]/, '').replace(/.html/, '');
+
+
+	if (udata.role != "Admin") {
+		document.getElementById("AdminMenu").innerHTML = "";
+		
+		if (page == "user" || page == "master-config" || page == "project-config") {
+			document.getElementById("serverSwitch").disabled = true;
+			location.replace(denied);
+		} 
+	} 
+
+	if (localStorage.getItem("DaysCountSelection")) {
+            var selDayCount = localStorage.getItem("DaysCountSelection");
+        } else {
+            var selDayCount = 30;
+        }
+
+        $("select[name=DaysCount]").val(selDayCount);
+        $(".selectpicker").selectpicker("refresh");
+        
+	$("select#DaysCount").on("change", function () {
+            var selDaysCount = document.getElementById("DaysCount").value;
+            localStorage.setItem("DaysCountSelection", selDaysCount);
+            location.reload();
+        });
+	
+	(function AutoRefresh() {
+	    	var selDCountValue = document.getElementById("DaysCount").value;
+	    	myVar = {selDCount: selDCountValue};
+			 $.ajax({
+		         type: "GET",
+		         	url: 'getAllResultsUrl',
+		         	data: myVar,
+		        	 success: function (response) {
+		        		 
+		        		 if (response == "No data"){
+		        			 document.getElementById('ResultsMainDiv').style.display = "none";
+				        		document.getElementById('ResultsZeroDataDiv').style.display = "block";
+				        		
+				        		var initiateHTML = '<a href="initiate.html" class="btn btn-sm btn-success" role="button"><span class="ml-1 py-1 fas fa-play"></span><span class="mr-1 ml-1 text-right">Initiate</span></a>';
+				        		var addHTML = '<button type="submit" name="submit2" id="btnSubmitExec" class="mt-1 btn-sm btn-success"><span class="ml-1 py-1 fas fa-play"></span><span class="mr-1 ml-1 text-right">Initiate</span></button>';
+				        		
+				        		document.getElementById('ResultsZeroDataDiv').innerHTML = '<strong>Results will be shown here once executions are triggered and completed. Initiate a execution here. </strong>' + initiateHTML;	        		
+				        		
+			        	 }
+		       	  var table_data = JSON.parse(response);
+		       		console.log(table_data);
+		      	
+		 		 $('#ResultsdataTable').DataTable({
+					
+		  
+			        initComplete: function () {
+			            
+			            
+			        	this.api().columns([1, 3, 4, 5, 6, 7, 8, 10]).every( function () {
+						 $( select ).click( function(e) {
+		                e.stopPropagation();
+						});
+						
+		                var column = this;
+		                var select = $('<select class="form-control-sm" style="font-size:13px; padding: .02em .2rem;" ><option value="">Show all</option></select>')
+		                    .appendTo( $(column.footer()).empty() )
+		                    .on( 'change', function () {
+		                        var val = $.fn.dataTable.util.escapeRegex(
+		                            $(this).val()
+		                        );
+		 
+		                        column
+		                            .search( val ? '^'+val+'$' : '', true, false )
+		                            .draw();
+		                    } );
+		 
+		                    column.cells('', column[0]).render('display').sort().unique().each( function ( d, j ) {
+							if(column.search() === '^'+d+'$'){
+								select.append( '<option value="'+d+'" selected="selected">'+d+'</option>' );
+							} else {
+								var val = $('<div/>').html(d).text();
+								select.append( '<option value="' + val + '">' + val + '</option>' );
+							}
+						} );
+		            } );
+			        	this.api().columns([0,2,9]).every(function() {
+			                var that = this;
+			                var input = $('<input type="text" placeholder="Search" />')
+			                  .appendTo($(this.footer()).empty())
+		
+			                  .on('keyup change', function() {
+			                    if (that.search() !== this.value) {
+			                      that
+			                        .search(this.value)
+			                        .draw();
+			                    }
+			                  });
+			              });
+			        	
+			        	
+			        	
+			        	
+			        	
+		        },	
+				
+			
+			
+				"data": table_data,
+				
+				"dom": 
+		
+					"<'row col-sm-12'<'pl-0 mt-1 col-sm-2'l><'mt-2 col-sm-2 text-left'B><'mt-2 col-sm-4 text-center'><'mt-2 pr-0 col-sm-4'f>>" +
+					"<'row col-sm-12 m-0 px-2'<'col-sm-12' tr>>" +
+					"<'row col-sm-12'<'col-sm-4'i><'col-sm-8'p>>",
+					
+					"ordering": true,
+					"paging": true,
+					"autoWidth": true,
+					"destroy": true,
+				
+					"order": [[ 10, "desc" ]],
+				
+				"columns": [ 
+					
+		            { "title": "ID", "data": "executionId" },
+		            { "title": "Triggered by", "data": "initiatorId" },
+					{ "title": "Scheduled Time", "data": null },
+					{ "title": "Selection", "data": "selectionType" },
+					{ "title": "Automation Type", "data": "client" },
+					{ "title": "Env.", "data": "environment" },
+					{ "title": "Test Type", "data": "testType" },
+					{ "title": "Browser", "data": "browser" },
+					{ "title": "Device", "data": "device" },
+					{ "title": "Pass%", "data": null },
+		            { "title": 'Status', "data": "status" }
+		            ],
+				
+		
+		            "buttons": [
+	                            {
+	                                extend: "colvis",
+	                                className: "btn btn-default buttons-collection buttons-colvis border border-primary",
+	                                columns: ":eq(1),:eq(2),:eq(3),:eq(4),:eq(5),:eq(6),:eq(7),:eq(8)",
+	                                text: '<i class="fa fa-columns text-primary"></i>',
+	                                titleAttr: "Configure Column Visibility",
+	                            },
+	                            {
+	                                
+	                        		className: "btn btn-primary",
+	                                attr:  {
+	                                    title: 'Show My List',
+	                                },
+	                                text:"<button class='btn btn-sm btn-primary' id='myExecsBtn'>Show My List</button>",
+	                                action: function (e, dt, node, config) {
+	                                    filterexecs()
+	                                },
+	                            }
+	                        ],
+		            "columnDefs": [								
+								
+								{targets: [0, 4, 5, 7],  className: "text-center"},
+								{targets: [2],  className: "text-center", render: function (data,type, row, meta) 
+									{
+										if (data.typeOfExecution == "Scheduled" && data.status == "Not Started")
+										{	
+											return '<i class="far fa-clock text-warning"></i>&nbsp; ' + data.date; 
+										}
+										else 
+										{
+											return data.date;
+										}
+									}
+								},
+								{targets: [3],  visible: false, className: "text-center"},
+								{targets: [6],  visible: false, className: "text-center"},
+								
+								/* {targets: 9, visible: true, render: $.fn.dataTable.render.percentBar('round','#fff', '#000000', '#5cb85c', '#FF9CAB', 0, 'groove')}, */
+								
+								{
+                                    targets: [9],
+                                    width: "9%",
+                                    className:"text-center",
+                                    render: function (data) 
+                                    {
+                                	var passrate_raw = ((data.PassCount / data.TotalCount) * 100).toFixed(0);
+	                                var passrate = passrate_raw + "%";
+                                        
+                                    var margin = "mt-2";
+                                    var textclass = "text-dark";
+                                    
+                                    if (passrate_raw <= 30) {
+                                        var barclass = "bg-danger";
+                                        var passrate_text = passrate;
+                                    } else if (passrate_raw > 30 && passrate_raw <= 70) {
+                                        var barclass = "bg-warning";
+                                        var passrate_text = passrate;
+                                    } else if (passrate_raw > 70 && passrate_raw <= 100) {
+                                        var barclass = "bg-success";
+                                        var passrate_text = passrate;
+                                    }
+                                    return (
+                                        '<div class="progress progress-bar-striped position-relative"><div class="progress-bar progress-bar-striped ' +
+                                        barclass +
+                                        '" role="progressbar" style="width: ' +
+                                        passrate +
+                                        '" aria-valuenow="' +
+                                        passrate +
+                                        '" aria-valuemin="0" aria-valuemax="100"></div><small class="' +
+                                        margin +
+                                        " justify-content-center d-flex position-absolute w-100 " +
+                                        textclass +
+                                        '">' +
+                                        passrate_text +
+                                        "</small></div>"
+                                    );
+                                },
+                            },
+
+								
+								{targets: [-1], width: "12%", className: "text-center", render: function (data,type, row, meta) 
+									{ 
+									if (data == "Completed") {
+									
+									return "<button type='button' id='Results_Completed' class='btn btn-success btn-sm btn-block dt-results'> Completed </button>";
+										} else if (data == "In Progress")
+										{ return "<button type='button' class='btn btn-warning btn-sm btn-block' disabled><span class='spinner-border text-secondary spinner-border-sm'></span> In Progress</button>";
+										} else
+										{ 	
+											var InitiatorID = row['initiatorId'];
+											if ((udata.role == "Admin" || udata.role == "Automation Tester") || ( InitiatorID == udata.name )) {
+												return "<button type='button' class='btn btn-info btn-sm' disabled style='width:75%'>Not Started</button> <button type='button' id='Results_Cancel' class=' btn-sm btn-danger dt-cancel' style='line-height:1.2; line-width:1.2;'><i class='fas fa-ban'></i></button>";	
+											} else {
+												return "<button type='button' class='btn btn-info btn-sm' disabled style='width:100%'>Not Started</button>";
+											}
+										}
+									}
+								}
+							],
+							 
+						});
+		 		
+		 		
+		 		
+		 		var alertmsg = '<div id="SuccessDiv"></div>';
+				$("div.toolbar").html(alertmsg);
+				
+				/* var ExecFilterBtn = '<button id="myExecsBtn" class="btn btn-md btn-info" onClick="filterexecs()" >Show My List</button>';
+				
+				$("div.myExecutionsButton").html(ExecFilterBtn); */
+				
+				$('#autoRefresh').change(function() {
+			        if(this.checked) {
+			        	
+			        	var refreshval = "true";
+			        	
+			        } else{
+			        			        	
+			        	var refreshval = "false";
+			        }
+			        localStorage.removeItem("AutoRefresh");
+			        localStorage.setItem("AutoRefresh", refreshval);
+			        location.reload();
+		    		 
+			    });
+				
+				if(localStorage.getItem("Status"))
+			    {
+					var SuccessMsg = localStorage.getItem("Status");
+					 document.getElementById("SuccessDiv").innerHTML = SuccessMsg;
+					 localStorage.removeItem("Status");
+			    }
+				
+		       		},
+			 
+			 	
+				 complete: function() {
+					 
+						 var timeout_auto = 10000;
+						 var timeout_manual = 10000000;					
+						 
+						 var autoRefresh = document.getElementById("autoRefresh");
+						 
+						 if (autoRefresh.checked){
+							 setTimeout(AutoRefresh, timeout_auto);
+						 }	 else {
+							 setTimeout(AutoRefresh, timeout_manual);
+						 }						
+				      
+				    }
+				 
+				 
+			     });
+			})();
+
+		}  
+	});	
+		
+	 document.getElementById('LoadingImage').style.display = "none";
+
+	$(this).on('click','#Results_Completed',function(evt) {	
+			$this = $(this);			
+			var dtRow = $this.parents('tr');			
+			var Flen = dtRow[0].cells.length;
+			
+			
+			var table = $('#ResultsdataTable').DataTable();	
+		 	
+			
+			var executionId = table.row( $(this).parents('tr') ).data()["executionId"];
+			var environment=table.row( $(this).parents('tr') ).data()["environment"];;
+			var browser=table.row( $(this).parents('tr') ).data()["browser"];;
+			var testType=table.row( $(this).parents('tr') ).data()["testType"];;
+			var client=table.row( $(this).parents('tr') ).data()["client"];;
+			
+			 $.ajax({
+		         type: "POST",
+					url: 'getChartingDataUrl',
+					data:"selExecutionId="+executionId+"&environment="+environment+"&browser="+browser+"&testType="+testType+"&client="+client,
+					
+		        	 success: function (response) {
+		        		
+		       	  	var data = JSON.parse(response);
+		       	  	var testCaseData= data.testCaseResultsData.sort(sortByProperty("manualTestId"));
+		       	 	
+		    
+		       	 	
+			$('#Results_Tests').DataTable({
+				 
+			
+			initComplete: function () {
+				
+				this.api().columns([2, 3, 4, 5, 6, 7, 8]).every( function () {
+					 $( select ).click( function(e) {
+					e.stopPropagation();
+					});
+					   
+					var column = this;
+					var select = $('<select id="FilterSelect" class="form-control-sm" style="font-size:13px; padding: .02em .2rem;"><option value="">Show all</option></select>')
+						.appendTo( $(column.footer()).empty() )
+						.on( 'change', function () {
+							var val = $.fn.dataTable.util.escapeRegex(
+								$(this).val()
+							);
+	 
+							column
+								.search( val ? '^'+val+'$' : '', true, false )
+								.draw();
+						} );
+	 
+						column.cells('', column[0]).render('display').unique().sort().each( function ( d, j ) {
+						if(column.search() === '^'+d+'$'){
+							select.append( '<option value="'+d+'" selected="selected">'+d+'</option>' );
+						} else {
+							var val = $('<div/>').html(d).text();
+							select.append( '<option value="' + val + '">' + val + '</option>' );
+						}
+					} );
+				} );
+				
+				this.api().columns([1]).every(function() {
+	                var that = this;
+	                var input = $('<input type="text" placeholder="Search" />')
+	                  .appendTo($(this.footer()).empty())
+
+	                  .on('keyup change', function() {
+	                    if (that.search() !== this.value) {
+	                      that
+	                        .search(this.value)
+	                        .draw();
+	                    }
+	                  });
+	              });
+			},		
+	
+		"data": testCaseData,
+		"dom": 
+
+			"<'row'<'col-sm-3'l><'col-sm-5'><'mt-2 col-sm-4'f tr>>" + 
+			"<'row'<'col-sm-12' tr>>" +
+			"<'row'<'col-sm-4'i><'col-sm-8'p>>",
+			
+			
+			"paging": true,
+			"autoWidth": true,
+		
+		"order": [[ 0, "asc" ]],
+		
+		
+		"columns": [ 
+			{ "title": "#", "data": null },
+            { "title": "Manual ID", "data": "manualTestId" },
+			{ "title": "Test Objective", "data": "testObjective" },
+			{ "title": "Module", "data": "moduleName" },
+			{ "title": "Feature", "data": "featureName" },
+			{ "title": "Priority", "data": "severity" },
+			{ "title": "Risk", "data": "rflag" },
+			{ "title": "Script Name", "data": "scriptName" },
+			{ "title": "Status", "data": "status"} 			
+            ],
+		
+
+        "columnDefs": [
+						{targets: [0], width: '5%', className: "text-center", render: function (data, type, row, meta) 
+							{
+							return meta.row + meta.settings._iDisplayStart + 1;
+							}
+						},
+						
+						{targets: [1, 3, 4, 5, 7 ],  className: "text-center"},
+						{targets: [6], width: "auto", className: "text-center", visible: false, render: function (data) 
+							{ if (data == "G") {
+							
+							return "<i class='fas fa-level-down-alt' style='color:#1cc88a'><div style='font-size:0px'>Green</div></i>";
+								} else if (data == "A")
+								{ return "<i class='fas fa-exchange-alt' style='color:#f6c23e'><div style='font-size:0px'>Amber</div></i>";
+								} else if (data == "R")
+								{ return "<i class='fas fa-level-up-alt' style='color:#e74a3b'><div style='font-size:0px'>Red</div></i>";
+								} else
+								{ return "";
+								}
+							}
+						},  
+						{targets: [-1], width: "auto", className: "text-center", render: function (data) 
+							{ if (data == "PASS") {
+							
+							return "<span class='py-0 px-2 btn-block alert-success rounded' style='font-size:13px'>Passed</span>";
+								} else if (data == "FAIL")
+								{ return "<span class='py-0 px-2 btn-block alert-danger btn-block rounded' style='font-size:13px'>Failed</span>";
+								} else
+								{ return "<span class='py-0 px-2 btn-block alert-dark btn-block rounded' style='font-size:13px'>Not Run</span>";
+								}
+							}
+						}
+					]				
+			});
+			
+			var resultScriptData = data.ReportScriptData.sort(sortByProperty("startTime"));
+						
+			document.getElementById("moduleCountDiv").innerHTML=data.executedModuleCount;
+			document.getElementById("featureCountDiv").innerHTML=data.executedFeatureCount;
+			document.getElementById("script_count").innerHTML=data.executedScriptCount;
+			document.getElementById("tc_count").innerHTML=data.executedTestCaseCount;
+			document.getElementById("totaltime").innerHTML=data.totalScriptTime;
+			document.getElementById("perTestcaseTimeDiv").innerHTML=data.executionTimePerTestcase;
+			
+			var table = $('#ResultsdataTable').DataTable();	
+			 $('#Results_Scripts').DataTable({
+			
+			
+			initComplete: function () {
+				
+				this.api().columns([1, 5]).every( function () {
+					 $( select ).click( function(e) {
+					e.stopPropagation();
+					});
+					   
+					var column = this;
+					var select = $('<select id="FilterSelect" class="form-control-sm" style="font-size:13px; padding: .02em .2rem;"><option value="">Show all</option></select>')
+						.appendTo( $(column.footer()).empty() )
+						.on( 'change', function () {
+							var val = $.fn.dataTable.util.escapeRegex(
+								$(this).val()
+							);
+	 
+							column
+								.search( val ? '^'+val+'$' : '', true, false )
+								.draw();
+						} );
+	 
+						column.cells('', column[0]).render('display').unique().sort().each( function ( d, j ) {
+						if(column.search() === '^'+d+'$'){
+							select.append( '<option value="'+d+'" selected="selected">'+d+'</option>' );
+						} else {
+							var val = $('<div/>').html(d).text();
+							select.append( '<option value="' + val + '">' + val + '</option>' );
+						}
+					} );
+				} );
+				this.api().columns([2,3,4,6,7]).every(function() {
+	                var that = this;
+	                var input = $('<input type="text" placeholder="Search" />')
+	                  .appendTo($(this.footer()).empty())
+
+	                  .on('keyup change', function() {
+	                    if (that.search() !== this.value) {
+	                      that
+	                        .search(this.value)
+	                        .draw();
+	                    }
+	                  });
+	              });
+			},		
+	
+		"data": resultScriptData,
+		"dom": 
+
+			"<'row'<'col-sm-3'l><'col-sm-5'><'mt-2 col-sm-4'f tr>>" + 
+			"<'row'<'col-sm-12' tr>>" +
+			"<'row'<'col-sm-4'i><'col-sm-8'p>>",
+			
+			"ordering": true,
+			"paging": true,
+			"autoWidth": true,
+		
+		"order": [[ 0, "asc" ]],
+		
+		
+		"columns": [ 
+			{ "title": "#", "data": null },
+            { "title": "Script Name", "data": "scriptName" },
+			{ "title": "Start Time", "data": "startTime" },
+			{ "title": "End Time", "data": "endTime" },
+			{ "title": "Time Taken", "data": "totalScriptTime" },
+			{ "title": "Status", "data": "status" },
+			{ "title": "Test Outcome", "data": "testOutcome" },
+			{ "title": "Screenshot Path", "data": "screenshot" }
+            ],
+		
+
+        "columnDefs": [
+						{targets: [0], width: '5%', className: "text-center", render: function (data, type, row, meta) 
+							{
+							return meta.row + meta.settings._iDisplayStart + 1;
+							}
+						},
+						{targets: [4], width: '5%', className: "text-center", render: function (data, type, row, meta) 
+							{ 
+							return format(data);
+							}							
+						},
+						
+						{targets: [1, 2, 3 ],  className: "text-center"},
+						{targets: [6],  className: "text-left"},
+						{targets: [7],  className: "text-center", render: function ( data, type, full, meta )
+							{ 	if (data !== "Screenshot Not Found" && data !== "")
+									{
+									var filename = data.replace(/^.*[\\\/]/, '');
+									
+									return '<td valign="middle" align="center"><button type="button" id="childdetails" onClick="return ShowChildDetails(this)" class="btn btn-md btn-light ShowChildDetails" style="font-size:0.7rem"><span class="m-0 p-0" aria-hidden="true">' + filename + '</span></button></td>'; 
+									}
+								else if (data == "Screenshot Not Found")
+									{									
+									return '<span class="text-danger">' + data + '. Please contact Admin.</span>';
+									}
+								else {
+									return '';
+									}
+							}	
+						
+						},
+						
+						{targets: [5], width: "auto", className: "text-center", render: function (data) 
+							{ if (data == "PASS") {
+							
+							return "<span class='py-0 px-2 btn-block alert-success rounded' style='font-size:13px'>Passed</span>";
+								} else if (data == "FAIL")
+								{ return "<span class='py-0 px-2 btn-block alert-danger btn-block rounded' style='font-size:13px'>Failed</span>";
+								} else
+								{ return "<span class='py-0 px-2 btn-block alert-dark btn-block rounded' style='font-size:13px;white-space:nowrap;'>Not Run</span>";
+								}
+							}
+						}
+					]				
+			});
+			 
+			 
+			 
+
+			 
+			 var table_HTML = '<table id="test-table" border="1" class="my-1 table table-sm table-striped table-dark"><thead>' +
+								'<tr>' +
+								'<th>Module</th>' +
+								'<th width="50%">Feature</th>' +
+								'<th class="text-center bg-success">Passed</th>' +
+								'<th class="text-center bg-danger">Failed</th>' +
+								'<th class="text-center bg-info">Not Run</th>' +
+								'</tr>' +
+								'</thead>' +				
+								'</table>';
+			
+			$('#Table_ChartData').empty().prepend(table_HTML);
+
+			
+			 var testcaseCountPerExecution=data.testcaseCountPerExecution;
+			 
+			 var ExecutionDateData=testcaseCountPerExecution.ExecutionDateData.reverse();
+			 var PassTestCaseData=testcaseCountPerExecution.PassTestCaseData.reverse();
+			 var PassCountData=testcaseCountPerExecution.PassCountData.reverse();
+			 var TotalCountData=testcaseCountPerExecution.TotalCountData.reverse();
+
+			 var combinedCountData = {PassCountData, TotalCountData};
+
+			 
+			 var div = document.getElementById('myAreaChart');
+			 if (ExecutionDateData == undefined || ExecutionDateData == null || ExecutionDateData.length <= 3)
+				
+				 {
+				 	document.getElementById('AreaChartDiv').style.display = "none";
+				 	document.getElementById("ModuleChartDiv").classList.remove('col-md-6');
+				 	document.getElementById("ModuleChartDiv").classList.add('col-md-8');
+				 	document.getElementById("ModuleChartDiv").classList.add('mx-auto');
+				 	
+				 }
+			 else {
+				 document.getElementById('NoHistoricData').style.display = "none";
+				 document.getElementById('AreaChartDiv').style.display = "block";
+				 document.getElementById("ModuleChartDiv").classList.remove('col-md-8');
+				 document.getElementById("ModuleChartDiv").classList.remove('mx-auto');
+				 document.getElementById("ModuleChartDiv").classList.add('col-md-6');
+				 
+			 var ctx = document.getElementById("myAreaChart");
+			 var myLineChart  = new Chart(ctx, {
+			   type: 'line',
+			   data: {
+			   labels: ExecutionDateData,
+			   datasets:  [{
+			       label: "% Passed",
+			       lineTension: 0.1,
+			       backgroundColor: "rgba(144, 238, 144 ,0.5)", 
+			       
+			       borderColor: "rgba(0, 100, 0, 1)",
+			       pointRadius: 3,
+			       pointBackgroundColor: "rgba(0,100,0 ,1 )",
+			       pointBorderColor: "rgba(78, 115, 223, 1)",
+			       pointHoverRadius: 3,
+			       pointHoverBackgroundColor: "rgba(0, 100, 0, 1)",
+			       pointHoverBorderColor: "rgba(0, 100, 0, 1)",
+			       pointHitRadius: 10,
+			       pointBorderWidth: 1,
+			 	  data:PassTestCaseData,
+			 	  data1: combinedCountData
+			     }]
+			 },
+			   options: {
+				   plugins: {
+					      datalabels: {
+					        formatter: (value, ctx) => {
+					          let sum = 0;
+					          let dataArr = ctx.chart.data.datasets[0].data;
+					          dataArr.map(data => {
+					            sum += data;
+					            
+					          });
+					          return value + "%";
+					        },
+					        color: '#505050',
+					        align: 'bottom',
+					        offset: '-25',
+					        labels: {
+					          title: {
+					            font: {
+					              size: '16'
+					            },
+					        
+					          }
+					        }
+					      }
+					    },
+					    maintainAspectRatio: false,
+			     layout: {
+			      padding: {
+			         left: 0,
+			         right: 0,
+			         top: 20,
+			         bottom: 0
+			       }
+			     },
+			     scales: {
+			       xAxes: [{
+			 	      stacked: true,
+			         time: {
+			           unit: 'date'
+			         },
+			         gridLines: {
+			           display: false,
+			           drawBorder: false,
+			         },
+			         ticks: {
+			           autoSkip: false,
+			 			maxTicksLimit: 7
+			         },
+			        
+			       }],
+			       yAxes: [{
+			    	   position: 'left',
+			         ticks: {
+			              beginAtZero: true,
+			 			steps: 10,
+			 			stepValue: 5,
+			 			max: 100,
+			           
+			         },
+			         gridLines: {
+			           color: "rgb(234, 236, 244)",
+			           zeroLineColor: "rgb(234, 236, 244)",
+			           drawBorder: true,
+			           borderDash: [2],
+			           zeroLineBorderDash: [2]
+			         }
+			       }],
+			     },
+			     legend: {
+			       display: false,
+			 	  position: 'bottom',
+			 	   padding: {
+			 				left: 0,
+			 				right: 0,
+			 				top: 0,
+			 				bottom: 0
+			 			  },
+			 				  
+			 			labels : {
+			 			fontColor: 'rgb(154, 154, 154)',
+			 			fontSize: 12,
+			 			usePointStyle : false,
+			 			padding: 20,
+			 			boxWidth: 12,
+			 			boxHeight: 10
+			 		}
+			 	  
+			     },
+			     tooltips: {
+				 		titleMarginBottom: 10,
+				 		titleFontColor: '#FFFFFF',
+				 		titleFontSize: 13,
+				 		backgroundColor: "#000000",
+				 		bodyFontColor: "#FFFFFF",
+				 		borderColor: '#4e73df',
+				 		borderWidth: 2,
+				 		xPadding: 15,
+				 		yPadding: 6,
+				 		displayColors: true,
+				 		caretPadding: 1,
+				 		callbacks: {
+				 			title: function() {},
+				 			label: function(tooltipItem, data1) {
+				 				var Label = data1.datasets[tooltipItem.datasetIndex].label;
+				 				
+				 				var passData = data1.datasets[0].data1.PassCountData;
+				 				var TotalData = data1.datasets[0].data1.TotalCountData;
+
+				 				var pass = passData[tooltipItem.index];
+				 				var total = TotalData[tooltipItem.index];
+				 				var percentage = Math.floor(((pass/total) * 100)+0.5);
+				 				
+				 				
+				 				return " " + Label + ": " + percentage + "% || (" + pass + " of " + total + " tests passed.)";
+				 				
+				 			}
+				 		}
+				 	},
+			 }
+			 });
+			 
+			 }
+		        	
+			 
+			 var PassScriptCount=data.PassScriptCount;
+			 var FailScriptCount=data.FailScriptCount;
+			 var NotRunScriptCount=data.NotRunScriptCount;
+			
+			
+			 
+			 var ctx = document.getElementById("pie_status").getContext("2d");
+			 
+			 
+			 var pie_data=[{
+				 
+					PassScriptCount,
+			 		FailScriptCount,
+			 		NotRunScriptCount
+				 
+			 }];
+			 
+			 var config = new Chart(ctx, {
+				 
+				 type: 'pie',
+			   data: {
+			     datasets: [{
+			       data: [
+			    	PassScriptCount,
+			 		FailScriptCount,
+			 		NotRunScriptCount,
+			       ],
+			       backgroundColor: [
+			         "#18a558",
+			 		"#F7464A",
+			 		"#46bfbd",
+			       ],
+			       label: 'Test Cases'
+			     }],
+			 	
+			     labels: [		
+			       "Passed",
+			 	  "Failed",
+			 	  "Not Run"
+			     ]
+			   },
+			 options: 
+			 	  {
+			 		responsive: true,
+			 		maintainAspectRatio: false,
+			 		legend: 
+			 		{
+			 			
+			 			display: true,
+			 			position: 'left',
+			 			labels : {
+			 				fontColor: 'rgb(154, 154, 154)',
+			 				fontSize: 12,
+			 				usePointStyle : false,
+			 				padding: 20,
+			 				boxWidth: 12,
+			 				boxHeight: 10
+			 			}
+			 		},
+			 		plugins: {
+					      datalabels: {
+					    	  display: function(context) {
+					              return context.dataset.data[context.dataIndex] !== 0; 
+					           },
+					        formatter: (value, ctx) => {
+					          let sum = 0;
+					          let dataArr = ctx.chart.data.datasets[0].data;
+					          dataArr.map(data => {
+					            sum += data;
+					          });
+					          let percentage = (value * 100 / sum).toFixed(2) + "%";
+					          return percentage;
+					        },
+					        color: 'white',
+					        labels: {
+					          title: {
+					            font: {
+					              size: '16'
+					            }
+					          }
+					        }
+					      }
+					    },
+			 		pieceLabel: {
+			 			render: 'percentage',
+			 			fontColor: 'black',
+			 			fontSize: 14,
+			 		},
+			     title: {
+			       display: false,
+			       text: 'Execution Status',
+			 	},
+			     animation: {
+			       animateScale: false,
+			       animateRotate: false
+			     }
+			 	
+			     
+			   }
+			 });
+			 
+			 
+			 
+			 var featureStatusData=data.AllFeatureStatusData;
+			 var featurenames=[];
+			 var featurePassStatus=[];
+			 var featureFailStatus=[];
+			 var featureNotRunStatus=[];
+			 
+			 var moduleStatusData=data.AllModuleStatusData;
+			 var modulenames=[];
+			 var modulePassStatus=[];
+			 var moduleFailStatus=[];
+			 var moduleNotRunStatus=[];
+			 
+			 $.each(moduleStatusData, function(k, v) {
+					
+		          
+		           modulenames.push(v.Module);
+		           modulePassStatus.push(v.Pass);
+		           moduleFailStatus.push(v.Fail);
+		           moduleNotRunStatus.push(v.NotRun);
+
+		              });
+			 
+			 $.each(featureStatusData, function(k, v) {
+					
+	          
+	           featurenames.push(v.Feature);
+	           featurePassStatus.push(v.Pass);
+	           featureFailStatus.push(v.Fail);
+	           featureNotRunStatus.push(v.NotRun);
+
+	              });
+			 
+			 var ctx = document.getElementById("Modulewise");
+			 var myBarChart = new Chart(ctx, {
+			   type: 'bar',
+			   data: {
+			   labels: modulenames,
+			   datasets: [{
+			     label: "Passed",
+			     backgroundColor: "#18A558",
+			     data: modulePassStatus,
+			     minBarLength: 1,
+			 	maxBarThickness: 25,
+			 	barPercentage: 0.9,
+			     categoryPercentage: 0.4
+			   }, {
+			     label: "Failed",
+			     backgroundColor: "#F7464A",
+			     data: moduleFailStatus,
+			     minBarLength: 1,
+			 	maxBarThickness: 25,
+			 	barPercentage: 0.9,
+			     categoryPercentage: 0.4
+			   }, {
+			     label: "Not Run",
+			     backgroundColor: "#46BFBD",
+			     data: moduleNotRunStatus,
+			     minBarLength: 1,
+			 	maxBarThickness: 25,
+			 	barPercentage: 0.9,
+			     categoryPercentage: 0.4
+			   }]
+			 },
+			   options: {
+				   plugins: {
+					      datalabels: {
+					        formatter: (value, ctx) => {
+					          let sum = 0;
+					          let dataArr = ctx.chart.data.datasets[0].data;
+					          dataArr.map(data => {
+					            sum += data;
+					            
+					          });
+					          return value;
+					        },
+					        color: 'black',
+					        anchor: 'end',
+					        align: 'top',
+					        labels: {
+					          title: {
+					            font: {
+					              size: '15'
+					            },
+					        
+					          }
+					        }
+					      }
+					    },
+			     maintainAspectRatio: false,
+			     layout: {
+			      padding: {
+			         left: 0,
+			         right: 0,
+			         top: 25,
+			         bottom: 0
+			       }
+			     },
+			     scales: {
+			       xAxes: [{
+			 	      stacked: false,
+			         time: {
+			           unit: 'Module'
+			         },
+			         gridLines: {
+			           display: false,
+			           drawBorder: false,
+			         },
+			         ticks: {
+			           maxTicksLimit: 10
+			         },
+			        
+			       }],
+			       yAxes: [{
+			         ticks: {
+			           min: 0,
+			           maxTicksLimit: 10,
+			           padding: 0,
+			           precision: 0
+			           
+			         },
+			         gridLines: {
+			           color: "rgb(234, 236, 244)",
+			           zeroLineColor: "rgb(234, 236, 244)",
+			           drawBorder: true,
+			           borderDash: [2],
+			           zeroLineBorderDash: [0]
+			         }
+			       }],
+			     },
+			     legend: {
+			       display: true,
+			 	  position: 'bottom',
+			 	   padding: {
+			 				left: 0,
+			 				right: 0,
+			 				top: 0,
+			 				bottom: 0
+			 			  },
+			 				  
+			 			labels : {
+			 			fontColor: 'rgb(154, 154, 154)',
+			 			fontSize: 12,
+			 			usePointStyle : false,
+			 			padding: 20,
+			 			boxWidth: 12,
+			 			boxHeight: 10
+			 		}
+			 	  
+			     },
+			 	tooltips: {
+			 		titleMarginBottom: 10,
+			 		titleFontColor: '#FFFFFF',
+			 		titleFontSize: 13,
+			 		backgroundColor: "#000000",
+			 		bodyFontColor: "#FFFFFF",
+			 		borderColor: '#4e73df',
+			 		borderWidth: 2,
+			 		xPadding: 15,
+			 		yPadding: 6,
+			 		displayColors: true,
+			 		caretPadding: 1,
+			 		callbacks: {
+			 			title: function() {},
+			 			label: function(tooltipItem, data) {
+			 				var corporation = data.datasets[tooltipItem.datasetIndex].label;
+			 				var valor = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+
+			 				
+			 				var total = 0;
+			 				
+			 				for (var i = 0; i < data.datasets.length; i++)
+			 					total += data.datasets[i].data[tooltipItem.index];
+
+			 					var currentValue = valor.toFixed(0);
+			 					var percentage = Math.floor(((currentValue/total) * 100)+0.5);
+			 			
+			 					return [" " + corporation + ": " + currentValue + " of " + total + " || (" + percentage + "%)"];
+			 			}
+			 		}
+			 	},
+			 }
+			 });
+
+
+
+			 var ctx = document.getElementById("Featurewise");
+			 var myBarChart = new Chart(ctx, {
+			   type: 'bar',
+			   data: {
+			   labels: featurenames,
+			   datasets:  [{
+			     label: "Passed",
+			     backgroundColor: "#18A558",
+			     data: featurePassStatus,
+			     minBarLength: 1,
+			 	 maxBarThickness: 25,
+			 	 barPercentage: 0.9,
+				 categoryPercentage: 0.2
+			     
+			   }, {
+			     label: "Failed",
+			     backgroundColor: "#F7464A",
+			     data:featureFailStatus,
+			     minBarLength: 1,
+			 	 maxBarThickness: 25,
+			 	 barPercentage: 0.9,
+				 categoryPercentage: 0.2
+			   }, {
+			     label: "Not Run",
+			     backgroundColor: "#46BFBD",
+			     data:featureNotRunStatus,
+			     minBarLength: 1,
+			 	 maxBarThickness: 25,
+			 	 barPercentage: 0.9,
+				 categoryPercentage: 0.2
+			   }]
+			 },
+			   options: {
+				   plugins: {
+					   
+					      datalabels: {
+					    	  display: function(context) {
+					              return context.dataset.data[context.dataIndex] !== 0; 
+					           },
+					        formatter: (value, ctx) => {
+					          let sum = 0;
+					          let dataArr = ctx.chart.data.datasets[0].data;
+					          dataArr.map(data => {
+					            sum += data;
+					          });
+					          
+					          return value;
+					        },
+					        color: 'black',
+					        anchor: 'center',
+					        align: 'center',
+					        labels: {
+					          title: {
+					            font: {
+					              size: '15',
+					              
+					            }
+					          }
+					        }
+					      }
+					    },
+				   maintainAspectRatio: false,
+			     layout: {
+			      padding: {
+			         left: 0,
+			         right: 0,
+			         top: 15,
+			         bottom: 0
+			       }
+			     },
+			     scales: {
+			       xAxes: [{
+			 	      stacked: true,
+			         time: {
+			           unit: 'Module'
+			         },
+			         gridLines: {
+			           display: false,
+			           drawBorder: true,
+			         },
+			         ticks: {
+			           maxTicksLimit: 100
+			         },
+			        
+			       }],
+			       yAxes: [{
+			 	  stacked: true,
+			         ticks: {			           
+			           padding: 0,
+			           precision: 0
+			           
+			         },
+			         gridLines: {
+			           color: "rgb(234, 236, 244)",
+			           zeroLineColor: "rgb(234, 236, 244)",
+			           drawBorder: true,
+			           borderDash: [2],
+			           zeroLineBorderDash: [0]
+			         }
+			       }],
+			     },
+			     legend: {
+			       display: true,
+			 	  position: 'bottom',
+			 	   padding: {
+			 				left: 0,
+			 				right: 0,
+			 				top: 0,
+			 				bottom: 0
+			 			  },
+			 				  
+			 			labels : {
+			 			fontColor: 'rgb(154, 154, 154)',
+			 			fontSize: 12,
+			 			usePointStyle : false,
+			 			padding: 20,
+			 			boxWidth: 12,
+			 			boxHeight: 10
+			 		}
+			 	  
+			     },
+			 	tooltips: {
+			 		
+			 		titleMarginBottom: 10,
+			       titleFontColor: '#FFFFFF',
+			       titleFontSize: 13,
+			       backgroundColor: "#000000",
+			       bodyFontColor: "#FFFFFF",
+			       borderColor: '#4e73df',
+			       borderWidth: 2,
+			       xPadding: 15,
+			       yPadding: 6,
+			       displayColors: true,
+			 	 caretPadding: 1,
+			 		callbacks: {
+			 			title: function() {},
+			 			label: function(tooltipItem, data) {
+			 				var corporation = data.datasets[tooltipItem.datasetIndex].label;
+			 				var valor = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+
+			 				var total = 0;
+			 				
+			 				for (var i = 0; i < data.datasets.length; i++)
+			 					total += data.datasets[i].data[tooltipItem.index];
+
+			 					var currentValue = valor.toFixed(0);
+			 					var percentage = Math.floor(((currentValue/total) * 100)+0.5);
+			 			
+			 					return [" " + corporation + ": " + currentValue + " of " + total + " || (" + percentage + "%)"];
+			 			}
+			 		}
+			 	},
+			 }
+			 });
+			 
+
+			 var allModuleFeatureStatusData=data.allModuleFeatureStatusData;
+			
+			 var data = {
+					    "result":allModuleFeatureStatusData					    
+					   
+					};
+
+
+					
+
+					function generateTable(data) { 
+					  $("#test-table tbody").empty(); 
+					  Object.entries(data.result).forEach(([key, elem]) => {
+					    var baseHtml = "";
+					    var childrenHtml = "";
+					    var maxRowSpan = 0;
+					    elem.forEach((inner_elem, index) => {
+					    	
+					      var [innerElemKey, arr] = Object.entries(inner_elem)[0];
+					      var elemRowSpan = Math.max(arr.length, 1);
+					      maxRowSpan += elemRowSpan;
+						
+					      if (index !== 0) {
+					        childrenHtml += "<tr>";
+					      } 
+					      
+					     
+					    
+					      childrenHtml += ('<td rowspan="1">' + innerElemKey + '</td>');
+					      
+					      arr.forEach((child, indx) => {
+						  
+					        if (indx !==2) {
+						
+					        } 
+					        childrenHtml += ('<td class="text-right" rowspan="1">' + child + '</td>');
+					      });
+						  
+					    });
+						childrenHtml += ('</tr>');
+					    baseHtml += ('<tr><td rowspan="' + Math.max(maxRowSpan, 1)/3 + '">' + key + '</td>');
+					    $("#test-table").append(baseHtml + childrenHtml);
+					  });
+					}
+
+					$(function() {
+					  generateTable(data);
+					});
+		        		}
+		     });
+			 document.getElementById('RoutcomeSSVidDiv').style.display = "none";
+				document.getElementById('RoutcomeSSImgDiv').style.display = "none";
+			$('#ResultsDetailModal').appendTo("body").modal('show');		
+	});	
+	
+	$(this).on('click','#Results_Cancel',function(evt) {		
+			$this = $(this);
+			var dtRow = $this.parents('tr');			
+			var Flen = dtRow[0].cells.length;			
+			$('div.modal-body').innerHTML='';
+			var E_ID = dtRow[0].cells[0].innerHTML;	
+			var fname = dtRow[0].cells[1].innerHTML;
+			
+			var table = $('#ResultsdataTable').DataTable(); 
+			
+			var delExe = table.row( $(this).parents('tr') ).data()["executionId"];
+			
+			var str = "<p>Are you sure you want to cancel this execution request? </p> Execution ID: <strong>" + E_ID + "</strong><br>Raised by: <strong>" + fname + "</strong><br>"; 
+            $(".modal-body #cancel_String").html(str);
+            $(".modal-body #delExe").val(E_ID);
+			
+			$('#cancelExecModal').modal('show');
+			
+		});	
+	
+	
+	
+	$('#ResultsDetailModal').on('hidden.bs.modal', function () {
+	    $('#Results_Scripts').dataTable().fnDestroy();
+	    $('#Results_Tests').dataTable().fnDestroy();
+	    $('#pie_status').remove(); 
+		 $('#pie_status_container').append('<canvas id="pie_status"></canvas>');
+		 $('#myAreaChart').remove(); 
+		 $('#myAreaChart_container').append('<canvas id="myAreaChart"></canvas><div type="hidden"  class="alert  text-center" id="NoHistoricData" style="display:none;"><strong>No Historic data available for this type of execution.</strong></div> '); 
+		 $('#Modulewise').remove(); 
+		 $('#Modulewise_container').append('<canvas id="Modulewise"></canvas>'); 
+		 $('#Featurewise').remove(); 
+		 $('#Featurewise_container').append('<canvas id="Featurewise"></canvas>'); 		
+	});
+	
+	
+	
+			
+});
+
+
+
+
+
+
+
+function format(time) {   
+    
+    var hrs = ~~(time / 3600);
+    var mins = ~~((time % 3600) / 60);
+    var secs = ~~time % 60;
+
+    
+    var ret = "";
+    
+    ret += "" + hrs + ":" + (mins < 10 ? "0" : "");    
+    ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+    ret += "" + secs;
+	
+    return ret;
+}
+ 
+</script>
+
+<script>
+
+jQuery.fn.dataTable.render.percentBar = function(pShape, cText, cBorder, cBar, cBack, vRound, bType) {
+  pShape = pShape || 'square';
+  cText = cText || '#000';
+  cBorder = cBorder || '#BCBCBC';
+  cBar = cBar || '#5FD868';
+  cBack = cBack || '#E6E6E6';
+  vRound = vRound || 0;
+  bType = bType || 'ridge';
+ 
+  var styleRule1 = 'max-width:100px;height:13px;margin:0 auto;';
+  var styleRule2 = 'border:1px '+bType+' '+cBorder+';line-height:14px;font-size:13px;color:'+cText+';background:'+cBack+';position:relative;';
+  var styleRule3 = 'height:15px;line-height:12px;text-align:center;background-color:'+cBar+';padding:auto 6px;';
+  
+  if(pShape=='round'){
+    styleRule2 += 'border-radius:3px;';
+    styleRule3 += 'border-top-left-radius:4px;border-bottom-left-radius:4px;';
+  }
+
+  return function(d, type, row) {
+    
+    s = parseFloat(d.toString().replace(/\s%|%/g,'')).toFixed(vRound);
+    
+    if(s>100){s=100;}
+	
+	
+	if(s==0){return '-';}
+
+
+    if (type !== 'display') {
+      return s;
+    }
+    if (typeof d !== 'number' && typeof d !== 'string') {
+      return d;
+    }
+	
+    
+    return '<div style="'+styleRule1+'"><div style="'+styleRule2+'"><div style="'+styleRule3+'width:'+s+ '%;"></div><div style="width:100%;height:20px;text-align:center;position:absolute;left:0;top:0;">'+s+'%</div></div></div>';
+  };
+};
+
+</script>
+
+
+<script>
+
+
+</script>
+
+<script>
+Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
+
+function number_format(number, decimals, dec_point, thousands_sep) {
+  
+  number = (number + '').replace(',', '').replace(' ', '');
+  var n = !isFinite(+number) ? 0 : +number,
+    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+    s = '',
+    toFixedFix = function(n, prec) {
+      var k = Math.pow(10, prec);
+      return '' + Math.round(n * k) / k;
+    };
+  
+  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+  if (s[0].length > 3) {
+    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+  }
+  if ((s[1] || '').length < prec) {
+    s[1] = s[1] || '';
+    s[1] += new Array(prec - s[1].length + 1).join('0');
+  }
+  return s.join(dec);
+}
+
+</script>
+
+
+<script>
+document.getElementById("cancelExecId").onclick = function (){
+	
+	  
+	var executionId = $('#delExe').val();
+	
+	 
+	   $.ajax({
+         url: 'updateExecutionStatus',
+         type: 'POST',
+         data:{ 
+         		"executionId": executionId
+         		
+         	}
+	   
+   		  }).done(function(data) {
+
+         if (data == "Success") 
+         {
+	          	 
+        	 var SuccessMsg = 'Execution request ' + executionId + ' removed from the queue.';
+    		 var Success = '<div class="mb-0 alert alert-sm alert-success text-center text-danger pl-0"><i class="px-1 fas fa-check"></i> ' + SuccessMsg + '</div>';
+    		 localStorage.setItem("Status", Success);
+    		 location.reload();	
+
+         } 
+         
+     });
+
+};
+</script>
+<script>
+ function cTrig(box) {
+		
+		var serverStatus=document.getElementById("serverSwitch").checked;
+		
+		if (serverStatus==true)
+		{
+			
+			var retValOn = confirm("Are you sure you want to switch the Automation Server ON ?");
+			
+		 if (retValOn==true) {
+        $.ajax({        
+            url: 'serverSwitch',
+            type: 'post',             
+             data: {
+               "serverStatus": 'on'
+            },
+            success: function(response) {
+           
+            alert("Automation Server is ON");
+              
+            }           
+        });
+    
+  		}
+  		
+  		 else {
+    		
+    		
+    		document.getElementById("serverSwitch").checked = false;
+   		 }
+  		
+			
+			
+	}
+		else
+		{
+			
+			var retValOff = confirm("Are you sure you want to switch the Automation Server OFF ?");
+			
+		 if (retValOff==true) {
+        $.ajax({        
+            url: 'serverSwitch',
+            type: 'post',             
+             data: {
+               "serverStatus": 'off'
+            },
+            success: function(response) {
+           
+            alert("Automation Server is OFF");
+              
+            }           
+        });
+    
+  		}
+  		
+  		 else {
+    		
+    		
+    		document.getElementById("serverSwitch").checked = true;
+   		 }
+  
+  }
+	
+	
+     
+}
+
+
+
+		
+	 </Script>
+	 <script type="text/javascript" src="/resources/js/CS_RBA.js"></script>
+</body>
+
+</html>

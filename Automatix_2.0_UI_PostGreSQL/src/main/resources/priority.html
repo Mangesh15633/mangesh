@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>One Automation Solution - Test Prioritization</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<!-- Custom fonts for this template -->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+
+<link href="vendor/bootstrap/css/bootstrap-select.min.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/project_bootstrap.css" rel="stylesheet">
+
+
+<!-- Custom styles for this template -->
+<link href="css/project_bootstrap.min.css" rel="stylesheet">
+
+<link href="css/switch.css" rel="stylesheet">
+
+<!-- Custom styles for this page -->
+<link href="vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/email.multiple.css">
+
+<style>
+.margin-bottom-20px {
+	margin-bottom: 20px !important;
+}
+
+.flextbl {
+	flex: 0 0 49% !important;
+}
+
+.card-body {
+	padding: 0.6rem;
+}
+
+.card>.card-header {
+	border-color: #e4e5e7;
+	padding: 0rem 0.2rem;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.card>.card-header a:after {
+	content: "";
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	float: left;
+	margin-right: 10px;
+	padding: 0rem -4rem;
+	transition: transform .25s linear;
+	-webkit-transition: -webkit-transform .25s linear;
+}
+
+.card.card-header a[aria-expanded="true"]:after {
+	background-color: "#000000";
+}
+
+.card>.card-header a[aria-expanded="true"]:after {
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	content: "\f146";
+}
+
+.card>.card-header a[aria-expanded="false"]:after {
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	content: "\f0fe";
+}
+
+.wrap {
+	display: flex;
+}
+
+.block-a {
+	width: 65%;
+	float: left;
+}
+
+.block-b {
+	width: 35%;
+	float: right;
+}
+
+.bootstrap-select {
+  
+}
+
+.btn-custom {
+	width: 120px !important;
+}
+
+.bootstrap-select>.dropdown-toggle {
+	
+}
+
+.bootstrap-select .dropdown-toggle .filter-option {
+	font-size: 13px;
+	text-align: center;
+}
+
+.collapsing {
+	transition: 300ms;
+}
+
+td.details-control {
+	content: url('resources/images/closed.png');
+	cursor: pointer;
+}
+
+tr.shown {
+	background-color: #858796;
+	color: white;
+}
+
+tr.shown td.details-control {
+	content: url('resources/images/open.png');
+	cursor: pointer;
+}
+
+.dataTables_wrapper {
+	font-size: 12px;
+}
+
+
+</style>
+
+</head>
+
+<body id="page-top" >
+
+
+
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+			<!-- Sidebar - Brand -->
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="index.html">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-cogs"></i>
+				</div>
+				<div class="sidebar-brand-text mx-3">One Automation Solution</div>
+			</a>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
+
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item"><a class="nav-link" href="index.html">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
+			</a></li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">Interface</div>
+
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item"><a class="nav-link" href="initiate.html">
+					<i class="fas fa-fw fa-caret-square-right"></i> <span>Initiate</span>
+			</a></li>
+			<li class="nav-item" id="TM_Menu" style="display: block;"><a
+				class="nav-link" href="test_master.html"> <i
+					class="fas fa-list-alt"></i> <span>Test Master</span></a></li>
+			<li class="nav-item"><a class="nav-link" href="results.html">
+					<i class="fas fa-fw fa-chart-pie"></i> <span>Results</span>
+			</a></li>
+			<li class="nav-item active"><a class="nav-link"
+				href="priority.html"> <i class="fas fa-check-double"></i> <span>Test
+						Prioritization</span></a></li>
+
+
+
+			<!-- Divider -->
+		<div id="AdminMenu" style="display: block;">
+			<hr class="sidebar-divider">
+			
+		<!-- Heading -->
+			
+			<div class="sidebar-heading" >Configs</div>
+			
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item m-0" ><a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+				aria-controls="collapseUtilities"> <i class="fas fa-fw fa-wrench"></i> <span>Admin</span>
+			</a>
+
+				<div id="collapseUtilities" class="collapse hide" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						
+						<a class="collapse-item" href="/resources/user.html">User Management</a> <a class="collapse-item" href="/resources/master-config.html">Master Configs</a> <a class="collapse-item"
+							href="/resources/project-config.html">Project Configs</a>
+					</div>
+				</div></li>
+				</div>
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+			<!-- Heading -->
+			<div class="sidebar-heading">Others</div>
+
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item"><a class="nav-link" href="faqs.html"> <i
+					class="fas fa-question-circle"></i> <span>FAQs</span></a></li>
+			<li class="nav-item"><a class="nav-link" href="about.html">
+					<i class="fas fa-info-circle"></i> <span>About</span>
+			</a></li>
+
+
+
+			<!-- Sidebar Toggler (Sidebar) -->
+			<div class="text-center d-none d-md-inline">
+				<button class="rounded-circle border-0" id="sidebarToggle"
+					onclick="rem_sidebar()"></button>
+			</div>
+
+
+
+		</ul>
+		<!-- End of Sidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav
+					class="navbar navbar-expand navbar-light bg-white topbar mb-1 static-top shadow">
+
+					<!-- Sidebar Toggle (Topbar) -->
+					<button id="sidebarToggleTop"
+						class="btn btn-link d-md-none rounded-circle mr-3">
+						<i class="fa fa-bars"></i>
+					</button>
+
+
+
+					<!-- Topbar Navbar -->
+					<!-- Topbar Navbar -->
+					<ul class="navbar-nav ml-auto">
+
+
+						<div class="container">
+							<!-- Nav Item - Alerts -->
+
+							<form id="testForm" name="serverSwitch" action="serverSwitch"
+								method="post">
+								<label class="mt-2 switch"> <input type="checkbox"
+									id="serverSwitch" name="check1" checked='checked'
+									onchange="cTrig(this)">
+									<div id="box" class="slider round">
+										<span class="on">ON</span> <span class="off">OFF</span>
+									</div>
+								</label>
+							</form>
+							<div class="topbar-divider"></div>
+
+							<span id="loginUser"
+								class="ml-1 mr-4 text-success font-weight-bold small"><<
+								Full Name >></span> <span id="loginEmail" hidden>loginEmailValue</span>
+
+							<!-- Nav Item - User Information -->
+							<li class="nav-item"><a href="#" data-toggle="modal"
+								data-target="#logoutModal"> <i class="fas fa-sign-out-alt"
+									style="color: #C0C0C0"></i>
+							</a></li>
+						</div>
+					</ul>
+
+					<!-- End of Topbar -->
+				</nav>
+
+
+				<!-- Begin Page Content -->
+				<div class="dropdown-header">
+
+					<!-- Page Heading -->
+					<div class="card shadow">
+
+						<div class="card-header py-3 margin-bottom-20px">
+
+							<div class="mt-1 col-6 text-left">
+								<h6 class="m-0 pl-3 font-weight-bold text-primary">Priority
+									wise Test case breakup</h6>
+							</div>
+
+
+						</div>
+						<div class="col-sm-12 text-center">
+						<div id="LoadingImageTop" class="mt-3 text-center" style="display: block"><progress></progress></div>
+							<div class="alert alert-warning text-center" id="PriorityZeroDataDiv" style="width:100%;display: none"></div>
+						</div>
+						<div id="PriorityMainDIV" style="display:none;">
+						<div class="row">						
+							<div class="col-sm-4" id="LeftMainDiv">
+								<div class="ml-2 mb-1 card-body btn-primary"
+									style="padding-left: 1.25rem">
+									<span style="width: 45%; float: left;"> Overall Risk
+										Breakup </span> <span class="ml-3 text-right"> <select
+										class="text-right selectpicker show-tick Atype"
+										data-width="50%" data-style="btn btn-light"
+										id="AType" name="AType" multiple
+										data-max-options="1" required>
+									</select>
+									</span>
+
+								</div>
+
+								<div class="ml-2 card-body btn-info" id="RAGDiv" style="padding-left: 1.25rem;display:block;">
+									<span>&nbsp; </span> <span class="block-b text-right mr-2">
+										<span class="ml-4  bg-gradient-danger">&nbsp;R&nbsp;</span> <span
+										class="mx-2 bg-gradient-warning">&nbsp;A&nbsp;</span> <span
+										class="bg-gradient-success">&nbsp;G&nbsp;</span>
+									</span>
+
+								</div>
+
+
+								<!-- Accordian Content -->
+								<div class="ml-2 mb-3 accordion" id="accordionMenu"
+									style="font-size: 13px;">
+
+									<!-- Accordian Content End -->
+
+								</div>
+								<div id="HRMSideDiv" class="ml-2 mb-1 card-body btn-danger"
+									style="padding-left: 1.25rem;display:block;">High Risk Modules</div>
+								<div class="ml-2 mb-3 accordion" id="Top3">
+
+									<!-- Top 3 Modules Content End -->
+
+
+								</div>
+
+								<div id="HRFSideDiv" class="ml-2 mb-1 card-body btn-danger"
+									style="padding-left: 1.25rem;display:block;">High Risk Features</div>
+								<div class="ml-2 mb-3 accordion" id="Top5">
+
+									<!-- Top 5 Features Content End -->
+
+
+								</div>
+							</div>
+							<!-- Side DIV Code -->
+
+							<div class="col-sm-8" id="SideExecuteDiv" style="display: block;">
+
+								<form class="needs-validation" validate Method="POST"
+									id="Options2Form" onsubmit="return ReviewExecRequest()"
+									autocomplete="off">
+									<div class="mr-2 card-body border bg-light form-group "
+										style="display: block;">
+										<div class="ml-2 mr-1 my-2 text-center" id="ExecDivTitleConf">
+											Initiate a new execution request for the selected test cases?
+										</div>
+										<div class="mt-3 form-row">
+
+											<div class="col-sm-2">
+												<div class="form-group">
+													<select class="selectpicker show-tick"
+														data-style="btn-info btn-md" data-width="120%"
+														title="Device" id="Device" name="Device"
+														data-max-options="1" multiple required>
+
+													</select>
+												</div>
+											</div>
+
+											<div class="col-sm-3 ml-3 text-center">
+												<div class="form-group">
+													<select class="selectpicker show-tick"
+														data-style="btn btn-secondary" data-width="80%"
+														title="Environment" id="Environment" name="Environment"
+														data-max-options="1" multiple required>
+
+													</select>
+												</div>
+											</div>
+
+
+											<div class="col-sm-2 text-left">
+												<div class="form-group">
+													<select class="selectpicker show-tick"
+														data-style="btn btn-secondary" data-width="120%"
+														title="Browser" id="Browser" name="Browser" multiple
+														data-max-options="1" required>
+
+													</select>
+												</div>
+
+											</div>
+
+
+
+											<div class="col-sm-2 mx-3 text-center">
+												<div
+													class="form-group custom-control custom-checkbox custom-checkbox-green mt-1 ml-1">
+													<input type="checkbox"
+														class="custom-control-input custom-control-input-green"
+														id="Headless" name="Headless" autocomplete="off">
+													<label class="custom-control-label" for="Headless">Headless
+														Mode</label>
+
+												</div>
+
+											</div>
+
+
+											<div class="col-sm-2">
+												<div class="form-group">
+													<div class="text-left">
+														<button type="submit" name="submit2" id="btnSubmitExec"
+															class="px-2 mt-1 btn-sm btn-success">
+															<span class="ml-1 fas fa-play"></span> <span
+																class="mr-1 ml-1 text-right">Initiate</span>
+														</button>
+													</div>
+												</div>
+											</div>
+								</form>
+
+							</div>
+
+						</div>
+
+
+						<div
+							class="alert alert-success alert-dismissible text-center mr-2"
+							id="TriggerSuccessDiv" style="display: none;">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<span id="TriggerSuccessText"></span>
+						</div>
+
+
+						<div class="mr-2 card-body btn-primary" style="padding: 0.4rem">
+							<span class="ml-2" id="ExecDivTitle">Selected test cases with respective failure rates</span> 
+								<span class="text-left"> 
+									<select class="selectpicker show-tick" data-style="btn btn-sm btn-light btn-custom" id="LatestCount" name="LatestCount" multiple data-max-options="1" required>
+									<option value="3" selected>Last 3 Instances</option>
+									<option value="5">Last 5 Instances</option>
+									<option value="10">Last 10 Instances</option>
+									</select>
+								</span>
+								<span class="text-left"> 
+									<select class="selectpicker show-tick" data-style="btn btn-sm btn-light btn-custom" id="DaysCount" name="DaysCount" multiple data-max-options="1" required>
+										<option value="7">This Week</option>
+										<option value="15">This Fortnight</option>
+										<option value="30" selected>This Month</option>
+										<option value="60">Last 2 Months</option>
+										<option value="90">Last 3 Months</option>
+									</select>
+								</span>
+								<span class="text-left"> 
+									<select class="selectpicker show-tick" data-style="btn btn-sm btn-light btn-custom" id="Browser_Filter" name="Browser_Filter" title="Per Browser" multiple data-max-options="1" required>
+									</select>
+								</span>
+						</div>
+
+
+						<div class="p-0 mr-2 card-body" id="ResultsMainDiv">
+							<div class="table-responsive" id="ResultsDiv"
+								style="font-size: 12px; display: block;">
+
+								<table class="m-0 p-0 table-sm table-bordered display"
+									style="width: 100%" id="ResultsdataTable">
+									<thead class="table-info">
+
+										<tr>
+											<th></th>
+											<th>Test ID</th>
+											<th width="50%">Test Objective</th>
+											<th width="auto">Module</th>
+											<th width="auto">Feature</th>
+											<th width="auto">RiskFlag</th>
+											<th width="auto" class="text-center">Risk</th>
+											<th width="auto">Risk %</th>
+											<th width="auto">Script Name</th>
+											
+										</tr>
+									</thead>
+
+								</table>
+								<div id="LoadingImage" class="mt-3 text-center"
+									style="display: block">
+									<progress></progress>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+					</div>
+					<!-- Accordian Content -->
+
+
+
+					<!-- /.container-fluid -->
+
+
+
+
+
+
+				</div>
+
+			</div>
+			<!-- End of Main Content -->
+
+		</div>
+
+		<!-- Footer -->
+		<footer class="sticky-footer bg-white">
+			<div class="container my-auto">
+				<div class="copyright text-center my-auto">
+					<span>Copyright © Mastek Ltd. 2023</span>
+				</div>
+			</div>
+		</footer>
+		<!-- End of Footer -->
+
+	</div>
+	<!-- End of Content Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready
+					to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="/automation">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<!-- Sample Modal-->
+	<div class="modal fade" id="logoutModal2" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready
+					to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="/automation">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Execution Confirmation Modal -->
+	<div class="modal fade" id="ConfModal" tabindex="-1"
+		aria-labelledby="ConfModalLabel" aria-hidden="true">
+
+		<div class="modal-dialog modal-dialog-top">
+			<div class="modal-content">
+				<div class="modal-header bg-success">
+					<h5 class="modal-title" id="ConfModalLabel">Confirmation</h5>
+
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">x</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<form class="needs-validation" validate action="" id="StartE_Form">
+
+						<!-- Data passed is displayed in this part of the modal body -->
+						<h6 id="modal_body"></h6>
+						<div class="form-row">
+							<div class="col-12" style="font-size: 12px">
+								<strong>To share this execution report:</strong><br> 1.
+								Click Share Report<br> 2. Enter an email address to share
+								the report with <br> 3. Hit the ENTER KEY to insert the
+								email address to the list <br> 4. Click Done
+							</div>
+						</div>
+						<p></p>
+						<div class="form-row">
+							<div class="col-12 text-left">
+								<input type="text" class="text-left input-sm" id="share_email"
+									style="width: 70%; font-size: 12px;" maxlength="100"></input> <span
+									id="s_invalid_email" class="invalid-feedback" role="alert">
+								</span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="my-1 col-8 text-left">
+								<input class="btn-info" id="btnAdd" type="button"
+									value="Share Report" /> <input type="button" id="btnRemove"
+									class="remove btn-danger" value="Done" hidden />
+							</div>
+
+							<div class="col-5 text-left"></div>
+						</div>
+
+						<div class="form-row">
+							<div class="col-5 btn-group btn-group-toggle d-flex"
+								data-toggle="buttons">
+								<label class="btn btn-outline-success active"> <input
+									type="radio" name="options" id="immediate"
+									onclick="javascript:Sch_Exec();" autocomplete="off" checked>
+									Immediate
+								</label> <label class="btn btn-outline-warning"> <input
+									type="radio" name="options" id="scheduled"
+									onclick="javascript:Sch_Exec();" autocomplete="off">
+									Scheduled
+								</label>
+							</div>
+
+							<div class="col-3 text-left p-0" id="apptDiv"
+								style="visibility: hidden">
+								<input type="time" class="btn btn-info text-center" id="appt"
+									name="appt" />
+							</div>
+
+
+							<div class="col-4 p-0 text-right">
+								<button type="button" class="btn btn-success pb-1"
+									id="confSubmit" onclick="SubmitForm_StartE();">
+									<span class="fas fa-play"></span> <span class="mx-1 text-right">Initiate</span>
+								</button>
+								<button type="button" class="btn btn-secondary pb-1 ml-0 mr-1"
+									data-dismiss="modal">Cancel</button>
+							</div>
+						</div>
+
+					</form>
+
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+	<!-- Result Child details Modal -->
+	<div class="modal fade custom-class-assignedto-modal"
+		id="ResultsChildDetailModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+
+
+		<div class="modal-dialog modal-dialog-top modal-xl" role="document"
+			style="margin: 1vh auto 0px auto">
+			<div class="modal-content" style="height: 610px;">
+				<div class="modal-body"
+					style="max-height: calc(100% - 10px); overflow-y: scroll;">
+
+
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+					<ul class="pb-1 nav nav-pills" id="pills-tab" role="tablist">
+						<li class="nav-item"><a class="nav-link active"
+							id="pills-dashboard-tab" data-toggle="pill"
+							href="#pills-dashboard" role="tab"
+							aria-controls="pills-dashboard" aria-selected="true"><i
+								class="pr-2 fas fa-images fa-1x"></i>Test Evidence</a></li>
+						<li class="nav-item"><a class="nav-link"
+							id="pills-scripts-tab" data-toggle="pill" href="#pills-scripts"
+							role="tab" aria-controls="pills-scripts" aria-selected="false"><i
+								class="pr-2 fas fa-code"></i>Error Message</a></li>
+						
+					</ul>
+
+					<div class="p-2 tab-content" id="pills-tabContent">
+						<div class="tab-pane fade show active" id="pills-dashboard"
+							role="tabpanel" aria-labelledby="pills-dashboard-tab">
+
+
+
+							<div class="row">
+								
+								<div class="col-sm-12">
+									<div class="card shadow px-1 mb-0">
+										<!-- Card Header Dropdown -->
+										<!-- Card Header Dropdown -->
+										
+
+										<!-- Card Body -->
+										<div class="card-body">
+											
+
+											<!-- Card Body -->
+
+											<div class="card-body py-1 text-center bg-dark"
+												id="outcomeSSImgDiv" style="display: none"></div>
+
+											<div class="card-body py-1 text-center bg-dark"
+												id="outcomeSSVidDiv" style="display: none"></div>
+
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--- End of Dashboard Tab CONTENT -->
+						<!--- Start of Scripts Tab CONTENT -->
+						<div class="tab-pane fade" id="pills-scripts" role="tabpanel"
+							aria-labelledby="pills-scripts-tab">
+							<div class="row" id="outcomeErrorDivMain">
+						<div class="col-sm-12">
+							<div class="card shadow px-1 mb-0">
+								<!-- Card Body -->
+								<div class="card-body py-1" id="outcomeErrorDiv"></div>
+							</div>
+						</div>
+					</div>
+
+
+						</div>
+
+					
+					</div>
+				
+					
+				</div>
+
+
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+	</div>
+	</div>
+	</div>
+	</div>
+
+
+
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/resources/js/CS_RBA.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<script src="vendor/bootstrap/js/bootstrap-select.min.js"></script>
+
+
+	<script type="text/javascript"
+		src="/resources/vendor/extras/datatablesUM.min.js"></script>
+	<!-- <script src="vendor/datatables/jquery.dataTables.js"></script>  -->
+	<script src="js/project_bootstrap.min.js"></script>
+	<script src="js/Prioritization.js"></script>
+	<script src="js/myFunctions.js"></script>
+
+
+
+	<script>
+	
+	function hasClass(element, className) {
+	    return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
+	}
+	
+$(document).ready(function($){
+    if(localStorage.getItem("sidebar"))
+    {
+	  var sidebar_class = localStorage.getItem("sidebar");
+	  if (sidebar_class == "collapsed") {
+	  	$(".sidebar").toggleClass("toggled");
+	  	
+	  }	else{
+		  $(".sidebar").removeClass("toggled");  			 
+	  }
+		 
+    }
+	 $.ajax({        
+         url: 'getServerStatus',
+         type: 'GET',             
+         
+         success: function(response) {
+        
+         if(response=="on")
+        	 {
+        	 document.getElementById("serverSwitch").checked = true;
+        	 }
+         else
+        	 {
+        	 document.getElementById("serverSwitch").checked = false;
+        	 }
+           
+         }           
+     });
+	 
+
+
+	 
+			let data =[localStorage.getItem("loginEmail")];
+			
+			$("#share_email").email_multiple({
+                data: data
+            });
+			
+		
+			 
+			 
+        });
+		
+		(function($){
+
+    $.fn.email_multiple = function(options) {
+		
+		 var emailSuffix="gmail.com";
+		 
+		 function callback(response) {
+			 var data = JSON.parse(response);
+			 emailSuffix = data.cust_domain;;
+			 }
+		 
+		 $.ajax({
+			    url: "projectConfig",
+			    type: "GET",
+			    async: false,
+			    success : callback 
+		           
+			});
+		 
+
+		 
+		 
+		 
+        let defaults = {
+            reset: false,
+            fill: false,
+            data: null
+        };
+
+        let settings = $.extend(defaults, options);
+        let email = "";
+		let n = 1;
+		let domain1 = "mastek.com";
+		let domain2 = [emailSuffix];  
+
+        return this.each(function()
+        {
+		
+            $(this).after("<div class=\"all-mail\"></div>\n" +
+                "<div style=\"display:none\"></div><input type=\"text\" name=\"email\" style=\"width:70%;font-size:13px;\" maxlength=\"40\" class=\"enter-mail-id form-control input-sm\" id=\"EnterEmail\" placeholder=\"Enter e-mail...\" autocomplete=\"on\" hidden disabled></input></div>");
+            let $orig = $(this);
+            let $element = $('.enter-mail-id');
+            $element.keydown(function (e) {
+                $element.css('border', '');
+				
+                if (e.keyCode === 13 || e.keyCode === 32) {
+                	
+                    let getValue = $element.val();
+                    
+                    let duplicateEmailId="no";
+                    
+                    $('span.email-ids').each(function() {
+                    	
+                    	if( $(this).text().indexOf(getValue) >= 0)
+                    		{
+                    		 	
+	                 		  	duplicateEmailId="yes";
+                    		}
+                    	
+                 	 });
+                    
+                    
+                    
+                    
+                    if (RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@?(" + domain1 + "|" + domain2 + ")$").test(getValue)){
+		                if(n<5){
+							
+			                	if(duplicateEmailId == "yes")
+		                		{
+		                		
+			                		document.getElementById('s_invalid_email').style.display = "block";
+									document.getElementById('s_invalid_email').innerHTML = "This email address is already entered.";
+									$element.css('border', '1px solid black');
+									inputText_Email.focus();
+		                		
+		                		}
+			                	
+			                	else 
+								{
+			                		$('.all-mail').append('<span class="email-ids" style="width:70%">' + getValue + '<span class="cancel-email">-</span></span>');
+								
+								
+								$element.val('');
+								email += getValue + ';';
+								n=n+1;
+								document.getElementById('s_invalid_email').style.display = "none";
+								document.getElementById('s_invalid_email').innerHTML = "";
+								}
+							}
+							else
+							{
+							var inputText_Email = document.getElementById('s_invalid_email');
+							document.getElementById('s_invalid_email').style.display = "block";
+							document.getElementById('s_invalid_email').innerHTML = "Sharing with max. 5 email addresses allowed.";
+							$element.css('border', '1px solid red');
+							inputText_Email.focus();
+							}
+                    } else {
+                        var inputText_Email = document.getElementById('s_invalid_email');
+							document.getElementById('s_invalid_email').style.display = "block";
+							document.getElementById('s_invalid_email').innerHTML = "Execution Report can be shared only with @" + domain1 + " & @" + domain2 + " emails.";
+							$element.css('border', '1px solid black');
+							inputText_Email.focus();
+                    }
+					
+                }
+			
+                $orig.val(email.slice(0, -1));
+            });
+
+            $(document).on('click','.cancel-email',function(){
+                $(this).parent().remove();
+				n=n-1;
+				
+            });
+
+            if(settings.data){
+                $.each(settings.data, function (x, y) {
+                    if (/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/.test(y)){
+                        $('.all-mail').append('<span class="email-ids" style="width:70%">' + y + '</span>');
+                        $element.val('');
+
+                        email += y + ';';
+						
+                    } else {
+                        $element.css('border', '1px solid red');
+						
+						}
+                });
+
+                $orig.val(email.slice(0, -1));
+            }
+
+            if(settings.reset){
+                $('.email-ids').remove();
+            }
+
+            return $orig.hide();
+        });
+    };
+
+	$(function() {
+		$("#btnAdd").bind("click", function() {
+			var div = $("<div />");
+			$("#TextBoxContainer").append(div);
+			document.getElementById("EnterEmail").hidden = false;
+			document.getElementById("EnterEmail").disabled = false;
+			document.getElementById("btnAdd").disabled = true;
+			document.getElementById("btnRemove").hidden = false;
+		});
+		$("#btnGet").bind("click", function() {
+			var values = $("input[name=DynamicTextBox]")
+			.map(function() {
+			  return $(this).val();
+			}).get().join(",\n");
+			$("#anotherTextbox").val(values);
+		});
+		$("body").on("click", ".remove", function() {
+			document.getElementById("EnterEmail").hidden = true;
+			document.getElementById("EnterEmail").disabled = true;
+			document.getElementById("btnAdd").disabled = false;
+			document.getElementById("btnRemove").hidden = true;
+			document.getElementById('s_invalid_email').innerHTML = '';
+		});
+	});
+
+
+})(jQuery);
+</script>
+
+	<script>
+ function cTrig(box) {
+		
+		var serverStatus=document.getElementById("serverSwitch").checked;
+		
+		if (serverStatus==true)
+		{
+			
+			var retValOn = confirm("Are you sure you want to switch the Automation Server ON ?");
+			
+		 if (retValOn==true) {
+        $.ajax({        
+            url: '/resources/serverSwitch',
+            type: 'post',             
+             data: {
+               "serverStatus": 'on'
+            },
+            success: function(response) {
+           
+            alert("Automation Server is ON");
+              
+            }           
+        });
+    
+  		}
+  		
+  		 else {
+    		
+    		
+    		document.getElementById("serverSwitch").checked = false;
+   		 }
+  		
+			
+			
+	}
+		else
+		{
+			
+			var retValOff = confirm("Are you sure you want to switch the Automation Server OFF ?");
+			
+		 if (retValOff==true) {
+        $.ajax({        
+            url: 'serverSwitch',
+            type: 'post',             
+             data: {
+               "serverStatus": 'off'
+            },
+            success: function(response) {
+           
+            alert("Automation Server is OFF");
+              
+            }           
+        });
+    
+  		}
+  		
+  		 else {
+    		
+    		
+    		document.getElementById("serverSwitch").checked = true;
+   		 }
+  
+  }
+	
+	
+     
+}
+
+	function ReviewExecRequest(){
+		var browser = document.getElementById('Browser').value;
+		var env = document.getElementById('Environment').value;
+		var headless = document.getElementById("Headless").checked;
+		var server = document.getElementById("serverSwitch").checked;
+		
+		var selectedTestIds=[];
+		var selectedModuleIds=[];
+		var conf_message = document.getElementById("ExecDivTitleConf").innerText;
+	    
+		var table = $('#ResultsdataTable').DataTable();
+		
+		var rows = $("#ResultsdataTable").dataTable().fnGetNodes();
+		
+		table.column(3, { search:'applied' } ).data().each(function(value, index) {
+			selectedModuleIds.push(value);
+	  	});
+		
+	  	table.column(1, { search:'applied' } ).data().each(function(value, index) {
+	  		selectedTestIds.push(+value);
+	  	});
+	  	
+	  	
+		
+		if (selectedTestIds.length > 0){
+		
+		$('#ConfModal').modal('show');
+		event.preventDefault();
+		
+		if (server == true){
+		
+		var str = "<font size='2'>Are you sure you want to initiate execution of the selected <strong>" + selectedTestIds.length + " tests</strong>?<p></p>";
+	            $("#modal_body").html(str); 
+		
+		return false;
+		} 
+		else {
+		var str = "<font size='2' color='red'><strong>Note:</strong> The Automation Server is currently switched OFF.</font><br><br><font size='2'>Your execution request will be queued and picked up when the server is up and running again. </font> <p></p>Do you want to continue?<p></p><p></p>"; 
+	    $("#modal_body").html(str); 
+	
+		return false;
+		}
+		
+		} else{
+			
+			return false;
+		}
+		
+};
+
+function Sch_Exec() {
+    if (document.getElementById('scheduled').checked) {
+        document.getElementById('apptDiv').style.visibility = 'visible';
+    }
+    else { 
+                document.getElementById('appt').value = "";
+                document.getElementById('apptDiv').style.visibility = 'hidden';
+                }
+
+};
+
+
+  function test() {
+
+	  var element = document.getElementById("appt").value;
+	  var scheduleDay="today";
+	  var schedulehour=0;
+	  var scheuldeMinutes=0;
+	  
+	  if (element == "") {
+	  alert("Please Enter Time");
+	    return false;  
+	  }
+	  else {
+	  
+	
+	  var scheduleDate;
+	  var d = new Date();
+	  var todayDate=d.getDate();
+	  var m = d.getMinutes();
+	  var h = d.getHours();
+	  
+	  
+	  var currentTime = h+"."+m;
+	  
+	 
+	  var time = element.split(":");
+	  var hour = time[0];
+	  
+	  var min = time[1];
+	  
+	  var inputTime = hour+"."+min;
+	  
+	  
+	  var totalTime =inputTime- currentTime;
+	  
+	  
+	  if (totalTime<0)
+		
+	  	{
+		  		scheduleDay="tommarow";
+		  }
+	  
+	  schedulehour=hour;
+	  scheuldeMinutes=min;
+	  
+	  
+	                 
+	  		
+	    }
+  };
+
+  function SubmitForm_StartE()
+  {
+  	var table = $('#ResultsdataTable').DataTable();
+  	
+  	var headless = document.getElementById("Headless").checked;
+  	var selectedTestIds = [];
+  	var selectedModuleIds=[];
+  	var atype = document.getElementById('AType').value;
+  	
+  	var ttype = $('#Test_Type').val();
+  	var browser = $("#Browser").val();
+  	
+  	var env = document.getElementById('Environment').value;
+	
+  	var email=$("#EnterEmail").val();
+  	
+  	$('#Modules :selected').each(function(){
+  			selectedModuleIds.push($(this).val());				
+  	   });
+  	   
+  	
+  	
+  	var rows = $("#ResultsdataTable").dataTable().fnGetNodes();
+  	
+  	table.column(1, { search:'applied' } ).data().each(function(value, index) {
+  		selectedTestIds.push(+value);
+  	});
+  	
+  	var selectedRecords=selectedTestIds.length;
+  	
+  	
+  	if(selectedTestIds.length > 0)
+  	{
+  		var selectAllFlag = false;
+   						
+   					
+  			executeButtonAjaxRequest(selectedTestIds,selectAllFlag,selectedModuleIds);
+  				
+  			$('#ConfModal').modal('hide'); 
+  			document.getElementById('TriggerSuccessDiv').style.display = "none";		 	
+  			document.getElementById('TriggerSuccessDiv').style.display = "block";
+  			document.getElementById('TriggerSuccessText').innerHTML = "New Execution request for selected <strong>" + selectedTestIds.length + " test cases </strong>has been queued.";
+  			
+  			$("#btnSubmitExec"). attr("disabled", true);
+  			
+  			
+  			
+  			return false;
+  		
+  		}
+  		else
+  		
+  		{
+  			$('#ConfModal').modal('hide'); 
+
+  			return false;
+  		}
+  };
+	
+  function executeButtonAjaxRequest(selectedTestIds,selectAllFlag, selectedModuleIds){
+
+		var atype = document.getElementById('AType').value;
+		var ttype = "1";
+		var browser = document.getElementById('Browser').value;
+		var env = document.getElementById('Environment').value;
+		var email=document.getElementById('loginUser').innerText;
+    	var element = document.getElementById("appt").value;
+	  	var scheduleDay="today";
+	  	var schedulehour=0;
+	  	var scheuldeMinutes=0;
+	  	var typeOfExecution="Immediate";
+	  	
+	  	var deviceValue = document.getElementById('Device').value;
+		
+		if (deviceValue > 0){
+			var device = deviceValue;
+		} else {
+			var device = 0;
+		}
+    
+  /*   var sendToEmailIds = $("#share_email").val();  */
+
+    var emailIds=[];
+     $('span.email-ids').each(function() {
+  	   
+  	   $(this).find("span").remove();
+  	
+  	  emailIds.push($(this).text());
+  	 });
+     
+     
+     
+     var sendToEmailIds=emailIds.join([separator = ';']);
+     
+    
+     if(document.getElementById('scheduled').checked==true)
+     {   typeOfExecution="Scheduled";
+     
+     	if (element == "") {              
+ 		alert("Please enter time");
+		  	event.preventDefault(); 
+		  	event.stopPropogation();
+		  	return false;
+		  }
+		  else {
+			
+		  
+		  var scheduleDate;
+		  var d = new Date();
+		  var todayDate=d.getDate();
+		  var m = d.getMinutes();
+		  var h = d.getHours();
+		  
+		       		  
+		  
+		  var currentTime = h+"."+m;
+		  
+		  
+		  var time = element.split(":");
+		  var hour = time[0];
+		  
+		  	if(hour == '00') {hour = '00'}
+		  	
+		  var min = time[1];         		  
+		  var inputTime = hour+"."+min;
+		  
+		  
+		  var totalTime = inputTime - currentTime;
+		 
+		  if (totalTime < 0)
+			
+		  	{
+			 var scheduleDay="tommarow";
+			 
+			  }
+		  
+		  var schedulehour = hour;
+		  var scheuldeMinutes = min;
+		 
+		              
+		  		
+		    }
+     
+     }
+     
+     
+     var headlessExecution;
+     if($('#Headless').is(":checked"))
+     {
+     			headlessExecution=1;
+     }
+     
+     else
+     {
+     			headlessExecution=0;
+     }
+     
+     var conf_message = document.getElementById("ExecDivTitleConf").innerText;
+    
+     
+     
+	    if (conf_message.indexOf("All test cases") < 0 && conf_message.indexOf("risk test cases") < 0) {
+	    	var selectionType = "Full";
+	    } else if (conf_message.indexOf("All test cases") != -1 && conf_message.indexOf("risk test cases") < 0) {
+	    	var selectionType = "Partial";
+	    }
+	    else if (conf_message.indexOf("All test cases") < 0 && conf_message.indexOf("risk test cases") != -1) {
+	    	var selectionType = "Risk-Based";
+	    } else {
+	    	return alert("Something went wrong. Please let Admin know.");
+	    };
+     
+     
+   
+      $.ajax({
+	
+	         	type: "POST",
+				url: 'createXmlUrl',
+						data:
+						{
+							   selTestId: unescape(selectedTestIds),
+			                   selBrowser: browser,
+			                   selEnvironment: env,
+			                   selTestTypeId: ttype,
+			                   selectAllFlag: selectAllFlag,
+			                   selectedModuleIds: unescape(selectedModuleIds),
+			                   selClientId: atype,
+			                   email: email,
+			                   sendToEmailIds:sendToEmailIds,
+			                   isHeadlessExecution:headlessExecution,
+			                   selectionType:selectionType,
+			                   scheduleDay:scheduleDay,
+			                   schedulehour:schedulehour,
+			                   scheuldeMinutes:scheuldeMinutes,
+			                   typeOfExecution:typeOfExecution,
+			                   selDevice: device
+			                   	    	
+			  		    	},
+	         success: function (response) {
+				
+	       	  	console.log("Execution request placed.");
+	       		
+			         }
+       
+ });
+ 
+ 
+
+}
+	 </Script>
+
+</body>
+</html>
